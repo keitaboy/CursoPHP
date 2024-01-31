@@ -60,7 +60,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button class="login100-form-btn" onClick="Verificar_Usuario()">
 								ENTRAR
 							</button>
 						</div>
@@ -105,6 +105,7 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+	<script src="../Js/Usuario.js"></script>
 
 </body>
 <script>
