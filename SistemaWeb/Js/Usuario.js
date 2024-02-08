@@ -1,4 +1,4 @@
-function Verificar_Usuario(){
+function VerificarUsuario(){
     var Usu=$("#txt_usu").val();
     var Con=$("#txt_con").val();
 
@@ -15,8 +15,4 @@ function Verificar_Usuario(){
     }).done(function(resp){
         alert(resp);
     })
-
-
-
-    alert("Usuario Validado")
 }

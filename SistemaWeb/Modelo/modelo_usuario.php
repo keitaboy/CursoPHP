@@ -12,9 +12,9 @@
             $arreglo = array();
             if ($consulta = $this->conexion->conexion->query($sql)){
                 while($consulta_VU = mysqli_fetch_array($consulta)){
-                    if(password_verify($pass, $consulta_VU["UsuPassword"]))
+                    if(password_verify($contra, $consulta_VU["UsuPassword"]))
                     {
-                        $arreglo[] = $consulta_VU
+                        $arreglo[] = $consulta_VU;
                     }
                 }
                 return $arreglo;
