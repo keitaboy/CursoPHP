@@ -13,6 +13,45 @@ function VerificarUsuario(){
             pass:Con            
         }
     }).done(function(resp){
-        alert(resp);
+        if(resp==0){
+            Swal.fire("Mensaje de error",'Usuario y/o contrase\u00f1a incorrecta', "error");
+        }else{
+            var data = JSON.parse(resp);
+            if(data[0][3]==="INACTIVO"){
+                Swal.fire("Mensaje de advertencia","Lo sentimos el usuario" + Usu + "se encuentra suspendido", "warning");
+            }
+            $.ajax({
+                URL:'../Controlador/usuario/controlador_crear_sesion.php',
+                type: 'POST',
+                data:{
+                    idUsuario:data[0][0],
+                    user:data[0][1],
+                    rol:data[0][5]
+                }
+            }).done(function(resp){
+                let timerInterval;
+                Swal.fire({
+                title: "Bienvenido al sistema",
+                html: "Usted sera redireccionado en <b></b> milisegundos.",
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                    timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+                }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    location.reload();
+                }
+                });                
+            })
+        }
     })
 }

@@ -8,10 +8,10 @@
         }
         
         function VerificarUsuario($usuario,$contra){
-            $sql = "call SP_VERIFICARUSUARIO'('$usuario')";
+            $sql = "call SP_VERIFICAR('$usuario')";
             $arreglo = array();
-            if ($consulta = $this->conexion->conexion->query($sql)){
-                while($consulta_VU = mysqli_fetch_array($consulta)){
+            if ($consulta = $this->conexion->conexion->query($sql)) {
+                while($consulta_VU = mysqli_fetch_array($consulta)) {
                     if(password_verify($contra, $consulta_VU["UsuPassword"]))
                     {
                         $arreglo[] = $consulta_VU;
