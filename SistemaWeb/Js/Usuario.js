@@ -11,17 +11,19 @@ function VerificarUsuario(){
         data:{
             user:Usu,
             pass:Con            
-        }
+        }        
+        
     }).done(function(resp){
         if(resp==0){
             Swal.fire("Mensaje de error",'Usuario y/o contrase\u00f1a incorrecta', "error");
         }else{
             var data = JSON.parse(resp);
+            console.log(data);
             if(data[0][3]==="INACTIVO"){
                 Swal.fire("Mensaje de advertencia","Lo sentimos el usuario" + Usu + "se encuentra suspendido", "warning");
             }
             $.ajax({
-                URL:'../Controlador/usuario/controlador_crear_sesion.php',
+                URL:'../Controlador/controlador_crear_sesion.php',
                 type: 'POST',
                 data:{
                     idUsuario:data[0][0],
