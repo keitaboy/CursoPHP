@@ -19,11 +19,11 @@ function VerificarUsuario(){
         }else{
             var data = JSON.parse(resp);
             console.log(data);
-            if(data[0][3]==="INACTIVO"){
-                Swal.fire("Mensaje de advertencia","Lo sentimos el usuario" + Usu + "se encuentra suspendido", "warning");
+            if(data[0][3]==='INACTIVO'){
+                return Swal.fire("Mensaje de advertencia","Lo sentimos el usuario" + Usu + "se encuentra suspendido", "warning");
             }
             $.ajax({
-                URL:'../Controlador/controlador_crear_sesion.php',
+                URL:'../Controlador/usuario/controlador_crear_sesion.php',
                 type: 'POST',
                 data:{
                     idUsuario:data[0][0],
@@ -33,13 +33,13 @@ function VerificarUsuario(){
             }).done(function(resp){
                 let timerInterval;
                 Swal.fire({
-                title: "Bienvenido al sistema",
-                html: "Usted sera redireccionado en <b></b> milisegundos.",
+                title: 'Bienvenido al sistema',
+                html: 'Usted sera redireccionado en <b></b> milisegundos.',
                 timer: 2000,
                 timerProgressBar: true,
                 didOpen: () => {
                     Swal.showLoading();
-                    const timer = Swal.getPopup().querySelector("b");
+                    const timer = Swal.getPopup().querySelector('b');
                     timerInterval = setInterval(() => {
                     timer.textContent = `${Swal.getTimerLeft()}`;
                     }, 100);

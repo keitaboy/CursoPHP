@@ -4,20 +4,23 @@ class conexion{
     private $servidor;
     private $usuario;
     private $contrasena;
-    private $basedatos;
+    private $basededatos;
     public $conexion;
-    public function __construct(){
+
+    public function __construct() {
         $this->servidor = 'localhost';
         $this->usuario = 'root';
         $this->contrasena = '';
-        $this->basededatos = 'clinicmariaaux1'        
+        $this->basededatos = 'clinicmariaaux1';
     }
+
     function conectar(){
-        $this->conexion = new mysqli($this->servidor,$this->usuario,$this->contrasena,
-        $this->basededatos);
+        $this->conexion = new mysqli($this->servidor, $this->usuario, $this->contrasena, $this->basededatos);
+
         $this->conexion->set_charset("utf8");
     }
-    function cerrar(){
+
+    function cerrar() {
         $this->conexion->close();
     }
 
