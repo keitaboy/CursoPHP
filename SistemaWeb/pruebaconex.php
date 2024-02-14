@@ -37,4 +37,3 @@ class Conexion {
 $miConexion = new Conexion();
 $miConexion->conectar();
 $miConexion->cerrar();
-?>
