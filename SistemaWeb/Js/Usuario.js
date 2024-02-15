@@ -84,7 +84,7 @@ function Listar_Usuario() {
         "async":false,
         "processing":true,
         "ajax":{
-            "url":"../Controlador/Usuario/Controlador_Usuario_Listar.php",
+            "url":"../Controlador/usuario/Controlador_Usuario_Listar.php",
             type:'POST'
         },
         "columns":[

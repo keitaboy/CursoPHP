@@ -1,7 +1,7 @@
 <?php
 
-require '../../Modelo/Modelo_Usuario.php';
-$MU=new Modelo_Usuario();
+require '../../Modelo/modelo_usuario.php';
+$MU=new modelo_usuario();
 
 $Consulta=$MU->Listar_Usuario();
 if ($Consulta) {
