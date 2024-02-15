@@ -10,7 +10,30 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              Aqu&iacute; va los datos del usuario
+              <table id="Tabla_Usuario" class="display responsive nowrap" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>IdUsuario</th>
+                    <th>Usuario</th>
+                    <th>Estado</th>
+                    <th>Rol</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>IdUsuario</th>
+                    <th>Usuario</th>
+                    <th>Estado</th>
+                    <th>Rol</th>
+                  </tr>
+                </tfoot>
+              </table>
             </div>
+            
             <!-- /.box-body -->
           </div>
+          <script>
+            $(document).ready(function()){
+              $('example').DataTable();
+            }
+          </script>

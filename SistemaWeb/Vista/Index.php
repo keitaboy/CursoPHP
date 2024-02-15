@@ -27,6 +27,8 @@
   <link rel="stylesheet" href="../../Plantilla/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="../../Plantilla/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <!-- plugin de datatables -->
+  <link rel="stylesheet" href="../../Plantillas/plugins/DataTables/datatables.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -332,7 +334,7 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
+        <li class="header">MENU PRINCIPAL</li>
         <li class="active treeview">
           <a onclick="cargar_contenido('contenido_principal','Usuario/Vista_Usuario_istar.php')">
             <i class="fa fa-dashboard"></i> <span>Usuario</span>
@@ -742,6 +744,33 @@
 <script src="../../Plantilla/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
+  var Idioma_Espanol={
+    select:{
+      rows:"%d fila seleccionada"
+    },
+    "processing": "Procesando...",
+    "sLengthMenu":"Mostrar_Menu_Registros",
+    "sZeroRecords":"No se encontraron resultados",
+    "sEmptyTable":"Ning&uacute;n dato disponible en esta tabla",
+    "sInfo":"Registros del (_START_al_END_) total de _TOTAL_registros",
+    "sInfoEmpty":"Registros del (0 al 0) total de 0 registros",
+    "sInfoFiltered":"Filtrando de un total de _MAX_registros",
+    "sInfoPostFix":"",
+    "sSearch":"Buscar",
+    "sUrl":"",
+    "sInfoThousands":",",
+    "sLoadingRecords":"<b>No se encontraron datos</b>",
+    "onPaginate":{
+      "sFirst":"Primero",
+      "sLast":"Último",
+      "sNext":"Siguiente",
+      "sPrevious":"Anterior"
+    },
+    "oAria":{
+      "sSortAscending":"Activar para ordenar la columna de manera ascendente",
+      "sSortDescending":"Activar para ordenar la columna de manera descendente",
+    }
+  }
   function cargar_contenido(contenedor,contenido){
     $("#"+contenedor).load(contenido);
   }
@@ -776,5 +805,6 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="../../Plantilla/dist/js/demo.js"></script>
+<script src="../../Plantilla/plugins/DataTables/datatables.min.js"></script>
 </body>
 </html>
