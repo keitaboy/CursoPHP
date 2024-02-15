@@ -35,6 +35,7 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
   <link rel="stylesheet" href="../../Plantilla/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="../../Plantilla/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="../../Plantilla/plugins/DataTables/datatables.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -799,6 +800,7 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
 
   <!-- AdminLTE for demo purposes -->
   <script src="../../Plantilla/dist/js/demo.js"></script>
+  <script src="../../Plantilla/plugins/DataTables/datatables.min.js"></script>
 </body>
 
 </html>
