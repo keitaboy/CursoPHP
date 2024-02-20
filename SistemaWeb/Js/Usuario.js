@@ -40,8 +40,6 @@ function VerificarUsuario() {
                     rol: data[0][5]
                 }
             }).done(function (resp) {
-                console.log("Aca el segundo resp");
-                console.log(resp);
                 let timerInterval;
                 Swal.fire({
                     title: 'Bienvenido al sistema',
@@ -108,3 +106,6 @@ function Listar_Usuario() {
         select:true
     });
 }
+
+
+
