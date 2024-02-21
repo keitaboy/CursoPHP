@@ -29,4 +29,24 @@ class modelo_usuario
 
         return $arreglo;
     }
+
+    function TraerDatos($usuario)
+    {
+        $sql = "call SP_VERIFICAR('$usuario')";
+        $arreglo = array();
+
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            while ($consulta_VU = mysqli_fetch_array($consulta)) {
+                $arreglo[]= $consulta_VU;
+            }
+            $this->conexion->cerrar();
+        } else {
+            // Manejo de errores
+            $jsonError = json_last_error();
+            return ["error" => "Error en la consulta", "json_error" => $jsonError];
+        }
+
+        return $arreglo;
+        //$this->conexion->cerrar(); original
+    }
 }

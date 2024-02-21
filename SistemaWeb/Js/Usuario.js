@@ -109,3 +109,16 @@ function Listar_Usuario() {
 
 
 
+function TraerDatosUsuario(){
+
+    var usaurio = $['#usuarioprincipal'.val];
+    $.ajax({
+        url: '../Controlador/usuario/controlador_traerdatos_usuario.php',
+        type: 'POST',
+        data: {
+            usaurio:usaurio
+        }
+    }).done(function (resp){
+        alert(resp);
+    })
+}
