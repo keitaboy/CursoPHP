@@ -74,7 +74,7 @@ function VerificarUsuario() {
     });
 }
 function Listar_Usuario() {
-    var table=$("#Tabla_Usuario").DataTable({
+    var table=$("#tabla_usuario").DataTable({
         "ordering":false,
         "paging":false,
         "searching":{"regex":true},
@@ -88,12 +88,11 @@ function Listar_Usuario() {
             type:'POST'
         },
         "columns":[
-            {"data":"posicion"},
-            {"data":"persona"},
-            {"data":"Usu_IdUsuario"},
-            {"data":"Usu_Usuario"},
-            {"data":"Usu_Estado"},
-            {"data":"Usu_Rol",
+            {"data":"Posicion"},
+            {"data":"IdUsuario"},
+            {"data":"UsuUser"},
+            {"data":"RolName"},
+            {"data":"State",
             render: function (data,type,row) {
                 if (data=='ACTIVO') {
                     return"<span class='label label-sucess'>"+data+"</span>";
@@ -102,9 +101,21 @@ function Listar_Usuario() {
                 }
             },
         },
-        {"defaultcontent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'>"}
+        {"defaultcontent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class'fa fa-edit'></i></button>"}
         ],
         "language":Idiona_Espanol,
         select:true
     });
+    document.getElementById("tabla_usuario_filter").style.display="none";
+    $('.input.global_filter').on('keyup click'),function(){
+        filterGlobal();
+    }
+    $('.input.global_filter').on('keyup click'),function(){
+        filterColumn($(this).parents('tr').attr('data-column'));
+    }
+    function filterGlobal(){
+        $('#tabla_usuario').DataTable().search(
+            $('#global_filter').val(),
+        ).draw();
+    }
 }

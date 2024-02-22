@@ -29,4 +29,16 @@ class modelo_usuario
 
         return $arreglo;
     }
+    function Listar_Usuario()
+    {
+        $sql = "call SP_LISTAR_USUARIOS()";
+        $arreglo = array();
+
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
+                $arreglo["data"][]=$consulta_VU;
+        } 
+        return $arreglo;
+        $this->conexion->cerrar();
+    }
 }
