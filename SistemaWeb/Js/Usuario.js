@@ -103,7 +103,7 @@ function Listar_Usuario() {
         },
         {"defaultcontent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class'fa fa-edit'></i></button>"}
         ],
-        "language":Idiona_Espanol,
+        "language":Idioma_Espanol,
         select:true
     });
     document.getElementById("tabla_usuario_filter").style.display="none";
