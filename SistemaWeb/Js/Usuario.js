@@ -91,7 +91,6 @@ function Listar_Usuario() {
             // {"data":"Posicion"},
             // {"data":"IdUsuario"},
             {"data":"UsuUser"},
-            {"data":"RolName"},
             {"data":"State",
             render: function (data,type,row) {
                 if (data=='ACTIVO') {
@@ -101,6 +100,7 @@ function Listar_Usuario() {
                 }
             },
         },
+        {"data":"RolName"},
         {"defaultcontent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class'fa fa-edit'></i></button>"}
         ],
         "language":Idioma_Espanol,
