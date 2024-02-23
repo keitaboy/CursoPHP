@@ -88,8 +88,8 @@ function Listar_Usuario() {
             type:'POST'
         },
         "columns":[
-            {"data":"Posicion"},
-            {"data":"IdUsuario"},
+            // {"data":"Posicion"},
+            // {"data":"IdUsuario"},
             {"data":"UsuUser"},
             {"data":"RolName"},
             {"data":"State",
