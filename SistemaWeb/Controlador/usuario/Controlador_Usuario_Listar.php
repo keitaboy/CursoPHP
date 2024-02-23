@@ -3,9 +3,9 @@
 require '../../Modelo/modelo_usuario.php';
 $MU=new modelo_usuario();
 
-$Consulta=$MU->Listar_Usuario();
-if ($Consulta) {
-    echo json_encode($Consulta);
+$consulta=$MU->Listar_Usuario();
+if ($consulta) {
+    echo json_encode($consulta);
 }else{
     echo'{
         "sEcho":1,
