@@ -26,8 +26,8 @@
       <table id="tabla_usuario" class="display responsive nowrap" style="width:100%">
         <thead>
           <tr>
-            <th>#</th>
-            <th>IdUsuario</th>
+            <!-- <th>#</th>
+            <th>IdUsuario</th> -->
             <th>Usuario</th>
             <th>Rol</th>
             <th>Estado</th>
@@ -35,8 +35,8 @@
         </thead>
         <tfoot>
           <tr>
-            <th>#</th>
-            <th>IdUsuario</th>
+            <!-- <th>#</th>
+            <th>IdUsuario</th> -->
             <th>Usuario</th>
             <th>Rol</th>
             <th>Estado</th>
