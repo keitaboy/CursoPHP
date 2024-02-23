@@ -29,8 +29,8 @@
             <!-- <th>#</th>
             <th>IdUsuario</th> -->
             <th>Usuario</th>
-            <th>Rol</th>
             <th>Estado</th>
+            <th>Rol</th>
           </tr>
         </thead>
         <tfoot>
@@ -38,8 +38,8 @@
             <!-- <th>#</th>
             <th>IdUsuario</th> -->
             <th>Usuario</th>
-            <th>Rol</th>
             <th>Estado</th>
+            <th>Rol</th>
           </tr>
         </tfoot>
       </table>
