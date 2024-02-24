@@ -40,12 +40,7 @@ class modelo_usuario
                 $arreglo[] = $consulta_VU;
             }
             $this->conexion->cerrar();
-        } else {
-            // Manejo de errores
-            $jsonError = json_last_error();
-            return ["error" => "Error en la consulta", "json_error" => $jsonError];
-        }
-
+        } 
         return $arreglo;
         //$this->conexion->cerrar(); original
     }
