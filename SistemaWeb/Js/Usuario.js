@@ -101,21 +101,21 @@ function Listar_Usuario() {
             },
         },
         {"data":"RolName"},
-        {"defaultcontent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class'fa fa-edit'></i></button>"}
+        {"defaultcontent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"}
         ],
         "language":Idioma_Espanol,
         select:true
     });
     document.getElementById("tabla_usuario_filter").style.display="none";
-    $('.input.global_filter').on('keyup click'),function(){
+    $('input.global_filter').on('keyup click',function(){
         filterGlobal();
-    }
-    $('.input.global_filter').on('keyup click'),function(){
+    });
+    $('input.global_filter').on('keyup click',function(){
         filterColumn($(this).parents('tr').attr('data-column'));
-    }
-    function filterGlobal(){
-        $('#tabla_usuario').DataTable().search(
-            $('#global_filter').val(),
-        ).draw();
-    }
+    });
+}
+function filterGlobal(){
+    $('#tabla_usuario').DataTable().search(
+        $('#global_filter').val(),
+    ).draw();
 }

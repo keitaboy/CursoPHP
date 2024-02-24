@@ -1,4 +1,4 @@
-<script type="text/javascript" src="../../Js/Usuario.js?<?php echo time();?>"></script>
+<script type="text/javascript" src="../Js/Usuario.js?rev=<?php echo time();?>"></script>
 <div class="col-md-12">
   <div class="box box-warning box-solid">
     <div class="box-header with-border">
@@ -51,6 +51,11 @@
 <script>
   // new DataTable(Listar_Usuario());
   $(document).ready(function() {
-    function Listar_Usuario();
+     Listar_Usuario();
   });
+//   $(document).ready(function(){
+// $('#tabla_usuario').DataTable({
+//   Listar_Usuario()
+// });
+// });
 </script>
