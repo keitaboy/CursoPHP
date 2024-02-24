@@ -49,13 +49,8 @@
   </div>
 </div>
 <script>
-  //new DataTable('#tabla_usuario');
-   $(document).ready(function() {
-     Listar_Usuario();
-   });
-//   $('#tabla_usuario').DataTable( {
-//     function(){
-//      Listar_Usuario();
-//    }
-// } );
+  // new DataTable(Listar_Usuario());
+  $(document).ready(function() {
+    function Listar_Usuario();
+  });
 </script>
