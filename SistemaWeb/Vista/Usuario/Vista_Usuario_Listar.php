@@ -51,6 +51,6 @@
 <script>
   // new DataTable(Listar_Usuario());
   $(document).ready(function() {
-    Listar_Usuario();
+    function Listar_Usuario();
   });
 </script>
