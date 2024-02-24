@@ -72,80 +72,81 @@ function VerificarUsuario() {
     });
 }
 function Listar_Usuario() {
-    var table=$("#tabla_usuario").DataTable({
-        "ordering":false,
-        "paging":false,
-        "searching":{"regex":true},
-        "lengthMenu":[[10,25,50,100,-1],[10,25,50,100,"All"]],
+    var table = $("#tabla_usuario").DataTable({
+        "ordering": false,
+        "paging": false,
+        "searching": { "regex": true },
+        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
         "pageLength": 10,
-        "destroy":true,
-        "async":false,
-        "processing":true,
-        "ajax":{
-            "url":"../Controlador/usuario/Controlador_Usuario_Listar.php",
-            type:'POST'
+        "destroy": true,
+        "async": false,
+        "processing": true,
+        "ajax": {
+            "url": "../Controlador/usuario/Controlador_Usuario_Listar.php",
+            "type": 'POST'
         },
-        "columns":[
-            // {"data":"Posicion"},
-            // {"data":"IdUsuario"},
-            {"data":"UsuUser"},
-            {"data":"State",
-            render: function (data,type,row) {
-                if (data=='ACTIVO') {
-                    return"<span class='label label-sucess'>"+data+"</span>";
-                }else{
-                    return"<span class='label label-danger'>"+data+"</span>";
+        "columns": [
+            {"data":"Posicion"},
+            {"data": "UsuUser"},
+            {"data": "RolName"},            
+            {"data": "Sex",
+            "render": function (data, type, row) {
+                if (data == 'M') {
+                    return "Masculino";
+                } else {
+                    return "Femenino";
                 }
-            },
-        },
-        {"data":"RolName"},
-        {"defaultcontent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class'fa fa-edit'></i></button>"}
+            }},
+            {"data": "State",
+                "render": function (data, type, row) {
+                    if (data == 'ACTIVO') {
+                        return "<span class='label label-success'>" + data + "</span>";
+                    } else {
+                        return "<span class='label label-danger'>" + data + "</span>";
+                    }
+                }
+            },            
+            {"defaultContent": "<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"}
         ],
-        "language":Idioma_Espanol,
-        select:true
+        "language": idioma_espanol,
+        "select": true
     });
+
+    console.log("llego a la consola??");
+    console.log(table);
+
     document.getElementById("tabla_usuario_filter").style.display="none";
-    $('.input.global_filter').on('keyup click'),function(){
+    
+    $('.input.global_filter').on('keyup click', function () {
         filterGlobal();
-    }
-    $('.input.global_filter').on('keyup click'),function(){
+    });
+
+    $('.input.column_filter').on('keyup click', function () {
         filterColumn($(this).parents('tr').attr('data-column'));
+    });
+
+    function filterGlobal() {
+        table.search(
+            $('#global_filter').val()
+        ).draw();
     }
-    function filterGlobal(){
-        $('#tabla_usuario').DataTable().search(
-            $('#global_filter').val(),
+
+    function filterColumn(column) {
+        table.column(column).search(
+            $('input.column_filter[data-column="' + column + '"]').val()
         ).draw();
     }
 }
 
-
-
-function TraerDatosUsuario(){
-
-    var usaurio = $['#usuarioprincipal'.val];
+function TraerDatosUsuario() {
+    var usuario = $('#usuarioprincipal').val(); // Corrección aquí
     $.ajax({
         url: '../Controlador/usuario/controlador_traerdatos_usuario.php',
         type: 'POST',
         data: {
-            usaurio:usaurio
+            usuario: usuario // Corrección aquí
         }
-    }).done(function (resp){
-        alert(resp);
-    })
-}
-
-
-
-function TraerDatosUsuario(){
-
-    var usaurio = $['#usuarioprincipal'.val];
-    $.ajax({
-        url: '../Controlador/usuario/controlador_traerdatos_usuario.php',
-        type: 'POST',
-        data: {
-            usaurio:usaurio
-        }
-    }).done(function (resp){
+    }).done(function (resp) {
         alert(resp);
     })
 }

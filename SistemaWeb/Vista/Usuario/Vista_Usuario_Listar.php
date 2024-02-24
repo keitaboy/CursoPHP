@@ -1,4 +1,4 @@
-<script type="text/javascript" src="../../Js/Usuario.js?<?php echo time();?>"></script>
+<script type="text/javascript" src="../Js/Usuario.js?rev=<?php echo time();?>"></script>
 <div class="col-md-12">
   <div class="box box-warning box-solid">
     <div class="box-header with-border">
@@ -26,31 +26,32 @@
       <table id="tabla_usuario" class="display responsive nowrap" style="width:100%">
         <thead>
           <tr>
-             <th>#</th>
-            <th>IdUsuario</th>
+            <th>#</th>
             <th>Usuario</th>
-            <th>Estado</th>
             <th>Rol</th>
+            <th>Sexo</th>
+            <th>Estado</th>
+            <th>Information</th>
           </tr>
         </thead>
-        <tfoot>
+        <!-- <tfoot>
           <tr>
-             <th>#</th>
-            <th>IdUsuario</th>
+            <th>#</th>
             <th>Usuario</th>
-            <th>Estado</th>
             <th>Rol</th>
+            <th>Sexo</th>
+            <th>Estado</th>
+            <th>Information</th>
           </tr>
-        </tfoot>
+        </tfoot> -->
       </table>
-
     </div>
     <!-- /.box-body -->
   </div>
 </div>
 <script>
-  // new DataTable(Listar_Usuario());
-  $(document).ready(function() {
-    function Listar_Usuario();
-  });
+$(document).ready(function() {
+    Listar_Usuario();
+});
+
 </script>

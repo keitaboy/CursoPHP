@@ -53,9 +53,9 @@ class modelo_usuario
         if ($consulta = $this->conexion->conexion->query($sql)) {
             while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
                 $arreglo["data"][] = $consulta_VU;
-            }
-            $this->conexion->cerrar();
+            }            
             return $arreglo;
+            $this->conexion->cerrar();
         }
     }
 }

@@ -36,7 +36,7 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="../../Plantilla/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- plugin de datatables -->
-  <link rel="stylesheet" href="../../Plantillas/plugins/DataTables/datatables.min.css">
+  <link rel="stylesheet" href="../../Plantilla/plugins/DataTables/datatables.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -756,7 +756,7 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
 <script src="../../Plantilla/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  var Idioma_Espanol={
+  var idioma_espanol={
     select:{
       rows:"%d fila seleccionada"
     },
@@ -819,9 +819,9 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
 <script src="../../Plantilla/dist/js/demo.js"></script>
 <script src="../../Plantilla/plugins/DataTables/datatables.min.js"></script>
 <script src="../Js/Usuario.js"></script>
-<script>
+<!-- <script>
   TraerDatosUsuario();
-</script>
+</script> -->
 </body>
 
 </html>
