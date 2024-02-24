@@ -26,36 +26,32 @@
       <table id="tabla_usuario" class="display responsive nowrap" style="width:100%">
         <thead>
           <tr>
-            <!-- <th>#</th>
-            <th>IdUsuario</th> -->
+            <th>#</th>
             <th>Usuario</th>
-            <th>Estado</th>
             <th>Rol</th>
+            <th>Sexo</th>
+            <th>Estado</th>
+            <th>Information</th>
           </tr>
         </thead>
-        <tfoot>
+        <!-- <tfoot>
           <tr>
-            <!-- <th>#</th>
-            <th>IdUsuario</th> -->
+            <th>#</th>
             <th>Usuario</th>
-            <th>Estado</th>
             <th>Rol</th>
+            <th>Sexo</th>
+            <th>Estado</th>
+            <th>Information</th>
           </tr>
-        </tfoot>
+        </tfoot> -->
       </table>
-
     </div>
     <!-- /.box-body -->
   </div>
 </div>
 <script>
-  // new DataTable(Listar_Usuario());
-  $(document).ready(function() {
-     Listar_Usuario();
-  });
-//   $(document).ready(function(){
-// $('#tabla_usuario').DataTable({
-//   Listar_Usuario()
-// });
-// });
+$(document).ready(function() {
+    Listar_Usuario();
+});
+
 </script>

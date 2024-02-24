@@ -36,7 +36,7 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="../../Plantilla/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- plugin de datatables -->
-  <link rel="stylesheet" href="../../Plantillas/plugins/DataTables/datatables.min.css">
+  <link rel="stylesheet" href="../../Plantilla/plugins/DataTables/datatables.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,7 +59,7 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>A</b>LT</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b>LTE</span>
+        <span class="logo-lg"><b>Cl&iacute;nica</b>MAX</span>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top">
@@ -284,26 +284,11 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
                     <?php echo $_SESSION['S_USER']; ?> - Web Developer
                     <small>Member since Nov. 2012</small>
                   </p>
-                </li>
-                <!-- Menu Body -->
-                <li class="user-body">
-                  <div class="row">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </div>
-                  <!-- /.row -->
-                </li>
+                </li>                
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                    <a href="#" class="btn btn-default btn-flat">Configurar cuenta</a>
                   </div>
                   <div class="pull-right">
                     <a href="../Controlador/usuario/controlador_cerrar_sesion.php"
@@ -535,6 +520,10 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
         <div class="row" id="contenido_principal">
           <div class="col-md-12">
             <div class="box box-warning box-solid">
+            <input type="text" id="txtidprincipal" value="<?php echo $_SESSION['S_IDUSUARIO']?>"
+            hidden>
+            <input type="text" id="usuarioprincipal" value="<?php echo $_SESSION['S_USER']?>" 
+            hidden>
               <div class="box-header with-border">
                 <h3 class="box-title">Pantalla Principal</h3>
 
@@ -767,7 +756,7 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
 <script src="../../Plantilla/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  var Idioma_Espanol={
+  var idioma_espanol={
     select:{
       rows:"%d fila seleccionada"
     },
@@ -829,6 +818,10 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
 <!-- AdminLTE for demo purposes -->
 <script src="../../Plantilla/dist/js/demo.js"></script>
 <script src="../../Plantilla/plugins/DataTables/datatables.min.js"></script>
+<script src="../Js/Usuario.js"></script>
+<!-- <script>
+  TraerDatosUsuario();
+</script> -->
 </body>
 
 </html>

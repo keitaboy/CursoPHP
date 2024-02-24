@@ -29,6 +29,22 @@ class modelo_usuario
 
         return $arreglo;
     }
+
+    function TraerDatos($usuario)
+    {
+        $sql = "call SP_VERIFICAR('$usuario')";
+        $arreglo = array();
+
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            while ($consulta_VU = mysqli_fetch_array($consulta)) {
+                $arreglo[] = $consulta_VU;
+            }
+            $this->conexion->cerrar();
+        } 
+        return $arreglo;
+        //$this->conexion->cerrar(); original
+    }
+
     function Listar_Usuario()
     {
         $sql = "call SP_LISTAR_USUARIOS()";
@@ -36,9 +52,10 @@ class modelo_usuario
 
         if ($consulta = $this->conexion->conexion->query($sql)) {
             while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
-                $arreglo["data"][]=$consulta_VU;
-        } 
-        return $arreglo;
-        $this->conexion->cerrar();
+                $arreglo["data"][] = $consulta_VU;
+            }            
+            return $arreglo;
+            $this->conexion->cerrar();
+        }
     }
 }
