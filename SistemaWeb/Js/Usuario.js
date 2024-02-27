@@ -191,3 +191,7 @@ function TraerDatosUsuario() {
         }
     })
 }
+
+function AbrirModalRegistro(){
+    $("#modal_registro").modal('show');
+}
