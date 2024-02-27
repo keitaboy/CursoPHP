@@ -150,3 +150,7 @@ function TraerDatosUsuario() {
         alert(resp);
     })
 }
+
+function AbrirModalRegistro(){
+    $("#modal_registro").modal('show');
+}
