@@ -152,5 +152,24 @@ function TraerDatosUsuario() {
 }
 
 function AbrirModalRegistro(){
+    $("#modal_registro").modal({backdrop:'static',keyboard:false})
     $("#modal_registro").modal('show');
+}
+
+function listar_combo_rol(){
+    $.ajax({
+        "url": "../Controlador/usuario/controlador_combo_rol_listar.php",
+        "type": 'POST'
+    }).done(function(resp){
+        var data=JSON.parse(resp);
+        var cadena="";
+        if (data.length>0) {
+            for(var i=0; i < data.length; i++){
+                cadena+="<option value='"+data[i][0]+"'>"+data[i][1]+"</option>";
+            }
+            $("#cbm_rol").html(cadena);
+        }else{
+            cadena+="<option value=''No se Encontraron Registros</option>";
+        }
+    })
 }

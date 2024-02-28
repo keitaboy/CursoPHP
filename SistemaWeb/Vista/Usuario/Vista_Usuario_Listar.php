@@ -54,7 +54,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Registro Nuevo Usuario</h4>
+          <h4 class="modal-title"><b>Registro Nuevo Usuario</b></h4>
         </div>
         <div class="modal-body">
           <div class="col-lg-12">
@@ -69,6 +69,12 @@
               <label for="">Repita la Contrase&ntilde;a</label>
               <input type="password" class="form-control" id="txt_con2" placeholder="Repita Contrase&ntilde;a"><br>
           </div>
+          <div class="col-lg-12">
+              <label for="">Rol</label>
+                <select class="js-example-basic-single" name="state" id="cbm_rol" style="width:100%;">
+                  
+                </select><br><br>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -79,6 +85,8 @@
 <script>
 $(document).ready(function() {
     Listar_Usuario();
+    $('.js-example-basic-single').select2();
+    listar_combo_rol();
 });
 
 </script>
