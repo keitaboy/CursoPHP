@@ -205,14 +205,13 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
                   <img id="img_subnav" class="img-circle" alt="User Image">
 
                   <p>
-                    <?php echo $_SESSION['S_USER']; ?> - Web Developer
-                    <small>Member since Nov. 2012</small>
+                    <?php echo $_SESSION['S_USER']; ?>
                   </p>
                 </li>
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Configurar cuenta</a>
+                    <a href="#" onclick="AbrirModalEditarContra()" class="btn btn-default btn-flat">Cambiar contrase&ntilde;a</a>
                   </div>
                   <div class="pull-right">
                     <a href="../Controlador/usuario/controlador_cerrar_sesion.php"
@@ -671,6 +670,36 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
     <div class="control-sidebar-bg"></div>
   </div>
   <!-- ./wrapper -->
+  <div class="modal fade" id="#modal_editar_contra" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modificar contrase&ntilde;a</h4>
+        </div>
+        <div class="modal-body">
+          <div class="col-lg-12">
+              <label for="">Contrase&ntilde;a actual</label>
+              <input type="text" class="form-control" id="txt_con1" id="txtcontraactual_editar" 
+              placeholder="Contrase&ntilde;a actual"><br>
+          </div>
+          <div class="col-lg-12">
+              <label for="">Nueva Contrase&ntilde;a</label>
+              <input type="text" class="form-control" id="txt_con1" id="txtcontranueva_editar" 
+              placeholder="Nueva Contrase&ntilde;a"><br>
+          </div>
+          <div class="col-lg-12">
+              <label for="">Repetir Contrase&ntilde;a</label>
+              <input type="text" class="form-control" id="txt_con1" id="txtcontrarepetir_editar" 
+              placeholder="Repetir Contrase&ntilde;a"><br>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- jQuery 3 -->
   <script src="../../Plantilla/bower_components/jquery/dist/jquery.min.js"></script>

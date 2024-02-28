@@ -195,3 +195,8 @@ function TraerDatosUsuario() {
 function AbrirModalRegistro(){
     $("#modal_registro").modal('show');
 }
+
+function AbrirModalEditarContra(){
+    $("#modal_editar_contra").modal({backdrop:'static',keyboard:false});
+    $("#modal_editar_contra").modal('show');
+}
