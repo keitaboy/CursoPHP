@@ -58,4 +58,15 @@ class modelo_usuario
          //   $this->conexion->cerrar();
         }
     }
+    function Modificar_Contra_Usuario($idUsuario, $contraNueva)
+    {
+        $sql = "call SP_MODIFICAR_CONTRA_USUARIO('$idUsuario','$contraNueva')";
+        $arreglo = array();
+
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            return 1;
+        }else{
+            return 0;
+        }        
+    }
 }

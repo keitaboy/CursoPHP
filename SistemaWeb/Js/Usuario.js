@@ -86,18 +86,21 @@ function Listar_Usuario() {
             "type": 'POST'
         },
         "columns": [
-            {"data":"Posicion"},
-            {"data": "UsuUser"},
-            {"data": "RolName"},            
-            {"data": "Sex",
-            "render": function (data, type, row) {
-                if (data == 'M') {
-                    return "Masculino";
-                } else {
-                    return "Femenino";
+            { "data": "Posicion" },
+            { "data": "UsuUser" },
+            { "data": "RolName" },
+            {
+                "data": "Sex",
+                "render": function (data, type, row) {
+                    if (data == 'M') {
+                        return "Masculino";
+                    } else {
+                        return "Femenino";
+                    }
                 }
-            }},
-            {"data": "State",
+            },
+            {
+                "data": "State",
                 "render": function (data, type, row) {
                     if (data == 'ACTIVO') {
                         return "<span class='label label-success'>" + data + "</span>";
@@ -105,15 +108,15 @@ function Listar_Usuario() {
                         return "<span class='label label-danger'>" + data + "</span>";
                     }
                 }
-            },            
-            {"defaultContent": "<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"}
+            },
+            { "defaultContent": "<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>" }
         ],
         "language": idioma_espanol,
         "select": true
     })
 
-    document.getElementById("tabla_usuario_filter").style.display="none";
-    
+    document.getElementById("tabla_usuario_filter").style.display = "none";
+
     $('.input.global_filter').on('keyup click', function () {
         filterGlobal();
     });
@@ -143,7 +146,7 @@ function Listar_Usuario() {
 //     if(idUsuario.length == 0 || sexo.length == 0 || rol.length == 0) {
 //         return Swal.fire("Mensaje de advertencia","Llene los campos vacios","Warning");
 //     }
-    
+
 //     $.ajax({
 //         "url": "../Controlador/usuario/Controlador_Usuario_Modificar.php",
 //         type: 'POST',
@@ -154,11 +157,11 @@ function Listar_Usuario() {
 //         }
 //     }).done(function (resp){
 //         if(resp>0){
+//          // Descomentar cuando ya funcione tu wuebada
+//          // TraerDatosUsuario();
 //             $("#modal_editar").modal('hide');
 //             Swal.fire("Mensaje de confirmacion","Datos actualizados correctamente","success").then((value)=>{
 //                 table.ajax.reload();
-//                 // Descomentar cuando ya funcione tu wuebada
-//                // TraerDatosUsuario();
 //             });
 //         }else{
 //             Swal.fire("Mensaje de error","Lo sentimos, no pudimos completar la actualizacion","error");
@@ -176,27 +179,77 @@ function TraerDatosUsuario() {
         }
     }).done(function (resp) {
         var data = JSON.parse(resp);
-        if(data.length>0){
-            if(data.length>0){
-                if(data[0][4]==="M"){
-                    $("#img_nav").attr("src","../../Plantilla/dist/img/avatar5.png");
-                    $("#img_subnav").attr("src","../../Plantilla/dist/img/avatar5.png");
-                    $("#img_lateral").attr("src","../../Plantilla/dist/img/avatar5.png");
-                } else{
-                    $("#img_nav").attr("src","../../Plantilla/dist/img/avatar3.png");
-                    $("#img_subnav").attr("src","../../Plantilla/dist/img/avatar3.png");
-                    $("#img_lateral").attr("src","../../Plantilla/dist/img/avatar3.png");
+        if (data.length > 0) {
+            if (data.length > 0) {
+                $("#txtcontra_bd").val(data[0][2]);
+                if (data[0][4] === "M") {
+                    $("#img_nav").attr("src", "../../Plantilla/dist/img/avatar5.png");
+                    $("#img_subnav").attr("src", "../../Plantilla/dist/img/avatar5.png");
+                    $("#img_lateral").attr("src", "../../Plantilla/dist/img/avatar5.png");
+                } else {
+                    $("#img_nav").attr("src", "../../Plantilla/dist/img/avatar3.png");
+                    $("#img_subnav").attr("src", "../../Plantilla/dist/img/avatar3.png");
+                    $("#img_lateral").attr("src", "../../Plantilla/dist/img/avatar3.png");
                 }
             }
         }
     })
 }
 
-function AbrirModalRegistro(){
+function EditarContra() {
+    var idUsuario = $("#txtidprincipal").val();
+    var contraBD = $("#txtcontra_bd").val();
+    var contraEscrita = $("#txtcontraactual_editar").val();
+    var contraNueva = $("#txtcontranueva_editar").val();
+    var contraRepetir = $("#txtcontrarepetir_editar").val();
+    if (contraEscrita.length == 0 || contraNueva.length == 0 || contraRepetir.length == 0) {
+        console.log("Entra aqui 1");
+        return Swal.fire("Mensaje de advertencia", "Llene los campos vacios", "Warning");
+    }
+    if (contraNueva != contraRepetir) {
+        console.log("Entra aqui 2");
+        return Swal.fire("Mensaje de advertencia", "Debes ingresar la misma clave", "Warning");
+    }
+    $.ajax({
+        url: '../Controlador/usuario/controlador_contra_modificar.php',
+        type: 'POST',
+        data: {
+            idUsuario: idUsuario,
+            contraBD: contraBD,
+            contraEscrita: contraEscrita,
+            contraNueva: contraNueva
+        }
+    }).done(function (resp) {
+        if (resp > 0) {
+            if (resp == 1) {
+                $("#modal_editar_contra").modal('hide');
+                LimpiarEditarContra();
+                Swal.fire("Mensaje de confirmacion", "Contrase\u00f1a actualizada correctamente", "success").then((value) => {
+                    TraerDatosUsuario();
+                });
+            } else {
+                Swal.fire("Mensaje de error", "La contrase\u00f1a ingresada no coincide", "error");
+            }
+        } else {
+            Swal.fire("Mensaje de error", "No se pudo verificar contrase\u00f1a", "error");
+        }
+    })
+}
+
+function LimpiarEditarContra(){
+    $("#txtcontraactual_editar").val("");
+    $("#txtcontranueva_editar").val("");
+    $("#txtcontrarepetir_editar").val("");
+}
+
+function AbrirModalRegistro() {
     $("#modal_registro").modal('show');
 }
 
-function AbrirModalEditarContra(){
-    $("#modal_editar_contra").modal({backdrop:'static',keyboard:false});
+function AbrirModalEditarContra() {
+    $("#modal_editar_contra").modal({ backdrop: 'static', keyboard: false })
     $("#modal_editar_contra").modal('show');
+    $("#modal_editar_contra").on('shown.bs.modal', function () {
+        $("#txtcontraactual_editar").focus();
+    })
 }

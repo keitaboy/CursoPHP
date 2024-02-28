@@ -211,7 +211,8 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="#" onclick="AbrirModalEditarContra()" class="btn btn-default btn-flat">Cambiar contrase&ntilde;a</a>
+                    <a href="#" onclick="AbrirModalEditarContra()" class="btn btn-default btn-flat">Cambiar
+                      contrase&ntilde;a</a>
                   </div>
                   <div class="pull-right">
                     <a href="../Controlador/usuario/controlador_cerrar_sesion.php"
@@ -670,7 +671,7 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
     <div class="control-sidebar-bg"></div>
   </div>
   <!-- ./wrapper -->
-  <div class="modal fade" id="#modal_editar_contra" role="dialog">
+  <div class="modal fade" id="modal_editar_contra" role="dialog">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
@@ -679,23 +680,33 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
         </div>
         <div class="modal-body">
           <div class="col-lg-12">
-              <label for="">Contrase&ntilde;a actual</label>
-              <input type="text" class="form-control" id="txt_con1" id="txtcontraactual_editar" 
+            <input type="text" id="txtcontra_bd" hidden>
+            <label for="">Contrase&ntilde;a actual</label>
+            <input type="text" class="form-control" id="txtcontraactual_editar"
               placeholder="Contrase&ntilde;a actual"><br>
           </div>
           <div class="col-lg-12">
-              <label for="">Nueva Contrase&ntilde;a</label>
-              <input type="text" class="form-control" id="txt_con1" id="txtcontranueva_editar" 
+            <label for="">Nueva Contrase&ntilde;a</label>
+            <input type="password" class="form-control" id="txtcontranueva_editar"
               placeholder="Nueva Contrase&ntilde;a"><br>
           </div>
           <div class="col-lg-12">
-              <label for="">Repetir Contrase&ntilde;a</label>
-              <input type="text" class="form-control" id="txt_con1" id="txtcontrarepetir_editar" 
+            <label for="">Repetir Contrase&ntilde;a</label>
+            <input type="password" class="form-control" id="txtcontrarepetir_editar"
               placeholder="Repetir Contrase&ntilde;a"><br>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" onclick="EditarContra()">
+            <i class="fa fa-check">
+              <b>&nbsp;Modificar</b>
+            </i>
+          </button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
+            <i class="fa fa-close">
+              <b>&nbsp;Cerrar</b>
+            </i>
+          </button>
         </div>
       </div>
     </div>
