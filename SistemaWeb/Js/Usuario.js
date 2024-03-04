@@ -71,8 +71,9 @@ function VerificarUsuario() {
         }
     });
 }
+var table;
 function Listar_Usuario() {
-    var table = $("#tabla_usuario").DataTable({
+     table = $("#tabla_usuario").DataTable({
         "ordering": false,
         "paging": false,
         "searching": { "regex": true },
@@ -172,4 +173,47 @@ function listar_combo_rol(){
             cadena+="<option value=''No se Encontraron Registros</option>";
         }
     })
+}
+
+function Registrar_Usuario(){
+    var usu=$("#txt_usu").val();
+    var contra=$("#txt_con1").val();
+    var contra2=$("#txt_con2").val();
+    var rol=$("#cbm_rol").val();
+    if (usu.length==0 || contra.length==0 || contra2.length==0 || rol.length==0 ) {
+      return Swal.fire("Mensaje de advertencia","Llene los campos vacios","warning");  
+    } 
+    if (contra!=contra2) {
+        return Swal.fire("Las contraseñas deben coincidir","warning");  
+    }
+    $.ajax({
+        "url": "../Controlador/usuario/controlador_usuario_registro.php",
+        "type": 'POST',
+        data:{
+            usuario:usu,
+            contrasena:contra,
+            rol:rol
+        }
+    }).done(function(resp){
+        alert(resp);
+        if (resp>0){
+            if (resp==1) {
+                $("#modal_registro").modal('hide');
+                Swal.fire("Mensaje de confirmacion","Datos guardados correctamente, Nuevo Usuario Registrado","sucess").then((value)=>{
+                    LimpiarRegistro();
+                    table.ajax.reload();
+                });  
+            }else{
+                return Swal.fire("Mensaje de advertencia","El nombre del usuario ya se encuentra en uso","warning"); 
+            }
+        }else{
+            Swal.fire("Mensaje de error","Lo sentimos no se pudo completar el registro","error");  
+        }
+    })
+}
+
+function LimpiarRegistro() {
+    $("#txt_usu").val("");
+    $("#txt_con1").val("");
+    $("#txt_con2").val("");
 }

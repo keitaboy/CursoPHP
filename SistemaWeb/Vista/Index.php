@@ -821,6 +821,7 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
 <script src="../../Plantilla/dist/js/demo.js"></script>
 <script src="../../Plantilla/plugins/DataTables/datatables.min.js"></script>
 <script src="../../Plantilla/plugins/select2/select2.min.js"></script>
+<script src="../../Plantilla/plugins/sweetalert2/sweetalert2.js"></script>
 <script src="../Js/Usuario.js"></script>
 <!-- <script>
   TraerDatosUsuario();
