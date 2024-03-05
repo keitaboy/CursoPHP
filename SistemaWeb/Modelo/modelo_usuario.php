@@ -69,4 +69,30 @@ class modelo_usuario
             return 0;
         }        
     }
+
+    function listar_combo_rol()
+    {
+        $sql = "call SP_LISTAR_COMBO_ROL()";
+        $arreglo = array();
+
+        if ($consulta = $this->conexion ->conexion->query($sql)) {
+            while ($consulta_VU = mysqli_fetch_array($consulta)) {
+                $arreglo[]=$consulta_VU;
+            }   
+        return $arreglo;
+      //  $this->conexion->cerrar();
+    }
+    }
+    function Registrar_Usuario($usuario,$contra,$rol)
+    {
+        $sql = "call SP_REGISTRAR_USUARIO('$usuario','$contra','$rol')";
+        $arreglo = array();
+
+        if ($consulta = $this->conexion ->conexion->query($sql)) {
+            if ($row = mysqli_fetch_array($consulta)) {
+               return $id=trim($row[0]);
+            }   
+        $this->conexion->cerrar();
+    }
+}
 }

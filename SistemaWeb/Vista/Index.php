@@ -37,6 +37,8 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
   <link rel="stylesheet" href="../../Plantilla/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- plugin de datatables -->
   <link rel="stylesheet" href="../../Plantilla/plugins/DataTables/datatables.min.css">
+  <!-- plugin de select2 -->
+  <link rel="stylesheet" href="../../Plantilla/plugins/select2/select2.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -777,13 +779,15 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
   <script src="../../Plantilla/dist/js/adminlte.min.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 
-  <!-- AdminLTE for demo purposes -->
-  <script src="../../Plantilla/dist/js/demo.js"></script>
-  <script src="../../Plantilla/plugins/DataTables/datatables.min.js"></script>
-  <script src="../Js/Usuario.js"></script>
-  <script>
-    TraerDatosUsuario();
-  </script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../Plantilla/dist/js/demo.js"></script>
+<script src="../../Plantilla/plugins/DataTables/datatables.min.js"></script>
+<script src="../../Plantilla/plugins/select2/select2.min.js"></script>
+<script src="../../Plantilla/plugins/sweetalert2/sweetalert2.js"></script>
+<script src="../Js/Usuario.js"></script>
+<!-- <script>
+  TraerDatosUsuario();
+</script> -->
 </body>
 
 </html>
