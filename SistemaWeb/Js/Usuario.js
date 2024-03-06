@@ -107,7 +107,7 @@ function Listar_Usuario() {
                     }
                 }
             },            
-            {"defaultContent": "<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>"}
+            {"defaultContent": "<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>"}
         ],
         "language": idioma_espanol,
         "select": true
@@ -164,6 +164,18 @@ function Listar_Usuario() {
                 Modificar_Estatus(data.idUsuario,'ACTIVO');
             }
         })
+    })
+
+    $('#tabla_usuario').on('click','.editar',function(){
+        var data=table.row($(this).parents('tr')).data();
+        if (table.row(this).child.isShown()) {
+            var data=table.row(this).data();
+        }
+        $("#modal_editar").modal({backdrop:'static',keyboard:false})
+        $("#modal_editar").modal('show');
+        $("#txtidusuario").val(data.idUsuario);
+        $("#txtusu_editar").val(data.UsuUser);
+        $("#cbm_rol_editar").val(data.IdRol).trigger("change");
     })
 
     function Modificar_Estatus(idUsuario,State){
@@ -233,8 +245,11 @@ function listar_combo_rol(){
                 cadena+="<option value='"+data[i][0]+"'>"+data[i][1]+"</option>";
             }
             $("#cbm_rol").html(cadena);
+            $("#cbm_rol_editar").html(cadena);
         }else{
             cadena+="<option value=''No se Encontraron Registros</option>";
+            $("#cbm_rol").html(cadena);
+            $("#cbm_rol_editar").html(cadena);
         }
     })
 }
@@ -272,6 +287,33 @@ function Registrar_Usuario(){
             }
         }else{
             Swal.fire("Mensaje de error","Lo sentimos no se pudo completar el registro","error");  
+        }
+    })
+}
+
+function Modificar_Usuario(){
+    var idUsuario=$("#txtidusuario").val();
+    var rol=$("#cbm_rol_editar").val();
+    if (idUsuario.length==0 || rol.length==0 ) {
+      return Swal.fire("Mensaje de advertencia","Llene los campos vacios","warning");  
+    } 
+    $.ajax({
+        "url": "../Controlador/usuario/controlador_usuario_modificar.php",
+        "type": 'POST',
+        data:{
+            idUsuario:idUsuario,
+            contrasena:contra,
+            rol:rol
+        }
+    }).done(function(resp){
+        
+        if (resp>0){
+                $("#modal_editar").modal('hide');
+                Swal.fire("Mensaje de confirmacion","Datos actualizados correctamente","sucess").then((value)=>{
+                    table.ajax.reload();
+                });  
+        }else{
+            Swal.fire("Mensaje de error","Lo sentimos no se pudo completar la actualizacion","error");  
         }
     })
 }
