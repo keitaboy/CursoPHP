@@ -107,7 +107,7 @@ function Listar_Usuario() {
                     }
                 }
             },            
-            {"defaultContent": "<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"}
+            {"defaultContent": "<button style='font-size:13px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;<button style='font-size:13px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>"}
         ],
         "language": idioma_espanol,
         "select": true
@@ -125,6 +125,70 @@ function Listar_Usuario() {
     $('.input.column_filter').on('keyup click', function () {
         filterColumn($(this).parents('tr').attr('data-column'));
     });
+
+    $('#tabla_usuario').on('click','.desactivar',function(){
+        var data=table.row($(this).parents('tr')).data();
+        if (table.row(this).child.isShown()) {
+            var data=table.row(this).data();
+        }
+        Swal.fire({
+            title:'¿Esta seguro de desactivar al usuario?',
+            text: 'Una vez hecho esto el usuario no tendra acceso al sistema',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si'
+        }).then((result)=>{
+            if (result.value) {
+                Modificar_Estatus(data.idUsuario,'INACTIVO');
+            }
+        })
+    })
+
+    $('#tabla_usuario').on('click','.activar',function(){
+        var data=table.row($(this).parents('tr')).data();
+        if (table.row(this).child.isShown()) {
+            var data=table.row(this).data();
+        }
+        Swal.fire({
+            title:'¿Esta seguro de activar al usuario?',
+            text: 'Una vez hecho esto el usuario  tendra acceso al sistema',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si'
+        }).then((result)=>{
+            if (result.value) {
+                Modificar_Estatus(data.idUsuario,'ACTIVO');
+            }
+        })
+    })
+
+    function Modificar_Estatus(idUsuario,State){
+        var mensaje ="";
+        if(State=="INACTIVO"){
+            mensaje="desactivo";
+        }else{
+            mensaje="activo";
+        }    
+        $.ajax({
+            "url": "../Controlador/usuario/controlador_modificar_estatus_usuario.php",
+            "type": 'POST',
+            data:{
+                idUsuario:idUsuario,
+                State:State,
+            }
+        }).done(function(resp){
+            
+            if (resp>0){
+                Swal.fire("Mensaje de confirmacion","El usuario se "+mensaje+" con exito","sucess").then((value)=>{
+                    table.ajax.reload();
+                });  
+            }
+        })
+    }
 
     function filterGlobal() {
         table.search(
@@ -195,7 +259,7 @@ function Registrar_Usuario(){
             rol:rol
         }
     }).done(function(resp){
-        alert(resp);
+        
         if (resp>0){
             if (resp==1) {
                 $("#modal_registro").modal('hide');
