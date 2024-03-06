@@ -682,9 +682,10 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
         </div>
         <div class="modal-body">
           <div class="col-lg-12">
+            <!-- <input type="text" id="txtcontra_bd" hidden> -->
             <input type="text" id="txtcontra_bd" hidden>
             <label for="">Contrase&ntilde;a actual</label>
-            <input type="text" class="form-control" id="txtcontraactual_editar"
+            <input type="password" class="form-control" id="txtcontraactual_editar"
               placeholder="Contrase&ntilde;a actual"><br>
           </div>
           <div class="col-lg-12">
@@ -785,9 +786,9 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
 <script src="../../Plantilla/plugins/select2/select2.min.js"></script>
 <script src="../../Plantilla/plugins/sweetalert2/sweetalert2.js"></script>
 <script src="../Js/Usuario.js"></script>
-<!-- <script>
+<script>
   TraerDatosUsuario();
-</script> -->
+</script>
 </body>
 
 </html>

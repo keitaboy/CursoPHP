@@ -172,6 +172,7 @@ function Listar_Usuario() {
 
 function TraerDatosUsuario() {
     var usuario = $('#usuarioprincipal').val(); // Corrección aquí
+    console.log(usuario);
     $.ajax({
         "url": "../Controlador/usuario/controlador_traerdatos_usuario.php",
         type: 'POST',
@@ -180,6 +181,7 @@ function TraerDatosUsuario() {
         }
     }).done(function (resp) {
         var data = JSON.parse(resp);
+        console.log(data);
         if (data.length > 0) {
             if (data.length > 0) {
                 $("#txtcontra_bd").val(data[0][2]);
@@ -204,11 +206,9 @@ function EditarContra() {
     var contraNueva = $("#txtcontranueva_editar").val();
     var contraRepetir = $("#txtcontrarepetir_editar").val();
     if (contraEscrita.length == 0 || contraNueva.length == 0 || contraRepetir.length == 0) {
-        console.log("Entra aqui 1");
         return Swal.fire("Mensaje de advertencia", "Llene los campos vacios", "Warning");
     }
     if (contraNueva != contraRepetir) {
-        console.log("Entra aqui 2");
         return Swal.fire("Mensaje de advertencia", "Debes ingresar la misma clave", "Warning");
     }
     $.ajax({
@@ -221,6 +221,7 @@ function EditarContra() {
             contraNueva: contraNueva
         }
     }).done(function (resp) {
+        console.log(resp);
         if (resp > 0) {
             if (resp == 1) {
                 $("#modal_editar_contra").modal('hide');
@@ -232,7 +233,7 @@ function EditarContra() {
                 Swal.fire("Mensaje de error", "La contrase\u00f1a ingresada no coincide", "error");
             }
         } else {
-            Swal.fire("Mensaje de error", "No se pudo verificar contrase\u00f1a", "error");
+            Swal.fire("Mensaje de error", "No se pudo actualizar la contrase\u00f1a", "error");
         }
     })
 }
