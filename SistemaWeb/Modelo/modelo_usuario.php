@@ -81,6 +81,33 @@ class modelo_usuario
       //  $this->conexion->cerrar();
     }
     }
+
+    function Modificar_Estatus_Usuario($idUsuario, $Status)
+    {
+        $sql = "call SP_MODIFICAR_ESTATUS_USUARIO('$idUsuario','$Status')";
+        $arreglo = array();
+
+        if ($consulta = $this->conexion ->conexion->query($sql)) {
+            // $id_retornado=mysqli_insert_ind($this->conexion->conexion);
+            return 1;
+    }else {
+            return 0;
+    }
+}
+
+function Modificar_Datos_Usuario($idUsuario,$rol)
+{
+    $sql = "call SP_MODIFICAR_DATOS_USUARIO('$idUsuario','$rol')";
+    $arreglo = array();
+
+    if ($consulta = $this->conexion ->conexion->query($sql)) {
+        // $id_retornado=mysqli_insert_ind($this->conexion->conexion);
+        return 1;
+}else {
+        return 0;
+}
+}
+
     function Registrar_Usuario($usuario,$contra,$rol)
     {
         $sql = "call SP_REGISTRAR_USUARIO('$usuario','$contra','$rol')";
