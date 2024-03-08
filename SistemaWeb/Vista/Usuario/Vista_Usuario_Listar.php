@@ -71,6 +71,13 @@
                 <input type="password" class="form-control" id="txt_con2" placeholder="Repita Contrase&ntilde;a"><br>
             </div>
             <div class="col-lg-12">
+                <label for="">Sexo</label>
+                  <select class="js-example-basic-single" name="state" id="cbm_rol" style="width:100%;">
+                    <option value="M">MASCULINO</option>
+                    <option value="F">FEMENINO</option>
+                  </select><br><br>
+            </div>
+            <div class="col-lg-12">
                 <label for="">Rol</label>
                   <select class="js-example-basic-single" name="state" id="cbm_rol" style="width:100%;">
                     
@@ -99,6 +106,13 @@
                 <input type="text" id="txtidusuario"hidden>
                 <label for="">Usuario</label>
                 <input type="text" class="form-control" id="txtusu_editar" placeholder="Ingrese Usuario" disabled><br>
+            </div>
+            <div class="col-lg-12">
+                <label for="">Sexo</label>
+                  <select class="js-example-basic-single" name="state" id="cbm_sexo_editar" style="width:100%;">
+                    <option value="M">MASCULINO</option>
+                    <option value="F">FEMENINO</option>
+                  </select><br><br>
             </div>
             <div class="col-lg-12">
                 <label for="">Rol</label>

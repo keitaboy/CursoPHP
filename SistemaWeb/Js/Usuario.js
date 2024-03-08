@@ -141,7 +141,7 @@ function Listar_Usuario() {
             confirmButtonText: 'Si'
         }).then((result)=>{
             if (result.value) {
-                Modificar_Estatus(data.idUsuario,'INACTIVO');
+                Modificar_Estatus(data.IdUsuario,'INACTIVO');
             }
         })
     })
@@ -161,7 +161,7 @@ function Listar_Usuario() {
             confirmButtonText: 'Si'
         }).then((result)=>{
             if (result.value) {
-                Modificar_Estatus(data.idUsuario,'ACTIVO');
+                Modificar_Estatus(data.IdUsuario,'ACTIVO');
             }
         })
     })
@@ -173,8 +173,9 @@ function Listar_Usuario() {
         }
         $("#modal_editar").modal({backdrop:'static',keyboard:false})
         $("#modal_editar").modal('show');
-        $("#txtidusuario").val(data.idUsuario);
+        $("#txtidusuario").val(data.IdUsuario);
         $("#txtusu_editar").val(data.UsuUser);
+        $("#cbm_sexo_editar").val(data.Sex).trigger("change");
         $("#cbm_rol_editar").val(data.IdRol).trigger("change");
     })
 
@@ -258,8 +259,9 @@ function Registrar_Usuario(){
     var usu=$("#txt_usu").val();
     var contra=$("#txt_con1").val();
     var contra2=$("#txt_con2").val();
+    var sexo=$("#cbm_sexo").val();
     var rol=$("#cbm_rol").val();
-    if (usu.length==0 || contra.length==0 || contra2.length==0 || rol.length==0 ) {
+    if (usu.length==0 || contra.length==0 || contra2.length==0 || sexo.length==0 || rol.length==0 ) {
       return Swal.fire("Mensaje de advertencia","Llene los campos vacios","warning");  
     } 
     if (contra!=contra2) {
@@ -271,6 +273,7 @@ function Registrar_Usuario(){
         data:{
             usuario:usu,
             contrasena:contra,
+            sexo:sexo,
             rol:rol
         }
     }).done(function(resp){
@@ -293,8 +296,9 @@ function Registrar_Usuario(){
 
 function Modificar_Usuario(){
     var idUsuario=$("#txtidusuario").val();
+    var sexo=$("#cbm_sexo_editar").val();
     var rol=$("#cbm_rol_editar").val();
-    if (idUsuario.length==0 || rol.length==0 ) {
+    if (idUsuario.length==0 || sexo.length==0 || rol.length==0 ) {
       return Swal.fire("Mensaje de advertencia","Llene los campos vacios","warning");  
     } 
     $.ajax({
