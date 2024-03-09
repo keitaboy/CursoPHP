@@ -77,82 +77,6 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
             <!-- Messages: style can be found in dropdown.less-->
-            <li class="dropdown messages-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-envelope-o"></i>
-                <span class="label label-success">4</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have 4 messages</li>
-                <li>
-                  <!-- inner menu: contains the actual data -->
-                  <ul class="menu">
-                    <li><!-- start message -->
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="../../Plantilla/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Support Team
-                          <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                        </h4>
-                        <p>Why not buy a new awesome theme?</p>
-                      </a>
-                    </li>
-                    <!-- end message -->
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="../../Plantilla/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          AdminLTE Design Team
-                          <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                        </h4>
-                        <p>Why not buy a new awesome theme?</p>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="../../Plantilla/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Developers
-                          <small><i class="fa fa-clock-o"></i> Today</small>
-                        </h4>
-                        <p>Why not buy a new awesome theme?</p>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="../../Plantilla/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Sales Department
-                          <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                        </h4>
-                        <p>Why not buy a new awesome theme?</p>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="pull-left">
-                          <img src="../../Plantilla/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <h4>
-                          Reviewers
-                          <small><i class="fa fa-clock-o"></i> 2 days</small>
-                        </h4>
-                        <p>Why not buy a new awesome theme?</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="footer"><a href="#">See All Messages</a></li>
-              </ul>
-            </li>
             <!-- Notifications: style can be found in dropdown.less -->
             <li class="dropdown notifications-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -276,7 +200,7 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="../../Plantilla/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                <img id="img_nav" class="user-image" alt="User Image">
                 <span class="hidden-xs">
                   <?php echo $_SESSION['S_USER']; ?>
                 </span>
@@ -284,13 +208,13 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
-                  <img src="../../Plantilla/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                  <img id="img_subnav" class="img-circle" alt="User Image">
 
                   <p>
                     <?php echo $_SESSION['S_USER']; ?> - Web Developer
                     <small>Member since Nov. 2012</small>
                   </p>
-                </li>                
+                </li>
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
@@ -318,7 +242,7 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
         <!-- Sidebar user panel -->
         <div class="user-panel">
           <div class="pull-left image">
-            <img src="../../Plantilla/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            <img id="img_lateral" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
             <p>
@@ -359,13 +283,11 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
 
       <!-- Main content -->
       <section class="content">
+        <input type="text" id="txtidprincipal" value="<?php echo $_SESSION['S_IDUSUARIO'] ?>" hidden>
+        <input type="text" id="usuarioprincipal" value="<?php echo $_SESSION['S_USER'] ?>" hidden>
         <div class="row" id="contenido_principal">
           <div class="col-md-12">
             <div class="box box-warning box-solid">
-            <input type="text" id="txtidprincipal" value="<?php echo $_SESSION['S_IDUSUARIO']?>"
-            hidden>
-            <input type="text" id="usuarioprincipal" value="<?php echo $_SESSION['S_USER']?>" 
-            hidden>
               <div class="box-header with-border">
                 <h3 class="box-title">Pantalla Principal</h3>
 
@@ -592,48 +514,48 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
   </div>
   <!-- ./wrapper -->
 
-<!-- jQuery 3 -->
-<script src="../../Plantilla/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="../../Plantilla/bower_components/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  var idioma_espanol={
-    select:{
-      rows:"%d fila seleccionada"
-    },
-    "processing": "Procesando...",
-    "sLengthMenu":"Mostrar_Menu_Registros",
-    "sZeroRecords":"No se encontraron resultados",
-    "sEmptyTable":"Ning&uacute;n dato disponible en esta tabla",
-    "sInfo":"Registros del (_START_al_END_) total de _TOTAL_registros",
-    "sInfoEmpty":"Registros del (0 al 0) total de 0 registros",
-    "sInfoFiltered":"Filtrando de un total de _MAX_registros",
-    "sInfoPostFix":"",
-    "sSearch":"Buscar",
-    "sUrl":"",
-    "sInfoThousands":",",
-    "sLoadingRecords":"<b>No se encontraron datos</b>",
-    "onPaginate":{
-      "sFirst":"Primero",
-      "sLast":"Último",
-      "sNext":"Siguiente",
-      "sPrevious":"Anterior"
-    },
-    "oAria":{
-      "sSortAscending":"Activar para ordenar la columna de manera ascendente",
-      "sSortDescending":"Activar para ordenar la columna de manera descendente",
+  <!-- jQuery 3 -->
+  <script src="../../Plantilla/bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="../../Plantilla/bower_components/jquery-ui/jquery-ui.min.js"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    var idioma_espanol = {
+      select: {
+        rows: "%d fila seleccionada"
+      },
+      "processing": "Procesando...",
+      "sLengthMenu": "Mostrar_Menu_Registros",
+      "sZeroRecords": "No se encontraron resultados",
+      "sEmptyTable": "Ning&uacute;n dato disponible en esta tabla",
+      "sInfo": "Registros del (_START_al_END_) total de _TOTAL_registros",
+      "sInfoEmpty": "Registros del (0 al 0) total de 0 registros",
+      "sInfoFiltered": "Filtrando de un total de _MAX_registros",
+      "sInfoPostFix": "",
+      "sSearch": "Buscar",
+      "sUrl": "",
+      "sInfoThousands": ",",
+      "sLoadingRecords": "<b>No se encontraron datos</b>",
+      "onPaginate": {
+        "sFirst": "Primero",
+        "sLast": "Último",
+        "sNext": "Siguiente",
+        "sPrevious": "Anterior"
+      },
+      "oAria": {
+        "sSortAscending": "Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": "Activar para ordenar la columna de manera descendente",
+      }
     }
-  }
-  function cargar_contenido(contenedor,contenido){
-    $("#"+contenedor).load(contenido);
-  }
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
-<!-- Bootstrap 3.3.7 -->
-<script src="../../Plantilla/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
-<script src="../../Plantilla/bower_components/raphael/raphael.min.js"></script>
+    function cargar_contenido(contenedor, contenido) {
+      $("#" + contenedor).load(contenido);
+    }
+    $.widget.bridge('uibutton', $.ui.button);
+  </script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="../../Plantilla/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- Morris.js charts -->
+  <script src="../../Plantilla/bower_components/raphael/raphael.min.js"></script>
 
   <!-- Sparkline -->
   <script src="../../Plantilla/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>

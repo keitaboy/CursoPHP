@@ -42,7 +42,7 @@ class modelo_usuario
             $this->conexion->cerrar();
         } 
         return $arreglo;
-        //$this->conexion->cerrar(); original
+       // $this->conexion->cerrar();
     }
 
     function Listar_Usuario()
@@ -55,7 +55,7 @@ class modelo_usuario
                 $arreglo["data"][] = $consulta_VU;
             }            
             return $arreglo;
-            $this->conexion->cerrar();
+         //   $this->conexion->cerrar();
         }
     }
 

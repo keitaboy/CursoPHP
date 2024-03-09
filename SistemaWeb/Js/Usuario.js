@@ -111,10 +111,7 @@ function Listar_Usuario() {
         ],
         "language": idioma_espanol,
         "select": true
-    });
-
-    console.log("llego a la consola??");
-    console.log(table);
+    })
 
     document.getElementById("tabla_usuario_filter").style.display="none";
     
@@ -216,16 +213,60 @@ function Listar_Usuario() {
     }
 }
 
+//Descomentar esta parte unicamente cuando llegas aca mrda 
+// function Modificar_Usuario(){
+//     var idUsuario = $("#txtidusuario").val();
+//     var sexo = $("#cbm_sexo_editar").val();
+//     var rol = $("#cbm_rol_editar").val();
+//     if(idUsuario.length == 0 || sexo.length == 0 || rol.length == 0) {
+//         return Swal.fire("Mensaje de advertencia","Llene los campos vacios","Warning");
+//     }
+    
+//     $.ajax({
+//         "url": "../Controlador/usuario/Controlador_Usuario_Modificar.php",
+//         type: 'POST',
+//         data:{
+//             idUsuario : idUsuario,
+//             sexo : sexo,
+//             rol : rol
+//         }
+//     }).done(function (resp){
+//         if(resp>0){
+//             $("#modal_editar").modal('hide');
+//             Swal.fire("Mensaje de confirmacion","Datos actualizados correctamente","success").then((value)=>{
+//                 table.ajax.reload();
+//                 // Descomentar cuando ya funcione tu wuebada
+//                // TraerDatosUsuario();
+//             });
+//         }else{
+//             Swal.fire("Mensaje de error","Lo sentimos, no pudimos completar la actualizacion","error");
+//         }
+//     })
+// }
+
 function TraerDatosUsuario() {
     var usuario = $('#usuarioprincipal').val(); // Corrección aquí
     $.ajax({
-        url: '../Controlador/usuario/controlador_traerdatos_usuario.php',
+        "url": "../Controlador/usuario/controlador_traerdatos_usuario.php",
         type: 'POST',
         data: {
             usuario: usuario // Corrección aquí
         }
     }).done(function (resp) {
-        alert(resp);
+        var data = JSON.parse(resp);
+        if(data.length>0){
+            if(data.length>0){
+                if(data[0][4]==="M"){
+                    $("#img_nav").attr("src","../../Plantilla/dist/img/avatar5.png");
+                    $("#img_subnav").attr("src","../../Plantilla/dist/img/avatar5.png");
+                    $("#img_lateral").attr("src","../../Plantilla/dist/img/avatar5.png");
+                } else{
+                    $("#img_nav").attr("src","../../Plantilla/dist/img/avatar3.png");
+                    $("#img_subnav").attr("src","../../Plantilla/dist/img/avatar3.png");
+                    $("#img_lateral").attr("src","../../Plantilla/dist/img/avatar3.png");
+                }
+            }
+        }
     })
 }
 
