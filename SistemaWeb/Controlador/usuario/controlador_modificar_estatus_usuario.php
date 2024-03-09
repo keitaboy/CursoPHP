@@ -6,4 +6,3 @@ require '../../Modelo/modelo_usuario.php';
     $Status = htmlspecialchars($_POST['Status'], ENT_QUOTES, 'UTF-8');
     $consulta = $MU->Modificar_Estatus_Usuario($idUsuario, $Status);
     echo $consulta;
-?>

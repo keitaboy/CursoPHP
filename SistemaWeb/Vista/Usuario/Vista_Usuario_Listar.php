@@ -72,7 +72,7 @@
             </div>
             <div class="col-lg-12">
                 <label for="">Sexo</label>
-                  <select class="js-example-basic-single" name="state" id="cbm_rol" style="width:100%;">
+                  <select class="js-example-basic-single" name="state" id="cbm_sexo" style="width:100%;">
                     <option value="M">MASCULINO</option>
                     <option value="F">FEMENINO</option>
                   </select><br><br>
