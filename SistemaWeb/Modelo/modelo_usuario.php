@@ -120,4 +120,14 @@ class modelo_usuario
             $this->conexion->cerrar();
         }
     }
+    function Restablecer_Contra($email, $contra)
+    {
+        $sql = "call SP_RESTABLECER_CONTRA('$email','$contra')";
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            if ($row = mysqli_fetch_array($consulta)) {
+                return $id = trim($row[0]);
+            }
+            $this->conexion->cerrar();
+        }
+    }
 }

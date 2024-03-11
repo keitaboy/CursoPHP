@@ -387,6 +387,28 @@ function LimpiarEditarContra() {
     $("#txtcontrarepetir_editar").val("");
 }
 
+function Restablecer_contra() {
+    var email = $("#txt_email").val();
+    if (email.length == 0) {
+        return Swal.fire("Mensaje de advertencia", "Llene los campos en blanco", "warning");
+    }
+    var caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789";
+    var contrasena = "";
+    for (var i = 0; i < 6; i++) {
+        contrasena += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+    $.ajax({
+        url: '../Controlador/usuario/controlador_restablecer_contrasena.php',
+        type: 'POST',
+        data: {
+            email: email,
+            contrasena: contrasena
+        }
+    }).done(function (resp) {
+        alert(resp);
+    })
+}
+
 function AbrirModalRegistro() {
     $("#modal_registro").modal({ backdrop: 'static', keyboard: false })
     $("#modal_registro").modal('show');
@@ -404,6 +426,6 @@ function AbrirModalRestablecer() {
     $("#modal_restablecer_contra").modal({ backdrop: 'static', keyboard: false })
     $("#modal_restablecer_contra").modal('show');
     $("#modal_restablecer_contra").on('shown.bs.modal', function () {
-        $("#txtcontraactual_editar").focus();
+        $("#txt_email").focus();
     })
 }
