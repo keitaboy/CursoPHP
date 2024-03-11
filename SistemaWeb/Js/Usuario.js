@@ -405,5 +405,5 @@ function AbrirModalRestablecer() {
     $("#modal_restablecer_contra").modal('show');
     $("#modal_restablecer_contra").on('shown.bs.modal', function () {
         $("#txtcontraactual_editar").focus();
-    })
+    })    
 }

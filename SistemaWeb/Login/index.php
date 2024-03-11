@@ -89,7 +89,6 @@ if (isset($_SESSION['S_IDUSUARIO'])) {
 		</div>
 	</div>
 
-
 	<div id="dropDownSelect1"></div>
 
 	<div class="modal fade" id="modal_restablecer_contra" role="dialog">
