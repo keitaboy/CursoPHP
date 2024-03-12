@@ -30,6 +30,9 @@ function VerificarUsuario() {
             if (data && data[0] && data[0][3] === 'INACTIVO') {
                 return Swal.fire("Mensaje de advertencia", "Lo sentimos el usuario " + Usu + " se encuentra suspendido", "warning");
             }
+            if (data && data[0] && data[0][7] == 2) {
+                return Swal.fire("Mensaje de advertencia", "Lo sentimos el usuario " + Usu + " se encuentra bloqueada, restablesca contraseña", "warning");
+            }
 
             $.ajax({
                 url: '../Controlador/usuario/controlador_crear_sesion.php',
@@ -65,9 +68,22 @@ function VerificarUsuario() {
             });
         } catch (error) {
             console.error('Error al analizar la respuesta JSON:', error);
-            // Tratar el error, por ejemplo, mostrar un mensaje al usuario
             Swal.fire("Error", "Error de usuario y/o contraseña", "error");
-            return; // Detener la ejecución del código
+
+            $.ajax({
+                url: '../Controlador/usuario/controlador_intento_modificar.php',
+                type:'POST',
+                data:{
+                    usuario:Usu
+                }
+            }).done(function(resp){
+                Swal.fire("Mensaje de advertencia", "Error de usuario y/o contraseña, intentos fallidos "+(parseInt(resp)+1)+"", "warning");
+                if(resp){
+
+                }
+            });
+
+            return; 
         }
     });
 }
@@ -405,7 +421,15 @@ function Restablecer_contra() {
             contrasena: contrasena
         }
     }).done(function (resp) {
-        alert(resp);
+        if(resp > 0){
+            if(resp == 1){
+                Swal.fire("Mensaje de confirmaci&#243;n", "Su contrase&#241;a fue restablecida enviado a: "+email+"", "success");            
+            }else{
+                Swal.fire("Mensaje de adevertencia", "El correo ingresado no se encuentra registrado ", "warning");
+            }
+        }else{
+            Swal.fire("Mensaje de error", "No se pudo reestablecer su contrase&#241;a", "error");
+        }
     })
 }
 

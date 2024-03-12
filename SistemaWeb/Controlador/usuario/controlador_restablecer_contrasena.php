@@ -33,23 +33,23 @@ require '../../Modelo/modelo_usuario.php';
             $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
             $mail->Username='mariaauxiliadorasoft@gmail.com';    //este debe ir en el address?
-            $mail->Password='SoftMariaAuxiliadora2023@$i$t3m4s4dm1n';                            // SMTP password
+            $mail->Password='aridcgqcikyzfzmu';                            // SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-            $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
             //Recipients
-            $mail->setFrom('mariaauxiliadorasoft@gmail.com', 'Luiyi');
+            $mail->setFrom('mariaauxiliadorasoft@gmail.com', 'Daniel');
             $mail->addAddress($email);     // Add a recipient
 
             // Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'Restablecer Password';
-            $mail->Body    = 'CODE PE SUSCRIBETE';
+            $mail->Body    = 'Su contraseña fue restablecida<br> Nueva contraseña: <b>'.$contraactual.'</b>';
 
             $mail->send();
             echo '1';
         } catch (Exception $e) {
-            echo $e;
+            echo "0";
         }
     }else{
         echo '2';
