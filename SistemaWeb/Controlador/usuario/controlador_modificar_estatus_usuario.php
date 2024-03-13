@@ -5,5 +5,4 @@ require '../../Modelo/modelo_usuario.php';
     $idUsuario = htmlspecialchars($_POST['idUsuario'], ENT_QUOTES, 'UTF-8');
     $Status = htmlspecialchars($_POST['Status'], ENT_QUOTES, 'UTF-8');
     $consulta = $MU->Modificar_Estatus_Usuario($idUsuario, $Status);
-    echo $consulta;
-?>
+    echo $consulta;    

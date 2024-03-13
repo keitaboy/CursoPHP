@@ -58,7 +58,7 @@ if (isset($_SESSION['S_IDUSUARIO'])) {
 				</div>
 
 				<div class="text-right p-t-8 p-b-31">
-					<a href="#">
+					<a href="#" onclick="AbrirModalRestablecer()">
 						Olvidaste la contrase&ntilde;a?
 					</a>
 				</div>
@@ -89,8 +89,28 @@ if (isset($_SESSION['S_IDUSUARIO'])) {
 		</div>
 	</div>
 
-
 	<div id="dropDownSelect1"></div>
+
+	<div class="modal fade" id="modal_restablecer_contra" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header" style="text-align: left;">            
+            <h4 class="modal-title"><b>Restablecer Contrase&ntilde;a</b></h4>
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="col-lg-12">
+                <label for=""><b>Ingrese el email ingresado para reestablecer su contrase&ntilde;a</b></label>
+                <input type="text" class="form-control" id="txt_email" placeholder="Ingrese Email"><br>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" onclick="Restablecer_contra()" ><i  class="fa fa-check"><b>&nbsp; Enviar</b></i></button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i  class="fa fa-close"><b>&nbsp; Cerrar</b></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 	<!--===============================================================================================-->
 	<script src="vendor/sweetalert2/sweetalert2.js"></script>
