@@ -28,6 +28,7 @@
           <tr>
             <th>#</th>
             <th>Usuario</th>
+            <th>Email</th>
             <th>Rol</th>
             <th>Sexo</th>
             <th>Estado</th>
@@ -61,6 +62,12 @@
             <div class="col-lg-12">
                 <label for="">Usuario</label>
                 <input type="text" class="form-control" id="txt_usu" placeholder="Ingrese Usuario"><br>
+            </div>
+            <div class="col-lg-12">
+                <label for="">Email</label>
+                <input type="text" class="form-control" id="txt_email" placeholder="Ingrese Email">
+                <label for="" id="emailOK" style="color:red;"></label>
+                <input type="text" id="validar_email" hidden>
             </div>
             <div class="col-lg-12">
                 <label for="">Contrase&ntilde;a</label>
@@ -108,6 +115,12 @@
                 <input type="text" class="form-control" id="txtusu_editar" placeholder="Ingrese Usuario" disabled><br>
             </div>
             <div class="col-lg-12">
+                <label for="">Email</label>
+                <input type="text" class="form-control" id="txt_email_editar" placeholder="Ingrese Email">
+                <label for="" id="emailOK_editar" style="color:red;"></label>
+                <input type="text" id="validar_email_editar" hidden>
+            </div>
+            <div class="col-lg-12">
                 <label for="">Sexo</label>
                   <select class="js-example-basic-single" name="state" id="cbm_sexo_editar" style="width:100%;">
                     <option value="M">MASCULINO</option>
@@ -138,6 +151,34 @@ $(document).ready(function() {
     $("#modal_registro").on('shown.bs.modal',function(){
       $("#txt_usu").focus();
     })
+});
+
+document.getElementById('txt_email').addEventListener('input',function(){
+  campo=event.target;
+  emailRegex= /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+  if (emailRegex.test(campo.value)) {
+    $(this).css("border","");
+    $("#emailOK").html("");
+    $("#validar_email").val("correcto");
+  }else{
+    $(this).css("border","1px solid red");
+    $("#emailOK").html("Email Incorrecto");
+    $("#validar_email").val("incorrecto");
+  }
+});
+
+document.getElementById('txt_email_editar').addEventListener('input',function(){
+  campo=event.target;
+  emailRegex= /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+  if (emailRegex.test(campo.value)) {
+    $(this).css("border","");
+    $("#emailOK_editar").html("");
+    $("#validar_email_editar").val("correcto");
+  }else{
+    $(this).css("border","1px solid red");
+    $("#emailOK_editar").html("Email Incorrecto");
+    $("#validar_email_editar").val("incorrecto");
+  }
 });
 
 </script>
