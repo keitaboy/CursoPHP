@@ -72,18 +72,18 @@ function VerificarUsuario() {
 
             $.ajax({
                 url: '../Controlador/usuario/controlador_intento_modificar.php',
-                type:'POST',
-                data:{
-                    usuario:Usu
+                type: 'POST',
+                data: {
+                    usuario: Usu
                 }
-            }).done(function(resp){
-                Swal.fire("Mensaje de advertencia", "Error de usuario y/o contraseña, intentos fallidos "+(parseInt(resp)+1)+"", "warning");
-                if(resp){
+            }).done(function (resp) {
+                Swal.fire("Mensaje de advertencia", "Error de usuario y/o contraseña, intentos fallidos " + (parseInt(resp) + 1) + "", "warning");
+                if (resp) {
 
                 }
             });
 
-            return; 
+            return;
         }
     });
 }
@@ -105,16 +105,14 @@ function Listar_Usuario() {
         "columns": [
             { "data": "Posicion" },
             { "data": "UsuUser" },
+            { "data": "UsuEmail" },
             { "data": "RolName" },
             {
                 "data": "Sex",
                 "render": function (data, type, row) {
-                    console.log(data);
                     if (data == 'M') {
-                        console.log("entro M");
                         return "Masculino";
                     } else {
-                        console.log("entro F");
                         return "Femenino";
                     }
                 }
@@ -194,6 +192,7 @@ function Listar_Usuario() {
         $("#modal_editar").modal('show');
         $("#txtidusuario").val(data.IdUsuario);
         $("#txtusu_editar").val(data.UsuUser);
+        $("#txt_email_editar").val(data.UsuEmail);
         $("#cbm_sexo_editar").val(data.Sex).trigger("change");
         $("#cbm_rol_editar").val(data.IdRol).trigger("change");
     })
@@ -330,12 +329,19 @@ function Registrar_Usuario() {
     var contra2 = $("#txt_con2").val();
     var sexo = $("#cbm_sexo").val();
     var rol = $("#cbm_rol").val();
+    var email = $("#txt_email").val();
+    var validaremail = $("#validar_email").val();
     if (usu.length == 0 || contra.length == 0 || contra2.length == 0 || sexo.length == 0 || rol.length == 0) {
         return Swal.fire("Mensaje de advertencia", "Llene los campos vacios", "warning");
     }
     if (contra != contra2) {
         return Swal.fire("Las contraseñas deben coincidir", "warning");
     }
+
+    if (validaremail == "incorrecto") {
+        return Swal.fire("Mensaje de advertencia", "El formato de email es incorrecto", "warning");
+    }
+
     $.ajax({
         "url": "../Controlador/usuario/controlador_usuario_registro.php",
         "type": 'POST',
@@ -343,7 +349,8 @@ function Registrar_Usuario() {
             usuario: usu,
             contrasena: contra,
             sexo: sexo,
-            rol: rol
+            rol: rol,
+            email: email
         }
     }).done(function (resp) {
 
@@ -367,16 +374,24 @@ function Modificar_Usuario() {
     var idUsuario = $("#txtidusuario").val();
     var sexo = $("#cbm_sexo_editar").val();
     var rol = $("#cbm_rol_editar").val();
+    var email = $("#txt_email_editar").val();
+    var validaremail = $("#validar_email_editar").val();
     if (idUsuario.length == 0 || sexo.length == 0 || rol.length == 0) {
         return Swal.fire("Mensaje de advertencia", "Llene los campos vacios", "warning");
     }
+
+    if (validaremail == "incorrecto") {
+        return Swal.fire("Mensaje de advertencia", "El formato de email es incorrecto", "warning");
+    }
+
     $.ajax({
         "url": "../Controlador/usuario/controlador_usuario_modificar.php",
         "type": 'POST',
         data: {
             idUsuario: idUsuario,
             contrasena: contra,
-            rol: rol
+            rol: rol,
+            email: email
         }
     }).done(function (resp) {
 
@@ -421,13 +436,13 @@ function Restablecer_contra() {
             contrasena: contrasena
         }
     }).done(function (resp) {
-        if(resp > 0){
-            if(resp == 1){
-                Swal.fire("Mensaje de confirmaci&#243;n", "Su contrase&#241;a fue restablecida enviado a: "+email+"", "success");            
-            }else{
+        if (resp > 0) {
+            if (resp == 1) {
+                Swal.fire("Mensaje de confirmaci&#243;n", "Su contrase&#241;a fue restablecida enviado a: " + email + "", "success");
+            } else {
                 Swal.fire("Mensaje de adevertencia", "El correo ingresado no se encuentra registrado ", "warning");
             }
-        }else{
+        } else {
             Swal.fire("Mensaje de error", "No se pudo reestablecer su contrase&#241;a", "error");
         }
     })

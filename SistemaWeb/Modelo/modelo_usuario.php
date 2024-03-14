@@ -93,11 +93,11 @@ class modelo_usuario
         } else {
             return 0;
         }
-    }    
+    }
 
-    function Modificar_Datos_Usuario($idUsuario, $sexo, $rol)
+    function Modificar_Datos_Usuario($idUsuario, $sexo, $rol, $email)
     {
-        $sql = "call SP_MODIFICAR_DATOS_USUARIO('$idUsuario','$sexo','$rol')";
+        $sql = "call SP_MODIFICAR_DATOS_USUARIO('$idUsuario','$sexo','$rol','$email')";
         $arreglo = array();
 
         if ($consulta = $this->conexion->conexion->query($sql)) {
@@ -108,9 +108,9 @@ class modelo_usuario
         }
     }
 
-    function Registrar_Usuario($usuario, $contra, $sexo, $rol)
+    function Registrar_Usuario($usuario, $contra, $sexo, $rol, $email)
     {
-        $sql = "call SP_REGISTRAR_USUARIO('$usuario','$contra','$sexo','$rol')";
+        $sql = "call SP_REGISTRAR_USUARIO('$usuario','$contra','$sexo','$rol','$email')";
         $arreglo = array();
 
         if ($consulta = $this->conexion->conexion->query($sql)) {

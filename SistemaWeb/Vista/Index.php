@@ -628,7 +628,11 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
 <script src="../Js/Usuario.js"></script>
 <script>
   TraerDatosUsuario();
+<<<<<<< HEAD
 </script>
+=======
+</script> -->
+>>>>>>> ae88f0171188e7ab26ee15552a10df11e5e5f20d
 </body>
 
 </html>
