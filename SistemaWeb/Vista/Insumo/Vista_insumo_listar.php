@@ -1,5 +1,7 @@
-<!-- Fakta cosas por aca que no veo -->
+<!-- Falta cosas por aca que no veo -->
+<!-- Falta cosas por aca que no veo -->
 
+<!-- Completo modal -->
 <div class="modal fade" id="modal_registro" role="dialog">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -36,8 +38,9 @@
         </div>
     </div>
 </div>
+<!-- Hasta acaaa -->
 
-
+<!-- Esto es mio del video 21 -->
 <div class="modal fade" id="modal_editar" role="dialog">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -48,10 +51,14 @@
 
             <div class="modal-body">
                 <div class="col-lg-12">
-                <input type="text" id="txt_idinsumo">
+                    <!-- Verificar que traiga el id en el input -->
+                <input type="text" id="txt_idinsumo" hidden> 
                     <label for="">Nombre</label>
-                    <input type="text" class="form-control" id="txt_insumo_editar" placeholder="Ingrese insumos medicos"
-                        maxlength="50" onkeypress="return soloLetras(event)"><br>
+                    <input type="text" id="txt_insumo_actual_editar" placeholder="Ingrese insumo medico"
+                        maxlength="50" onkeypress="return soloLetras(event)" hidden>
+                    <input type="text" class="form-control" id="txt_insumo_nuevo_editar" placeholder="Ingrese insumo medico"
+                        maxlength="50" onkeypress="return soloLetras(event)">
+                        <br>
                 </div>
                 <div class="col-lg-12">
                     <label for="">Stock</label>
@@ -63,18 +70,20 @@
                     <select class="js-example-basic-single" name="state" id="cbm_estatus_editar" style="width:100%;">
                         <option value="ACTIVO">ACTIVO</option>
                         <option value="INACTIVO">INACTIVO</option>
+                        <option value="AGOTADO">AGOTADO</option>
                     </select><br><br>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="Registrar_insumo()"><i class="fa fa-check">
-                        <b>&nbsp;Registrar</b></i></button>
+                <button class="btn btn-primary" onclick="Modificar_insumo()"><i class="fa fa-check">
+                        <b>&nbsp;MODIFICAR</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close">
                         <b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
     </div>
 </div>
+<!-- Hasta acaaa -->
 
 <script>
     $(document).ready(function () {
