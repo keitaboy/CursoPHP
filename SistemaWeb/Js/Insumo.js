@@ -126,10 +126,12 @@ function Modificar_Insumo(){
         Swal.fire("Mensaje de advertencia", "Llene los campos vacios","warning");
     }
     $.ajax({
-        "url":"../Controlador/insumo/controlador_insumo_registro.php",
+        "url":"../Controlador/insumo/controlador_insumo_modificar.php",
         type:'POST',
         data:{
-            in:insumo,
+            id: id,
+            inActcual:insumoactual,
+            inNuevo:insumonuevo,
             st:stock,
             es:estatus
         }
