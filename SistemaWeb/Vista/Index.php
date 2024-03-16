@@ -268,9 +268,16 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
           <li class="active treeview">
             <a onclick="cargar_contenido('contenido_principal','Usuario/Vista_Usuario_Listar.php')">
               <i class="fa fa-users"></i> <span>Usuario</span>
-
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right">
+                </i></span>
             </a>
-
+            <a onclick="cargar_contenido('contenido_principal','Procedimiento/Vista_procedimiento_Listar.php')">
+              <i class="fa fa-spinner"></i> <span>Procedimientos</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right">
+                </i></span>
+            </a>
           </li>
         </ul>
       </section>

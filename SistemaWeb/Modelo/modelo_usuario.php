@@ -141,3 +141,4 @@ function Modificar_Datos_Usuario($idUsuario,$sexo,$rol,$email);
         }
     }
 }
+?>
