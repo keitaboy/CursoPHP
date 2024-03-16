@@ -130,7 +130,7 @@ function Modificar_Insumo(){
         type:'POST',
         data:{
             id: id,
-            inActcual:insumoactual,
+            inActual:insumoactual,
             inNuevo:insumonuevo,
             st:stock,
             es:estatus
