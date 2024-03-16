@@ -35,9 +35,15 @@ class Modelo_insumo
         }
     }
 
-    function Modificar_Procedimiento($id, $procedimientoactual, $procedimientonuevo, $estatus)
+    function Modificar_Insumo($id,$insumonuevo,$insumoactual,$stock,$estatus)
     {
-
+        $sql = "call SP_MODIFICAR_INSUMO('$id','$insumonuevo','$insumoactual','$stock','$estatus')";
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            if ($row = mysqli_fetch_array($consulta)) {
+                return $id = trim($row[0]);
+            }
+            $this->conexion->cerrar();
+        }
     }
 
 }
