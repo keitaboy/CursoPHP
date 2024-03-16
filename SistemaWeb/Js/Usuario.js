@@ -72,18 +72,18 @@ function VerificarUsuario() {
 
             $.ajax({
                 url: '../Controlador/usuario/controlador_intento_modificar.php',
-                type:'POST',
-                data:{
-                    usuario:Usu
+                type: 'POST',
+                data: {
+                    usuario: Usu
                 }
-            }).done(function(resp){
-                Swal.fire("Mensaje de advertencia", "Error de usuario y/o contraseña, intentos fallidos "+(parseInt(resp)+1)+"", "warning");
-                if(resp){
+            }).done(function (resp) {
+                Swal.fire("Mensaje de advertencia", "Error de usuario y/o contraseña, intentos fallidos " + (parseInt(resp) + 1) + "", "warning");
+                if (resp) {
 
                 }
             });
 
-            return; 
+            return;
         }
     });
 }
@@ -105,17 +105,14 @@ function Listar_Usuario() {
         "columns": [
             { "data": "Posicion" },
             { "data": "UsuUser" },
-            {"data": "UsuEmail"},
+            { "data": "UsuEmail" },
             { "data": "RolName" },
             {
                 "data": "Sex",
                 "render": function (data, type, row) {
-                    console.log(data);
                     if (data == 'M') {
-                        console.log("entro M");
                         return "Masculino";
                     } else {
-                        console.log("entro F");
                         return "Femenino";
                     }
                 }
@@ -439,13 +436,13 @@ function Restablecer_contra() {
             contrasena: contrasena
         }
     }).done(function (resp) {
-        if(resp > 0){
-            if(resp == 1){
-                Swal.fire("Mensaje de confirmaci&#243;n", "Su contrase&#241;a fue restablecida enviado a: "+email+"", "success");            
-            }else{
+        if (resp > 0) {
+            if (resp == 1) {
+                Swal.fire("Mensaje de confirmaci&#243;n", "Su contrase&#241;a fue restablecida enviado a: " + email + "", "success");
+            } else {
                 Swal.fire("Mensaje de adevertencia", "El correo ingresado no se encuentra registrado ", "warning");
             }
-        }else{
+        } else {
             Swal.fire("Mensaje de error", "No se pudo reestablecer su contrase&#241;a", "error");
         }
     })

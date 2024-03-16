@@ -93,7 +93,7 @@ class modelo_usuario
         } else {
             return 0;
         }
-    }    
+    }
 
 function Modificar_Datos_Usuario($idUsuario,$sexo,$rol,$email);
 {
