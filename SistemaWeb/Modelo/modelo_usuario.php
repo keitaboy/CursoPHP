@@ -95,10 +95,10 @@ class modelo_usuario
         }
     }
 
-function Modificar_Datos_Usuario($idUsuario,$sexo,$rol,$email);
-{
-    $sql = "call SP_MODIFICAR_DATOS_USUARIO('$idUsuario','$sexo','$rol','$email')";
-    $arreglo = array();
+    function Modificar_Datos_Usuario($idUsuario, $sexo, $rol, $email)
+    {
+        $sql = "call SP_MODIFICAR_DATOS_USUARIO('$idUsuario','$sexo','$rol','$email')";
+        $arreglo = array();
 
         if ($consulta = $this->conexion->conexion->query($sql)) {
             // $id_retornado=mysqli_insert_ind($this->conexion->conexion);
@@ -108,7 +108,7 @@ function Modificar_Datos_Usuario($idUsuario,$sexo,$rol,$email);
         }
     }
 
-    function Registrar_Usuario($usuario,$contra,$sexo,$rol,$email)
+    function Registrar_Usuario($usuario, $contra, $sexo, $rol, $email)
     {
         $sql = "call SP_REGISTRAR_USUARIO('$usuario','$contra','$sexo','$rol','$email')";
         $arreglo = array();
@@ -141,4 +141,3 @@ function Modificar_Datos_Usuario($idUsuario,$sexo,$rol,$email);
         }
     }
 }
-?>

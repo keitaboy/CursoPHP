@@ -122,7 +122,7 @@ function Modificar_Insumo(){
     if(stock<0){
         Swal.fire("Mensaje de advertencia", "El stock no puede ser vacio","warning");
     }
-    if(insumo.length == 0 || stock.length == 0 || estatus.length == 0){        
+    if(insumoactual.length == 0 || insumonuevo.length == 0 || stock.length == 0 || estatus.length == 0){        
         Swal.fire("Mensaje de advertencia", "Llene los campos vacios","warning");
     }
     $.ajax({
@@ -138,13 +138,11 @@ function Modificar_Insumo(){
     }).done(function(resp){
         if(resp>0){
             if(resp==1){
-                $("#modal_registro").modal('hide');
+                $("#modal_editar").modal('hide');
                 listar_insumo();
-                LimpiarCampos();
-                Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente","success");         
+                Swal.fire("Mensaje de confirmacion", "Datos actualizados correctamente","success");         
             }
             else{
-                LimpiarCampos();
                 Swal.fire("Mensaje de advertencia", "El insumo ya existe!","warning");
             }
         }
