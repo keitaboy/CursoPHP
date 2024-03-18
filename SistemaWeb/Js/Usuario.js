@@ -16,14 +16,8 @@ function VerificarUsuario() {
             console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
         }
     }).done(function (resp) {
-        console.log("Respuesta del servidor:", resp);
-
         // Extraer la segunda parte (datos del usuario)
         var jsonData = resp.substring(resp.indexOf('['));
-
-        console.log("Aca el primer resp");
-        console.log(jsonData);
-
         try {
             var data = JSON.parse(jsonData);
 
@@ -236,7 +230,6 @@ function Listar_Usuario() {
 
 function TraerDatosUsuario() {
     var usuario = $('#usuarioprincipal').val(); // Corrección aquí
-    console.log(usuario);
     $.ajax({
         "url": "../Controlador/usuario/controlador_traerdatos_usuario.php",
         type: 'POST',
@@ -245,7 +238,6 @@ function TraerDatosUsuario() {
         }
     }).done(function (resp) {
         var data = JSON.parse(resp);
-        console.log(data);
         if (data.length > 0) {
             if (data.length > 0) {
                 $("#txtcontra_bd").val(data[0][2]);
@@ -285,7 +277,6 @@ function EditarContra() {
             contraNueva: contraNueva
         }
     }).done(function (resp) {
-        console.log(resp);
         if (resp > 0) {
             if (resp == 1) {
                 $("#modal_editar_contra").modal('hide');

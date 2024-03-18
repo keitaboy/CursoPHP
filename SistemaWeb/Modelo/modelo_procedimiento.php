@@ -18,8 +18,8 @@ class Modelo_Procedimiento
             while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
                 $arreglo["data"][] = $consulta_VU;
             }
-            return $arreglo;
-               $this->conexion->cerrar();
+            $this->conexion->cerrar();
+            return $arreglo;               
         }
     }
 
@@ -51,4 +51,3 @@ class Modelo_Procedimiento
     }
 
 }
-?>

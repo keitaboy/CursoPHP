@@ -19,7 +19,7 @@ function listar_insumo() {
             { "defaultContent": "" },
             { "data": "Name" }, //-------En el video es insumo_nombre-------//
             { "data": "Cant" }, //-------En el video es insumo_stock-------//
-            { "data": "Name" }, //-------Aca podemos poner el nombre del IdTypeItem-------//
+            { "data": "TypeItemName" }, //-------Aca podemos poner el nombre del IdTypeItem-------//
             {
                 "data": "Status", //-------En el video es insumo_estatus-------//
                 render: function (data, type, row) {
@@ -34,7 +34,7 @@ function listar_insumo() {
                     }
                 }
             },
-            { "defaultContent": "<button style='font-size:13px' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>" }
+            { "defaultContent": "<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>" }
         ],
         "language": idioma_espanol,
         select: true
