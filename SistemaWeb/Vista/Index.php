@@ -284,6 +284,12 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
+            <a onclick="cargar_contenido('contenido_principal','Medicamento/Vista_medicamento_listar.php')">
+              <i class="fa fa-medkit"></i> <span>Medicamentos</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
           </li>
         </ul>
       </section>

@@ -19,7 +19,7 @@ function listar_insumo() {
             { "defaultContent": "" },
             { "data": "Name" }, //-------En el video es insumo_nombre-------//
             { "data": "Cant" }, //-------En el video es insumo_stock-------//
-            { "data": "insumo_fregistro" }, //-------Aca podemos poner el nombre del IdTypeItem-------//
+            { "data": "Name" }, //-------Aca podemos poner el nombre del IdTypeItem-------//
             {
                 "data": "Status", //-------En el video es insumo_estatus-------//
                 render: function (data, type, row) {
