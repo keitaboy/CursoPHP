@@ -279,10 +279,10 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
                 </i></span>
             </a>
             <a onclick="cargar_contenido('contenido_principal','Insumo/Vista_insumo_listar.php')">
-              <i class="fa fa-spinner"></i> <span>Insumos</span>
+              <i class="fa fa-cube"></i> <span>Insumos</span>
               <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right">
-                </i></span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
             </a>
           </li>
         </ul>
