@@ -1,10 +1,10 @@
-<script type="text/javascript" src="../Js/Insumo.js?rev=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="../Js/Especialidad.js?rev=<?php echo time(); ?>"></script>
 <div class="row"></div>
 <div class="col-md-12">
     <div class="box box-warning box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">Mantenimiento de insumo</h3>
-            <div class="box-tools pull-right">
+            <h3 class="box-title">Mantenimiento de especialidades</h3>
+            <div class="box-tools pull-right">s
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-widget="remove"><i
                         class="fa fa-minus"></i>
                 </button>
@@ -26,13 +26,12 @@
                             class="glyphicon glyphicon-plus"></i>Nuevo Registro</button>
                 </div>
             </div>
-            <table id="tabla_insumo" class="display responsive nowrap" style="width:100%">
+            <table id="tabla_especialidad" class="display responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Insumo</th>
-                        <th>Stock</th>
-                        <th>Tipo de insumo</th>
+                        <th>Especialidad</th>
+                        <th>Tipo de especialidad</th>
                         <th>Estatus</th>
                         <th>Acci&oacute;n</th>
                     </tr>

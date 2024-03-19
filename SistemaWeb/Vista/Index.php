@@ -284,8 +284,8 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
-            <a onclick="cargar_contenido('contenido_principal','Medicamento/Vista_medicamento_listar.php')">
-              <i class="fa fa-medkit"></i> <span>Medicamentos</span>
+            <a onclick="cargar_contenido('contenido_principal','Especialidad/Vista_especialidad_listar.php')">
+              <i class="fa fa-gg"></i> <span>Especialidad</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>

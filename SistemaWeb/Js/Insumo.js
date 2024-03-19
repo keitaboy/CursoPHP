@@ -68,7 +68,11 @@ $('#tabla_insumo').on('click', '.editar', function () {
     $("#cbm_estatus_editar").val(data.Status).trigger("change");
 })
 
-function filterGlobal(){}  //----------------Falta----------------//
+function filterGlobal(){
+    $('#tabla_insumo').DataTable.search(
+        $('#global_filter').val(),
+    ).draw();
+}
 
 function Registrar_Insumo(){
     var insumo = $("#txt_insumo").val();
