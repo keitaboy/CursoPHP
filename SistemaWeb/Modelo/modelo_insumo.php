@@ -1,5 +1,5 @@
 <?php
-class Modelo_insumo
+class Modelo_Insumo
 {
     private $conexion;
     function __construct()

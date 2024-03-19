@@ -1,9 +1,9 @@
 <?php
 
 require '../../Modelo/modelo_insumo.php';
-$MP=new Modelo_Insumo;
+$MI=new Modelo_Insumo();
 
-$consulta=$MP->listar_insumo();
+$consulta=$MI->listar_insumo();
 if ($consulta) {
     echo json_encode($consulta);
 }else{
