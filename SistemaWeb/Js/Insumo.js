@@ -65,7 +65,8 @@ $('#tabla_insumo').on('click', '.editar', function () {
     $("#txt_insumo_actual_editar").val(data.Name);
     $("#txt_insumo_nuevo_editar").val(data.Name);
     $("#txt_stock_editar").val(data.Cant);
-    $("#cbm_estatus_editar").val(data.Status).trigger("change");
+    $("#cbm_estatus_editar").val(data.Status).trigger("change");    
+    $("#cbm_item_editar").val(data.IdTypeItem).trigger("change");
 })
 
 function filterGlobal(){
@@ -78,10 +79,11 @@ function Registrar_Insumo(){
     var insumo = $("#txt_insumo").val();
     var stock = $("#txt_stock").val();
     var estatus = $("#cbm_estatus").val();
+    var item=$("#cbm_item").val();
     if(stock<0){
         Swal.fire("Mensaje de advertencia", "El stock no puede ser vacio","warning");
     }
-    if(insumo.length == 0 || stock.length == 0 || estatus.length == 0){        
+    if(insumo.length == 0 || stock.length == 0 || estatus.length == 0 || item.length == 0){
         Swal.fire("Mensaje de advertencia", "Llene los campos vacios","warning");
     }
     $.ajax({
@@ -90,9 +92,11 @@ function Registrar_Insumo(){
         data:{
             in:insumo,
             st:stock,
-            es:estatus
+            es:estatus,
+            item:item
         }
     }).done(function(resp){
+        console.log(resp);
         if(resp>0){
             if(resp==1){
                 $("#modal_registro").modal('hide');
@@ -121,12 +125,14 @@ function Modificar_Insumo(){
     var id = $("#txt_idinsumo").val();
     var insumoactual = $("#txt_insumo_actual_editar").val();
     var insumonuevo = $("#txt_insumo_nuevo_editar").val();
-    var stock = $("#txt_stock_editar").val();
+    var stock = $("#txt_stock_editar").val();    
     var estatus = $("#cbm_estatus_editar").val();
+    var item = $("#cbm_item_editar").val();   
     if(stock<0){
         Swal.fire("Mensaje de advertencia", "El stock no puede ser vacio","warning");
     }
-    if(insumoactual.length == 0 || insumonuevo.length == 0 || stock.length == 0 || estatus.length == 0){        
+    if(insumoactual.length == 0 || insumonuevo.length == 0 || stock.length == 0 || estatus.length == 0 || item.length == 0){
+
         Swal.fire("Mensaje de advertencia", "Llene los campos vacios","warning");
     }
     $.ajax({
@@ -137,9 +143,11 @@ function Modificar_Insumo(){
             inActual:insumoactual,
             inNuevo:insumonuevo,
             st:stock,
-            es:estatus
+            es:estatus,
+            item:item
         }
     }).done(function(resp){
+        console.log("la rpta es: " + resp);
         if(resp>0){
             if(resp==1){
                 $("#modal_editar").modal('hide');
@@ -152,6 +160,28 @@ function Modificar_Insumo(){
         }
         else{
             Swal.fire("Mensaje de error", "No se pudo completar el registro","error");
+        }
+    })
+}
+
+function listar_combo_item() {
+    $.ajax({
+        "url": "../Controlador/insumo/controlador_combo_item_listar.php",
+        "type": 'POST'
+    }).done(function (resp) {
+        console.log(resp);
+        var data = JSON.parse(resp);
+        var cadena = "";
+        if (data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                cadena += "<option value='" + data[i][0] + "'>" + data[i][1] + "</option>";
+            }
+            $("#cbm_item").html(cadena);
+            $("#cbm_item_editar").html(cadena);
+        } else {
+            cadena += "<option value=''No se Encontraron Registros</option>";
+            $("#cbm_item").html(cadena);
+            $("#cbm_item_editar").html(cadena);
         }
     })
 }

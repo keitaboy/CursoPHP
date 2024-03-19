@@ -79,6 +79,11 @@
                         <option value="INACTIVO">INACTIVO</option>
                     </select><br><br>
                 </div>
+                <div class="col-lg-12">
+                <label for="">Tipo de insumo</label>
+                  <select class="js-example-basic-single" name="state" id="cbm_item" style="width:100%;">                    
+                  </select><br><br>
+            </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="Registrar_Insumo()"><i class="fa fa-check">
@@ -123,9 +128,14 @@
                         <option value="AGOTADO">AGOTADO</option>
                     </select><br><br>
                 </div>
+                <div class="col-lg-12">
+                <label for="">Tipo de insumo</label>
+                  <select class="js-example-basic-single" name="state" id="cbm_item_editar" style="width:100%;">                    
+                  </select><br><br>
+            </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="Modificar_insumo()"><i class="fa fa-check">
+                <button class="btn btn-primary" onclick="Modificar_Insumo()"><i class="fa fa-check">
                         <b>&nbsp;MODIFICAR</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close">
                         <b>&nbsp;Cerrar</b></i></button>
@@ -139,6 +149,7 @@
     $(document).ready(function () {
         listar_insumo();
         $('.js-example-basic-single').select2();
+        listar_combo_item();
         $("#modal_registro").on('shown.bs.modal', function () {
             $("#txt_insumo").focus();
         })

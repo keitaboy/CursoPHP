@@ -389,7 +389,7 @@ function Modificar_Usuario(){
         "type": 'POST',
         data:{
             idUsuario:idUsuario,
-            contrasena:contra,
+            sexo:sexo,
             rol:rol,
             email:email
         }

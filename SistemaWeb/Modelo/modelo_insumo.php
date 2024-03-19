@@ -24,9 +24,9 @@ class Modelo_Insumo
         }
     }
 
-    function Registrar_Insumo($insumo, $stock, $estatus)
+    function Registrar_Insumo($insumo, $stock, $estatus, $item)
     {
-        $sql = "call SP_REGISTRAR_INSUMO('$insumo', '$stock', '$estatus')";
+        $sql = "call SP_REGISTRAR_INSUMO('$insumo', '$stock', '$estatus', '$item')";
         if ($consulta = $this->conexion->conexion->query($sql)) {
             if ($row = mysqli_fetch_array($consulta)) {
                 return $id = trim($row[0]);
@@ -35,14 +35,28 @@ class Modelo_Insumo
         }
     }
 
-    function Modificar_Insumo($id,$insumonuevo,$insumoactual,$stock,$estatus)
+    function Modificar_Insumo($id,$insumonuevo,$insumoactual,$stock,$estatus,$item)
     {
-        $sql = "call SP_MODIFICAR_INSUMO('$id','$insumonuevo','$insumoactual','$stock','$estatus')";
+        $sql = "call SP_MODIFICAR_INSUMO('$id','$insumonuevo','$insumoactual','$stock','$estatus','$item')";
         if ($consulta = $this->conexion->conexion->query($sql)) {
             if ($row = mysqli_fetch_array($consulta)) {
                 return $id = trim($row[0]);
             }
             $this->conexion->cerrar();
+        }
+    }
+
+    function listar_combo_item()
+    {
+        $sql = "call SP_LISTAR_COMBO_ITEM()";
+        $arreglo = array();
+
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            while ($consulta_VU = mysqli_fetch_array($consulta)) {
+                $arreglo[] = $consulta_VU;
+            }
+            return $arreglo;
+            //  $this->conexion->cerrar();
         }
     }
 
