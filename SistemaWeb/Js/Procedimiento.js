@@ -74,12 +74,18 @@ function RegistrarProcedimiento() {
             if (resp==1) {
                 $("#modal_registro").modal('hide');
                 listar_procedimiento();
+                LimpiarDatos();
                 Swal.fire("Mensaje de Confirmacion","Datos Registrados Correctamente","success");
             }else{
+                LimpiarDatos();
                 Swal.fire("Mensaje de advertencia","El servicio ya existe","warning");
             }
         }
     })
+}
+
+function LimpiarDatos() {
+    $('#txt_procedimiento').val("");
 }
 
 $('#tabla_procedimiento').on('click', '.editar', function () {

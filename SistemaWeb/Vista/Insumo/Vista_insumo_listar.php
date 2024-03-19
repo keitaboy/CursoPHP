@@ -58,7 +58,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><b>Registro de insumos</b></h4>
+                <h4 class="modal-title"><b>Registro de Insumos</b></h4>
             </div>
 
             <div class="modal-body">
@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="Registrar_insumo()"><i class="fa fa-check">
+                <button class="btn btn-primary" onclick="Registrar_Insumo()"><i class="fa fa-check">
                         <b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close">
                         <b>&nbsp;Cerrar</b></i></button>
