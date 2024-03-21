@@ -68,7 +68,7 @@ function AbrirModalRegistro() {
  })
 
 function filterGlobal(){
-    $('#tabla_especialidad').DataTable.search(
+    $('#tabla_especialidad').DataTable().search(
         $('#global_filter').val(),
     ).draw();
 }
