@@ -69,6 +69,11 @@ $('#tabla_insumo').on('click', '.editar', function () {
     $("#cbm_item_editar").val(data.IdTypeItem).trigger("change");
 })
 
+function AbrirModalRegistro() {
+    $("#modal_registro").modal({ backdrop: 'static', keyboard: false })
+    $("#modal_registro").modal('show');
+}
+
 function filterGlobal(){
     $('#tabla_insumo').DataTable.search(
         $('#global_filter').val(),
