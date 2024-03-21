@@ -34,8 +34,8 @@ class Modelo_Cita
 
                 $arreglo[] = $consulta_VU;
             }
-            return $arreglo;
             $this->conexion->cerrar();
+            return $arreglo;            
         }
     }
 
@@ -49,12 +49,12 @@ class Modelo_Cita
 
                 $arreglo[] = $consulta_VU;
             }
-            return $arreglo;
             $this->conexion->cerrar();
+            return $arreglo;           
         }
     }
 
-    function Registrar_Cita($idpaciente,$iddoctor,$descripcion,$idusuario);
+    function Registrar_Cita($idpaciente,$iddoctor,$descripcion,$idusuario)
     {
         $sql = "call SP_REGISTRAR_CITA('$idpaciente', '$iddoctor', '$descripcion','$idusuario')";
         if ($consulta = $this->conexion->conexion->query($sql)) {
