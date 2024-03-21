@@ -14,3 +14,4 @@ if ($consulta) {
         "aaData":[]
     }';
 }
+?>

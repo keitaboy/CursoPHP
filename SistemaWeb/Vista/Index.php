@@ -290,6 +290,12 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
+            <a onclick="cargar_contenido('contenido_principal','Cita/Vista_cita_listar.php')">
+              <i class="fa fa-user"></i> <span>Citas</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
           </li>
         </ul>
       </section>

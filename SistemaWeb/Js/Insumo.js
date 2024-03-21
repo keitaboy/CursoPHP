@@ -79,10 +79,10 @@ function Registrar_Insumo(){
     var stock = $("#txt_stock").val();
     var estatus = $("#cbm_estatus").val();
     if(stock<0){
-        Swal.fire("Mensaje de advertencia", "El stock no puede ser vacio","warning");
+        return Swal.fire("Mensaje de advertencia", "El stock no puede ser vacio","warning");
     }
     if(insumo.length == 0 || stock.length == 0 || estatus.length == 0){        
-        Swal.fire("Mensaje de advertencia", "Llene los campos vacios","warning");
+       return Swal.fire("Mensaje de advertencia", "Llene los campos vacios","warning");
     }
     $.ajax({
         "url":"../Controlador/insumo/controlador_insumo_registro.php",
@@ -98,15 +98,15 @@ function Registrar_Insumo(){
                 $("#modal_registro").modal('hide');
                 listar_insumo();
                 LimpiarCampos();
-                Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente","success");         
+               return Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente","success");         
             }
             else{
                 LimpiarCampos();
-                Swal.fire("Mensaje de advertencia", "El insumo ya existe!","warning");
+               return Swal.fire("Mensaje de advertencia", "El insumo ya existe!","warning");
             }
         }
         else{
-            Swal.fire("Mensaje de error", "No se pudo completar el registro","error");
+            return Swal.fire("Mensaje de error", "No se pudo completar el registro","error");
         }
     })
 }
@@ -124,10 +124,10 @@ function Modificar_Insumo(){
     var stock = $("#txt_stock_editar").val();
     var estatus = $("#cbm_estatus_editar").val();
     if(stock<0){
-        Swal.fire("Mensaje de advertencia", "El stock no puede ser vacio","warning");
+         return Swal.fire("Mensaje de advertencia", "El stock no puede ser vacio","warning");
     }
     if(insumoactual.length == 0 || insumonuevo.length == 0 || stock.length == 0 || estatus.length == 0){        
-        Swal.fire("Mensaje de advertencia", "Llene los campos vacios","warning");
+        return Swal.fire("Mensaje de advertencia", "Llene los campos vacios","warning");
     }
     $.ajax({
         "url":"../Controlador/insumo/controlador_insumo_modificar.php",
@@ -147,11 +147,11 @@ function Modificar_Insumo(){
                 Swal.fire("Mensaje de confirmacion", "Datos actualizados correctamente","success");         
             }
             else{
-                Swal.fire("Mensaje de advertencia", "El insumo ya existe!","warning");
+                return  Swal.fire("Mensaje de advertencia", "El insumo ya existe!","warning");
             }
         }
         else{
-            Swal.fire("Mensaje de error", "No se pudo completar el registro","error");
+            return  Swal.fire("Mensaje de error", "No se pudo completar el registro","error");
         }
     })
 }

@@ -348,7 +348,7 @@ function Registrar_Usuario(){
         if (resp > 0) {
             if (resp == 1) {
                 $("#modal_registro").modal('hide');
-                Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente, Nuevo Usuario Registrado", "sucess").then((value) => {
+                return Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente, Nuevo Usuario Registrado", "sucess").then((value) => {
                     LimpiarRegistro();
                     table.ajax.reload();
                 });
@@ -356,7 +356,7 @@ function Registrar_Usuario(){
                 return Swal.fire("Mensaje de advertencia", "El nombre del usuario ya se encuentra en uso", "warning");
             }
         } else {
-            Swal.fire("Mensaje de error", "Lo sentimos no se pudo completar el registro", "error");
+            return  Swal.fire("Mensaje de error", "Lo sentimos no se pudo completar el registro", "error");
         }
     })
 }
@@ -388,11 +388,11 @@ function Modificar_Usuario(){
 
         if (resp > 0) {
             $("#modal_editar").modal('hide');
-            Swal.fire("Mensaje de confirmacion", "Datos actualizados correctamente", "sucess").then((value) => {
+            return  Swal.fire("Mensaje de confirmacion", "Datos actualizados correctamente", "sucess").then((value) => {
                 table.ajax.reload();
             });
         } else {
-            Swal.fire("Mensaje de error", "Lo sentimos no se pudo completar la actualizacion", "error");
+            return Swal.fire("Mensaje de error", "Lo sentimos no se pudo completar la actualizacion", "error");
         }
     })
 }
@@ -429,12 +429,12 @@ function Restablecer_contra() {
     }).done(function (resp) {
         if (resp > 0) {
             if (resp == 1) {
-                Swal.fire("Mensaje de confirmaci&#243;n", "Su contrase&#241;a fue restablecida enviado a: " + email + "", "success");
+                return Swal.fire("Mensaje de confirmaci&#243;n", "Su contrase&#241;a fue restablecida enviado a: " + email + "", "success");
             } else {
-                Swal.fire("Mensaje de adevertencia", "El correo ingresado no se encuentra registrado ", "warning");
+                return Swal.fire("Mensaje de adevertencia", "El correo ingresado no se encuentra registrado ", "warning");
             }
         } else {
-            Swal.fire("Mensaje de error", "No se pudo reestablecer su contrase&#241;a", "error");
+            return  Swal.fire("Mensaje de error", "No se pudo reestablecer su contrase&#241;a", "error");
         }
     })
 }
