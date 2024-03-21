@@ -10,3 +10,4 @@ $estatus = htmlspecialchars($_POST['es'],ENT_QUOTES,'UTF-8');
 $item = htmlspecialchars($_POST['item'], ENT_QUOTES, 'UTF-8');
 $consulta = $MI->Modificar_Insumo($id,$insumoactual,$insumonuevo,$stock,$estatus,$item);
 echo $consulta;
+?>

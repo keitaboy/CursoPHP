@@ -1,0 +1,155 @@
+var tablecita;
+function listar_cita() {
+    tablecita = $("#tabla_cita").DataTable({
+        "ordering": false,
+        "bLengthChange": false,
+        "searching": { "regex": false },
+        "lenghtMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "ALL"]],
+        "pageLenght": 10,
+        "destroy": true,
+        "async": false,
+        "processing": true,
+        "ajax": {
+            "url": "../Controlador/cita/controlador_cita_listar.php",
+            type: 'POST'
+        },
+        "order": [[1, 'asc']],
+        "columns": [
+            { "defaultContent": "" },
+            { "data": "IdAppointment" }, 
+            { "data": "Paciente" },
+            { "data": "Medico" },
+            { "data": "RegistrationDate" }, 
+            {
+                "data": "Status", 
+                render: function (data, type, row) {
+                    if (data == 'PENDIENTE') {
+                        return "<span class='label label-primary'>" + data + "</span>";
+                    }
+                    if (data == 'CANCELADA') {
+                        return "<span class='label label-danger'>" + data + "</span>";
+                    }
+                    if (data == 'ATENDIDA') {
+                        return "<span class='label label-success' style='background:black'>" + data + "</span>";
+                    }
+                }
+            },
+            { "defaultContent": "<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>" }
+        ],
+        "language": idioma_espanol,
+        select: true
+    });
+    document.getElementById("tabla_cita_filter").style.display = "none";
+    $('input.global_filter').on('keyup click', function () {
+        filterGlobal();
+    });
+    $('input.column_filter').on('keyup click', function () {
+        filterColumn($(this).parents('tr').attr('data-column'));
+    });
+    tablecita.on('draw.dt', function () {
+        var PageInfo = $('#tabla_cita').DataTable().page.info();
+        tablecita.column(0, { page: 'current' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1 + PageInfo.start;
+        });
+    });
+}
+
+$('#tabla_cita').on('click', '.editar', function () {
+    var data = tablecita.row($(this).parents('tr')).data();//deteccion de fila al hacer click y captura de datos
+    if (tablecita.row(this).child.isShown()) {
+        var data = tablecita.row(this).data();
+    }
+    $("#modal_editar").modal({ backdrop: 'static', keyboard: false })
+    $("#modal_editar").modal('show');
+    $("#txt_idinsumo").val(data.IdItem);
+    $("#txt_insumo_actual_editar").val(data.Name);
+    $("#txt_insumo_nuevo_editar").val(data.Name);
+    $("#txt_stock_editar").val(data.Cant);
+    $("#cbm_estatus_editar").val(data.Status).trigger("change");
+})
+
+function filterGlobal(){
+    $('#tabla_cita').DataTable().search(
+        $('#global_filter').val(),
+    ).draw();
+} 
+
+function AbrirModalRegistro() {
+    $("#modal_registro").modal({backdrop:'static',keyboard:false})
+    $("#modal_registro").modal('show');
+}
+
+function listar_paciente_combo() {
+    $.ajax({
+        "url": "../Controlador/cita/controlador_combo_paciente_listar.php",
+        "type": 'POST'
+    }).done(function (resp) {
+        var data = JSON.parse(resp);
+        var cadena = "";
+        if (data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                    cadena += "<option value='" + data[i][0] + "'>" + data[i][1] + "</option>";  
+                
+            }
+            $("#cbm_paciente").html(cadena);
+            $("#cbm_paciente_editar").html(cadena);
+        } else {
+            cadena += "<option value=''No se Encontraron Registros</option>";
+            $("#cbm_paciente").html(cadena);
+            $("#cbm_paciente_editar").html(cadena);
+        }
+    })
+}
+
+function listar_doctor_combo() {
+    $.ajax({
+        "url": "../Controlador/cita/controlador_combo_doctor_listar.php",
+        "type": 'POST'
+    }).done(function (resp) {
+        var data = JSON.parse(resp);
+        var cadena = "";
+        if (data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                    cadena += "<option value='" + data[i][0] + "'>" + data[i][1] + "</option>";  
+                
+            }
+            $("#cbm_doctor").html(cadena);
+            $("#cbm_doctor_editar").html(cadena);
+        } else {
+            cadena += "<option value=''No se Encontraron Registros</option>";
+            $("#cbm_doctor").html(cadena);
+            $("#cbm_doctor_editar").html(cadena);
+        }
+    })
+}
+
+function Registrar_Cita(){
+    var idpaciente = $("#cbm_paciente").val();
+    var iddoctor = $("#cbm_doctor").val();
+    var descripcion = $("#txt_descripcion").val();
+    var idusuario= $("#txtidprincipal").val();
+    
+    if(idpaciente.length == 0 || iddoctor.length == 0 || descripcion.length == 0){        
+        return Swal.fire("Mensaje de advertencia", "Llene los campos vacios","warning");
+    }
+    $.ajax({
+        "url":"../Controlador/cita/controlador_cita_registro.php",
+        type:'POST',
+        data:{
+            idpa:idpaciente,
+            iddo:iddoctor,
+            descripcion:descripcion,
+            idusuario:idusuario
+        }
+    }).done(function(resp){
+        return alert(resp);
+        if(resp>0){
+                $("#modal_registro").modal('hide');
+                return Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente","success");         
+            }
+        
+        else{
+            return Swal.fire("Mensaje de error", "No se pudo completar el registro","error");
+        }
+    })
+}

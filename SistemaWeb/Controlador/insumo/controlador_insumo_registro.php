@@ -8,3 +8,4 @@ $estatus = htmlspecialchars($_POST['es'],ENT_QUOTES,'UTF-8');
 $item = htmlspecialchars($_POST['item'], ENT_QUOTES, 'UTF-8');
 $consulta = $MI->Registrar_Insumo($insumo,$stock,$estatus,$item);
 echo $consulta;
+?>
