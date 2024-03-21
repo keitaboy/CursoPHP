@@ -70,7 +70,7 @@ $('#tabla_insumo').on('click', '.editar', function () {
 })
 
 function filterGlobal(){
-    $('#tabla_insumo').DataTable.search(
+    $('#tabla_insumo').DataTable().search(
         $('#global_filter').val(),
     ).draw();
 }
