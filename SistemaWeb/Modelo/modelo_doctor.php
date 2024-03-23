@@ -24,9 +24,15 @@ class Modelo_Doctor
         }
     }
 
-    function Registrar_Doctor($Doctor, $estatus)
+    function Registrar_Doctor($DoctorNombre,$DoctorApellido,$DoctorDocumento,
+    $DoctorNroDoc,$DoctorCelular,$DoctorGrado,$DoctorFechaNac,$DoctorEspecialiadad,$DoctorPais,
+    $DoctorDepa,$DoctorDistrito,$DoctorDireccion,$DoctorCorreo,$DoctorUsuario,$DoctorPassword,
+    $DoctorSexo,$DoctorRol)
     {
-        $sql = "call SP_REGISTRAR_Doctor('$Doctor', '$estatus')";
+        $sql = "call SP_REGISTRAR_DOCTOR('$DoctorNombre','$DoctorApellido','$DoctorDocumento',
+        '$DoctorNroDoc','$DoctorCelular','$DoctorGrado','$DoctorFechaNac','$DoctorEspecialiadad','$DoctorPais',
+        '$DoctorDepa','$DoctorDistrito','$DoctorDireccion','$DoctorCorreo','$DoctorUsuario','$DoctorPassword',
+        '$DoctorSexo','$DoctorRol')";
         if ($consulta = $this->conexion->conexion->query($sql)) {
             if ($row = mysqli_fetch_array($consulta)) {
                 return $id = trim($row[0]);
@@ -36,14 +42,40 @@ class Modelo_Doctor
     }
     
 
-    function Modificar_Doctor($id,$Doctoractual,$Doctornuevo,$estatus)
+    // function Modificar_Doctor($id,$Doctoractual,$Doctornuevo,$estatus)
+    // {
+    //     $sql = "call SP_MODIFICAR_Doctor('$id','$Doctoractual','$Doctornuevo','$estatus')";
+    //     if ($consulta = $this->conexion->conexion->query($sql)) {
+    //         if ($row = mysqli_fetch_array($consulta)) {
+    //             return $id = trim($row[0]);
+    //         }
+    //         $this->conexion->cerrar();
+    //     }
+    // }
+
+    function listar_combo_documento()
     {
-        $sql = "call SP_MODIFICAR_Doctor('$id','$Doctoractual','$Doctornuevo','$estatus')";
+        $sql = "call SP_LISTAR_COMBO_DOCUMENTO()";
+        $arreglo = array();
+
         if ($consulta = $this->conexion->conexion->query($sql)) {
-            if ($row = mysqli_fetch_array($consulta)) {
-                return $id = trim($row[0]);
+            while ($consulta_VU = mysqli_fetch_array($consulta)) {
+                $arreglo[] = $consulta_VU;
             }
-            $this->conexion->cerrar();
+            return $arreglo;
+            //  $this->conexion->cerrar();
+        }
+    }
+    function listar_combo_especialidad(){
+        $sql = "call SP_LISTAR_COMBO_ESPECIALIDAD()";
+        $arreglo = array();
+
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            while ($consulta_VU = mysqli_fetch_array($consulta)) {
+                $arreglo[] = $consulta_VU;
+            }
+            return $arreglo;
+            //  $this->conexion->cerrar();
         }
     }
 }

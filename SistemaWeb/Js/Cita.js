@@ -36,7 +36,7 @@ function listar_cita() {
             },
             { "defaultContent": "<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>" }
         ],
-        "language": idioma_espanol,
+        "language": "idioma_espanol",
         select: true
     });
     document.getElementById("tabla_cita_filter").style.display = "none";

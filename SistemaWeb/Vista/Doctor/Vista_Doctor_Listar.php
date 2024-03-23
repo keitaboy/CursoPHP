@@ -62,7 +62,7 @@
 </div>
 
 <div class="modal fade" id="modal_registro" role="dialog">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -70,94 +70,125 @@
             </div>
 
             <div class="modal-body">
-                <div class="col-lg-6">
-                    <label for="">Nombre</label>
-                    <input type="text" class="form-control" id="txt_doctor_nombre"
-                        placeholder="Ingrese nombre del doctor" maxlength="50"
-                        onkeypress="return soloLetras(event)"><br>
-                </div>
-                <div class="col-lg-6">
-                    <label for="">Apellido</label>
-                    <input type="text" class="form-control" id="txt_doctor_apellido"
-                        placeholder="Ingrese apellido(s) del doctor" maxlength="50"
-                        onkeypress="return soloLetras(event)"><br>
-                </div>
-                <!-- Inicio combobox -->
-                <<div class="col-lg-12">
-                    <label for="">Tipo de documento</label>
-                    <select class="js-example-basic-single" name="state" id="cbm_documento" style="width:100%;">
-                    </select><br><br>
-            </div>
-            <!-- Fin combobox -->
-            <div class="col-lg-6">
-                <label for="">Nro Documento</label>
-                <input type="text" class="form-control" id="txt_doctor_apellido"
-                    placeholder="Ingrese apellido(s) del doctor" maxlength="10"
-                    onkeypress="return soloNumeros(event)"><br>
-            </div>
-            <div class="col-lg-6">
-                <label for="">Celular</label>
-                <input type="text" class="form-control" id="txt_doctor_apellido"
-                    placeholder="Ingrese apellido(s) del doctor" maxlength="9"
-                    onkeypress="return soloNumeros(event)"><br>
-            </div>
-            <!-- ver -->
-            <div class="col-lg-12">
-                <label for="">Fecha de ininio</label>
-                <input type="text" class="form-control" id="txt_doctor" placeholder="Ingrese direccion">
-            </div>
-            <!-- Fin ver -->
-            
-            <div class="col-lg-6">
-                <label for="">Grado</label>
-                <input type="text" class="form-control" id="txt_doctor_apellido"
-                    placeholder="Ingrese apellido(s) del doctor" maxlength="50"
-                    onkeypress="return soloLetras(event)"><br>
-            </div>
-            <!-- Inicio combobox -->
-            <<div class="col-lg-12">
-                    <label for="">Tipo de especialidad</label>
-                    <select class="js-example-basic-single" name="state" id="cbm_documento" style="width:100%;">
-                    </select><br><br>
-            </div>
-            <!-- Fin combobox -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="">Nombre</label>
+                        <input type="text" class="form-control" id="txt_doctor_nombre"
+                            placeholder="Ingrese nombre del doctor" maxlength="50"
+                            onkeypress="return soloLetras(event)"><br>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Apellido</label>
+                        <input type="text" class="form-control" id="txt_doctor_apellido"
+                            placeholder="Ingrese apellido(s) del doctor" maxlength="50"
+                            onkeypress="return soloLetras(event)"><br>
+                    </div>
+                    <!-- Inicio combobox -->
+                    <div class="col-lg-6">
+                        <label for="">Tipo de documento</label>
+                        <select class="js-example-basic-single" name="state" id="cbm_documento" style="width:100%;">
+                        </select><br><br>
+                    </div>
+                    <!-- Fin combobox -->
+                    <div class="col-lg-6">
+                        <label for="">Nro Documento</label>
+                        <input type="text" class="form-control" id="txt_doctor_nrodoc"
+                            placeholder="Ingrese Nro documento" maxlength="10"
+                            onkeypress="return soloNumeros(event)"><br>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="">Celular</label>
+                        <input type="text" class="form-control" id="txt_doctor_celular" placeholder="Ingrese celular"
+                            maxlength="9" onkeypress="return soloNumeros(event)"><br>
+                    </div>
 
-            <div class="col-lg-4">
-                <label for="">Pais</label>
-                <input type="text" class="form-control" id="txt_doctor_apellido"
-                    placeholder="Ingrese apellido(s) del doctor" maxlength="50"
-                    onkeypress="return soloLetras(event)"><br>
+                    <div class="col-lg-12">
+                        <label for="">Grado</label>
+                        <input type="text" class="form-control" id="txt_doctor_grado"
+                            placeholder="Ingrese grado de educacion" maxlength="50"
+                            onkeypress="return soloLetras(event)"><br>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label for="">Fecha de inicio</label>
+                        <input type="date" class="form-control" id="txt_doctor_fecha_nac" placeholder="Ingrese fecha">
+                    </div>
+
+                    <!-- Inicio combobox -->
+                    <div class="col-lg-6">
+                        <label for="">Tipo de especialidad</label>
+                        <select class="js-example-basic-single" name="state" id="cbm_especialidad" style="width:100%;">
+                        </select><br><br>
+                    </div>
+                    <!-- Fin combobox -->
+
+                    <div class="col-lg-4">
+                        <label for="">Pais</label>
+                        <input type="text" class="form-control" id="txt_doctor_pais" placeholder="Ingrese pais"
+                            maxlength="50" onkeypress="return soloLetras(event)"><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="">Departamento</label>
+                        <input type="text" class="form-control" id="txt_doctor_depa" placeholder="Ingrese departamento"
+                            maxlength="50" onkeypress="return soloLetras(event)"><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="">Distrito</label>
+                        <input type="text" class="form-control" id="txt_doctor_distrito" placeholder="Ingrese distrito"
+                            maxlength="50" onkeypress="return soloLetras(event)"><br>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="">Direcci&oacute;n</label>
+                        <input type="text" class="form-control" id="txt_doctor_direccion"
+                            placeholder="Ingrese direccion" maxlength="250">
+                    </div>
+
+                    <div class="col-lg-12">
+                        <label for="">Correo</label>
+                        <input type="text" class="form-control" id="txt_doctor_correo" placeholder="Ingrese Correo">
+                        <label for="" id="emailOK_editar" style="color:red;"></label>
+                        <input type="text" id="validar_email" hidden>
+                    </div>
+
+                    <div class="col-lg-12"><label for=""></label></div>
+
+                    <div class="col-lg-12" style="text-align:center">
+                        <b>Datos del usuario </b><br>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label for="">Usuario</label>
+                        <input type="text" class="form-control" id="txt_doctor_usu" placeholder="Ingrese Usuario"
+                            maxlength="50">
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Contrase&ntilde;a</label>
+                        <input type="text" class="form-control" id="txt_doctor_pass" placeholder="Ingrese Contraseña"
+                            maxlength="50">
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Sexo</label>
+                        <select class="js-example-basic-single" name="state" id="cbm_sexo" style="width:100%;">
+                            <option value="M">MASCULINO</option>
+                            <option value="F">FEMENINO</option>
+                        </select><br><br>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label for="">Rol</label>
+                        <select class="js-example-basic-single" name="state" id="cbm_rol" style="width:100%;">
+                        </select><br><br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="Registrar_Doctor()"><i class="fa fa-check">
+                            <b>&nbsp;Registrar</b></i></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close">
+                            <b>&nbsp;Cerrar</b></i></button>
+                </div>
             </div>
-            <div class="col-lg-4">
-                <label for="">Departamento</label>
-                <input type="text" class="form-control" id="txt_doctor_apellido"
-                    placeholder="Ingrese apellido(s) del doctor" maxlength="50"
-                    onkeypress="return soloLetras(event)"><br>
-            </div>
-            <div class="col-lg-4">
-                <label for="">Distrito</label>
-                <input type="text" class="form-control" id="txt_doctor_apellido"
-                    placeholder="Ingrese apellido(s) del doctor" maxlength="50"
-                    onkeypress="return soloLetras(event)"><br>
-            </div>      
-            <div class="col-lg-12">
-                <label for="">Direcci&oacute;n</label>
-                <input type="text" class="form-control" id="txt_doctor" placeholder="Ingrese direccion">
-            </div>
-            <div class="col-lg-12">
-                <label for="">Correo</label>
-                <input type="text" class="form-control" id="txt_doctor" placeholder="Ingrese direccion">
-            </div>
-        
-        <div class="modal-footer">
-            <button class="btn btn-primary" onclick="Registrar_Doctor()"><i class="fa fa-check">
-                    <b>&nbsp;Registrar</b></i></button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close">
-                    <b>&nbsp;Cerrar</b></i></button>
-        </div>
         </div>
     </div>
-</div>
 </div>
 
 <div class="modal fade" id="modal_editar" role="dialog">
@@ -214,5 +245,19 @@
         expandIcon: 'fa-plus',
         removeIcon: 'fa-times'
     })
+
+    document.getElementById('txt_doctor_correo').addEventListener('input', function () {
+        campo = event.target;
+        emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+        if (emailRegex.test(campo.value)) {
+            $(this).css("border", "");
+            $("#emailOK").html("");
+            $("#validar_email").val("correcto");
+        } else {
+            $(this).css("border", "1px solid red");
+            $("#emailOK").html("Email Incorrecto");
+            $("#validar_email").val("incorrecto");
+        }
+    });
 
 </script>
