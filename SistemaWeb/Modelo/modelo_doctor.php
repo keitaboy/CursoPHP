@@ -42,16 +42,20 @@ class Modelo_Doctor
     }
     
 
-    // function Modificar_Doctor($id,$Doctoractual,$Doctornuevo,$estatus)
-    // {
-    //     $sql = "call SP_MODIFICAR_Doctor('$id','$Doctoractual','$Doctornuevo','$estatus')";
-    //     if ($consulta = $this->conexion->conexion->query($sql)) {
-    //         if ($row = mysqli_fetch_array($consulta)) {
-    //             return $id = trim($row[0]);
-    //         }
-    //         $this->conexion->cerrar();
-    //     }
-    // }
+     function Modificar_Doctor($idDoctor,$DoctorNombre,$DoctorApellido,$DoctorDocumento,
+     $DoctorNroDocActual,$DoctorNroDocNuevo,$DoctorCelular,$DoctorGrado,$DoctorFechaNac,$DoctorEspecialiadad,$DoctorPais,
+     $DoctorDepa,$DoctorDistrito,$DoctorDireccion,$DoctorCorreo,$IdUsuario)
+     {
+         $sql = "call SP_MODIFICAR_Doctor('$idDoctor','$DoctorNombre','$DoctorApellido','$DoctorDocumento',
+         '$DoctorNroDocActual','$DoctorNroDocNuevo','$DoctorCelular','$DoctorGrado','$DoctorFechaNac','$DoctorEspecialiadad','$DoctorPais',
+         '$DoctorDepa','$DoctorDistrito','$DoctorDireccion','$DoctorCorreo','$IdUsuario')";
+         if ($consulta = $this->conexion->conexion->query($sql)) {
+             if ($row = mysqli_fetch_array($consulta)) {
+                 return $id = trim($row[0]);
+             }
+             $this->conexion->cerrar();
+         }
+     }
 
     function listar_combo_documento()
     {

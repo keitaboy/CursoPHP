@@ -55,9 +55,6 @@ function listar_Doctor() {
 function AbrirModalRegistro() {
     $("#modal_registro").modal({ backdrop: 'static', keyboard: false })
     $("#modal_registro").modal('show');
-    listar_combo_rol();
-    listar_combo_documento();
-    listar_combo_especialidad();
 }
 
 function listar_combo_rol() {
@@ -69,7 +66,9 @@ function listar_combo_rol() {
         var cadena = "";
         if (data.length > 0) {
             for (var i = 0; i < data.length; i++) {
-                cadena += "<option value='" + data[i][0] + "'>" + data[i][1] + "</option>";
+                if(data[i][0]=='3'){
+                    cadena += "<option value='" + data[i][0] + "'>" + data[i][1] + "</option>";
+                }                
             }
             $("#cbm_rol").html(cadena);
             $("#cbm_rol_editar").html(cadena);
@@ -93,11 +92,11 @@ function listar_combo_especialidad() {
                 cadena += "<option value='" + data[i][0] + "'>" + data[i][1] + "</option>";
             }
             $("#cbm_especialidad").html(cadena);
-          //  $("#cbm_rol_editar").html(cadena);
+            $("#cbm_especialidad_editar").html(cadena);
         } else {
             cadena += "<option value=''No se Encontraron Registros</option>";
             $("#cbm_especialidad").html(cadena);
-            //$("#cbm_rol_editar").html(cadena);
+            $("#cbm_especialidad_editar").html(cadena);
         }
     })
 }
@@ -114,27 +113,44 @@ function listar_combo_documento() {
                 cadena += "<option value='" + data[i][0] + "'>" + data[i][1] + "</option>";
             }
             $("#cbm_documento").html(cadena);
-           // $("#cbm_rol_editar").html(cadena);
+            $("#cbm_documento_editar").html(cadena);
         } else {
             cadena += "<option value=''No se Encontraron Registros</option>";
             $("#cbm_documento").html(cadena);
-           // $("#cbm_rol_editar").html(cadena);
+            $("#cbm_documento_editar").html(cadena);
         }
     })
 }
 
-//  $('#tabla_Doctor').on('click', '.editar', function () {
-//      var data = tableDoctor.row($(this).parents('tr')).data();//deteccion de fila al hacer click y captura de datos
-//      if (tableDoctor.row(this).child.isShown()) {
-//          var data = tableDoctor.row(this).data();
-//      }
-//      $("#modal_editar").modal({ backdrop: 'static', keyboard: false })
-//      $("#modal_editar").modal('show');
-//      $("#txt_idDoctor").val(data.IdTypeSpeciality);
-//      $("#txt_Doctor_actual_editar").val(data.TypeSpecialityName);
-//      $("#txt_Doctor_nuevo_editar").val(data.TypeSpecialityName);
-//      $("#cbm_estatus_editar").val(data.Status).trigger("change");
-//  })
+  $('#tabla_Doctor').on('click', '.editar', function () {
+      var data = tableDoctor.row($(this).parents('tr')).data();//deteccion de fila al hacer click y captura de datos
+      if (tableDoctor.row(this).child.isShown()) {
+          var data = tableDoctor.row(this).data();
+          console.log(data.IdTypeDoct);
+          console.log(data.IdTypeSpeciality);
+          console.log(data.IdRol);
+      }
+      $("#modal_editar").modal({ backdrop: 'static', keyboard: false })
+      $("#modal_editar").modal('show');
+      $("#txt_idDoctor").val(data.IdDoc);
+      $("#txt_doctor_nombre_editar").val(data.Name);
+      $("#txt_doctor_apellido_editar").val(data.LastName);
+      $("#cbm_documento_editar").val(data.IdTypeDoct).trigger("change");
+      $("#txt_doctor_nrodoc_editar_actual").val(data.NroDoct);
+      $("#txt_doctor_nrodoc_editar_nuevo").val(data.NroDoct);
+      $("#txt_doctor_celular_editar").val(data.CellPhone);
+      $("#txt_doctor_grado_editar").val(data.Grade);
+      $("#txt_doctor_fecha_nac_editar").val(data.Date_StartWorking);
+      $("#cbm_especialidad_editar").val(data.IdTypeSpeciality).trigger("change");
+      $("#txt_doctor_pais_editar").val(data.Country);
+      $("#txt_doctor_depa_editar").val(data.Region);
+      $("#txt_doctor_distrito_editar").val(data.City);
+      $("#txt_doctor_direccion_editar").val(data.Adress);
+      $("#txt_doctor_correo_editar").val(data.Email);
+      $("#txt_id_usuario").val(data.IdUsuario);
+      $("#txt_doctor_usu_editar").val(data.UsuUser);
+      $("#cbm_rol_editar").val(data.IdRol).trigger("change");
+  })
 
  function filterGlobal(){
      $('#tabla_Doctor').DataTable().search(
@@ -160,6 +176,11 @@ function listar_combo_documento() {
      var DoctorPassword = $("#txt_doctor_pass").val();
      var DoctorSexo = $("#cbm_sexo").val();
      var DoctorRol = $("#cbm_rol").val();
+     var EmailOk = $("#emailOK").val();
+
+     if(EmailOk == "Incorrecto"){
+         return Swal.fire("Advertencia", "El correo electronico no tiene un formato correcto","warning");
+     }
 
      if(DoctorNombre.length == 0 || DoctorApellido.length == 0 || DoctorDocumento.length == 0 || 
         DoctorNroDoc.length == 0 || DoctorCelular.length == 0 || DoctorGrado.length == 0 || DoctorFechaNac.length == 0 ||
@@ -209,43 +230,92 @@ function listar_combo_documento() {
      })
  }
 
-// function LimpiarCampos(){
-//     $("#txt_Doctor").val("");
-// }
+ function LimpiarCampos(){
+     $("#txt_doctor_nombre").val("");
+     $("#txt_doctor_apellido").val("");
+     $("#cbm_documento").val("");
+     $("#txt_doctor_nrodoc").val("");
+     $("#txt_doctor_celular").val("");
+     $("#txt_doctor_grado").val("");
+     $("#txt_doctor_fecha_nac").val("");
+     $("#cbm_especialidad").val("");
+     $("#txt_doctor_pais").val("");
+     $("#txt_doctor_depa").val("");
+     $("#txt_doctor_distrito").val("");
+     $("#txt_doctor_direccion").val("");
+     $("#txt_doctor_correo").val("");
+     $("#txt_doctor_usu").val("");
+     $("#txt_doctor_pass").val("");
+     $("#cbm_sexo").val("");
+     $("#cbm_rol").val("");
+ }
 
-// function Modificar_Doctor(){
-//     var id = $("#txt_idDoctor").val();
-//     var Doctoractual = $("#txt_Doctor_actual_editar").val();
-//     var Doctornuevo = $("#txt_Doctor_nuevo_editar").val();  
-//     var estatus = $("#cbm_estatus_editar").val();
+ function Modificar_Doctor(){
+    var idDoctor = $("#txt_idDoctor").val();
+    var DoctorNombre = $("#txt_doctor_nombre_editar").val();
+    var DoctorApellido = $("#txt_doctor_apellido_editar").val();
+    var DoctorDocumento = $("#cbm_documento_editar").val();
+    var DoctorNroDocActual = $("#txt_doctor_nrodoc_editar_actual").val();
+    var DoctorNroDocNuevo = $("#txt_doctor_nrodoc_editar_nuevo").val();
+    var DoctorCelular = $("#txt_doctor_celular_editar").val();
+    var DoctorGrado = $("#txt_doctor_grado_editar").val();
+    var DoctorFechaNac = $("#txt_doctor_fecha_nac_editar").val();
+    var DoctorEspecialiadad = $("#cbm_especialidad_editar").val();
+    var DoctorPais = $("#txt_doctor_pais_editar").val();
+    var DoctorDepa = $("#txt_doctor_depa_editar").val();
+    var DoctorDistrito = $("#txt_doctor_distrito_editar").val();
+    var DoctorDireccion = $("#txt_doctor_direccion_editar").val();
+    var DoctorCorreo = $("#txt_doctor_correo_editar").val(); //apuntar a email doctor e email usuario
+    var IdUsuario = $("#txt_id_usuario").val();
+    var EmailOk = $("#emailOK_editar").val();
 
-//     if(Doctoractual.length == 0 || Doctornuevo.length == 0 || estatus.length == 0 ){
+     if(EmailOk == "Incorrecto"){
+         return Swal.fire("Advertencia", "El correo electronico no tiene un formato correcto","warning");
+     }
 
-//         Swal.fire("Mensaje de advertencia", "Llene los campos vacios","warning");
-//     }
-//     $.ajax({
-//         "url":"../Controlador/Doctor/controlador_Doctor_modificar.php",
-//         type:'POST',
-//         data:{
-//             id: id,
-//             Doctoractual:Doctoractual,
-//             Doctornuevo:Doctornuevo,
-//             estatus:estatus
-//         }
-//     }).done(function(resp){
-//         console.log("la rpta es: " + resp);
-//         if(resp>0){
-//             if(resp==1){
-//                 $("#modal_editar").modal('hide');
-//                 listar_Doctor();
-//                 Swal.fire("Mensaje de confirmacion", "Datos actualizados correctamente","success");         
-//             }
-//             else{
-//                 Swal.fire("Mensaje de advertencia", "El insumo ya existe!","warning");
-//             }
-//         }
-//         else{
-//             Swal.fire("Mensaje de error", "No se pudo completar el registro","error");
-//         }
-//     })
-// }
+    if(DoctorNombre.length == 0 || DoctorApellido.length == 0 || DoctorDocumento.length == 0 || 
+        DoctorNroDoc.length == 0 || DoctorCelular.length == 0 || DoctorGrado.length == 0 || DoctorFechaNac.length == 0 ||
+        DoctorEspecialiadad.length == 0 || DoctorPais.length == 0 || DoctorDepa.length == 0 || DoctorDistrito.length == 0 ||
+        DoctorDireccion.length == 0 || DoctorCorreo.length == 0 || DoctorUsuario.length == 0 || DoctorPassword.length == 0 ||
+        DoctorSexo.length == 0 || DoctorRol.length == 0 || DoctorNroDocActual.length== 0 || DoctorNroDocNuevo.length == 0){
+         Swal.fire("Mensaje de advertencia", "Llene todos campos vacios","warning");
+     }
+     $.ajax({
+         "url":"../Controlador/Doctor/controlador_Doctor_modificar.php",
+         type:'POST',
+         data:{
+            idDoctor:idDoctor,
+            DoctorNombre:DoctorNombre,
+            DoctorApellido:DoctorApellido,
+            DoctorDocumento:DoctorDocumento,
+            DoctorNroDocActual:DoctorNroDocActual,
+            DoctorNroDocNuevo:DoctorNroDocNuevo,
+            DoctorCelular:DoctorCelular,
+            DoctorGrado:DoctorGrado,
+            DoctorFechaNac:DoctorFechaNac,
+            DoctorEspecialiadad:DoctorEspecialiadad,
+            DoctorPais:DoctorPais,
+            DoctorDepa:DoctorDepa,
+            DoctorDistrito:DoctorDistrito,
+            DoctorDireccion:DoctorDireccion,
+            DoctorCorreo:DoctorCorreo,
+            IdUsuario:IdUsuario          
+         }
+     }).done(function(resp){
+         if(resp>0){
+             if(resp==1){
+                 $("#modal_registro").modal('hide');
+                 listar_Doctor();
+                 LimpiarCampos();
+                 Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente","success");         
+             }
+             else{
+                 LimpiarCampos();
+                 Swal.fire("Mensaje de advertencia", "La Doctor ya existe!","warning");
+             }
+         }
+         else{
+             Swal.fire("Mensaje de error", "No se pudo completar el registro","error");
+         }
+     })
+ }

@@ -146,7 +146,7 @@
                     <div class="col-lg-12">
                         <label for="">Correo</label>
                         <input type="text" class="form-control" id="txt_doctor_correo" placeholder="Ingrese Correo">
-                        <label for="" id="emailOK_editar" style="color:red;"></label>
+                        <label for="" id="emailOK" style="color:red;"></label>
                         <input type="text" id="validar_email" hidden>
                     </div>
 
@@ -163,8 +163,8 @@
                     </div>
                     <div class="col-lg-6">
                         <label for="">Contrase&ntilde;a</label>
-                        <input type="text" class="form-control" id="txt_doctor_pass" placeholder="Ingrese Contraseña"
-                            maxlength="50">
+                        <input type="password" class="form-control" id="txt_doctor_pass"
+                            placeholder="Ingrese Contraseña" maxlength="50">
                     </div>
                     <div class="col-lg-6">
                         <label for="">Sexo</label>
@@ -191,46 +191,138 @@
     </div>
 </div>
 
+
 <div class="modal fade" id="modal_editar" role="dialog">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><b>Editar de Doctor</b></h4>
+                <h4 class="modal-title"><b>Editar datos del Doctor</b></h4>
             </div>
 
             <div class="modal-body">
-                <div class="col-lg-12">
-                    <input type="text" id="txt_idDoctor" hidden>
-                    <label for="">Nombre</label>
-                    <input type="text" id="txt_doctor_actual_editar" placeholder="Ingrese Doctor" maxlength="50"
-                        onkeypress="return soloLetras(event)" hidden>
-                    <input type="text" class="form-control" id="txt_doctor_nuevo_editar" placeholder="Ingrese Doctor"
-                        maxlength="50" onkeypress="return soloLetras(event)">
-                    <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <input type="text" id="txt_idDoctor"></input>
+                        <label for="">Nombre</label>
+                        <input type="text" class="form-control" id="txt_doctor_nombre_editar"
+                            placeholder="Ingrese nombre del doctor" maxlength="50"
+                            onkeypress="return soloLetras(event)"><br>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Apellido</label>
+                        <input type="text" class="form-control" id="txt_doctor_apellido_editar"
+                            placeholder="Ingrese apellido(s) del doctor" maxlength="50"
+                            onkeypress="return soloLetras(event)"><br>
+                    </div>
+                    <!-- Inicio combobox -->
+                    <div class="col-lg-6">
+                        <label for="">Tipo de documento</label>
+                        <select class="js-example-basic-single" name="state" id="cbm_documento_editar"
+                            style="width:100%;">
+                        </select><br><br>
+                    </div>
+                    <!-- Fin combobox -->
+                    <div class="col-lg-6">
+                        <label for="">Nro Documento</label>
+                        <input type="text" id="txt_doctor_nrodoc_editar_actual" ><br>
+                        <input type="text" class="form-control" id="txt_doctor_nrodoc_editar_nuevo"
+                            placeholder="Ingrese Nro documento" maxlength="10"
+                            onkeypress="return soloNumeros(event)"><br>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="">Celular</label>
+                        <input type="text" class="form-control" id="txt_doctor_celular_editar"
+                            placeholder="Ingrese celular" maxlength="9" onkeypress="return soloNumeros(event)"><br>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <label for="">Grado</label>
+                        <input type="text" class="form-control" id="txt_doctor_grado_editar"
+                            placeholder="Ingrese grado de educacion" maxlength="50"
+                            onkeypress="return soloLetras(event)"><br>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label for="">Fecha de inicio</label>
+                        <input type="date" class="form-control" id="txt_doctor_fecha_nac_editar"
+                            placeholder="Ingrese fecha">
+                    </div>
+
+                    <!-- Inicio combobox -->
+                    <div class="col-lg-6">
+                        <label for="">Tipo de especialidad</label>
+                        <select class="js-example-basic-single" name="state" id="cbm_especialidad_editar"
+                            style="width:100%;">
+                        </select><br><br>
+                    </div>
+                    <!-- Fin combobox -->
+
+                    <div class="col-lg-4">
+                        <label for="">Pais</label>
+                        <input type="text" class="form-control" id="txt_doctor_pais_editar" placeholder="Ingrese pais"
+                            maxlength="50" onkeypress="return soloLetras(event)"><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="">Departamento</label>
+                        <input type="text" class="form-control" id="txt_doctor_depa_editar"
+                            placeholder="Ingrese departamento" maxlength="50" onkeypress="return soloLetras(event)"><br>
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="">Distrito</label>
+                        <input type="text" class="form-control" id="txt_doctor_distrito_editar"
+                            placeholder="Ingrese distrito" maxlength="50" onkeypress="return soloLetras(event)"><br>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="">Direcci&oacute;n</label>
+                        <input type="text" class="form-control" id="txt_doctor_direccion_editar"
+                            placeholder="Ingrese direccion" maxlength="250">
+                    </div>
+
+                    <div class="col-lg-12">
+                        <label for="">Correo</label>
+                        <input type="text" class="form-control" id="txt_doctor_correo_editar"
+                            placeholder="Ingrese Correo">
+                        <label for="" id="emailOK_editar" style="color:red;"></label>
+                        <input type="text" id="validar_email_editar" hidden>
+                    </div>
+
+                    <div class="col-lg-12"><label for=""></label></div>
+
+                    <div class="col-lg-12" style="text-align:center">
+                        <b>Datos del usuario </b><br>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <input type="text" id="txt_id_usuario" >
+                        <label for="">Usuario</label>
+                        <input type="text" class="form-control" id="txt_doctor_usu_editar" placeholder="Ingrese Usuario"
+                            maxlength="50" disabled>
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="">Rol</label>
+                        <select class="js-example-basic-single" name="state" id="cbm_rol_editar" style="width:100%;"
+                            disabled>
+                        </select><br><br>
+                    </div>
                 </div>
-                <div class="col-lg-12">
-                    <label for="">Estatus</label>
-                    <select class="js-example-basic-single" name="state" id="cbm_estatus_editar" style="width:100%;">
-                        <option value="ACTIVO">ACTIVO</option>
-                        <option value="INACTIVO">INACTIVO</option>
-                    </select><br><br>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="Modificar_Doctor()"><i class="fa fa-check">
+                            <b>&nbsp;Modificar</b></i></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close">
+                            <b>&nbsp;Cerrar</b></i></button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" onclick="Modificar_Doctor()"><i class="fa fa-check">
-                        <b>&nbsp;MODIFICAR</b></i></button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close">
-                        <b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
     </div>
 </div>
-<!-- Hasta acaaa -->
 
 <script>
     $(document).ready(function () {
         listar_Doctor();
+        listar_combo_rol();
+        listar_combo_documento();
+        listar_combo_especialidad();
         $('.js-example-basic-single').select2();
         $("#modal_registro").on('shown.bs.modal', function () {
             $("#txt_insumo").focus();
@@ -257,6 +349,20 @@
             $(this).css("border", "1px solid red");
             $("#emailOK").html("Email Incorrecto");
             $("#validar_email").val("incorrecto");
+        }
+    });
+
+    document.getElementById('txt_doctor_correo_editar').addEventListener('input', function () {
+        campo = event.target;
+        emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+        if (emailRegex.test(campo.value)) {
+            $(this).css("border", "");
+            $("#emailOK_editar").html("");
+            $("#validar_email_editar").val("correcto");
+        } else {
+            $(this).css("border", "1px solid red");
+            $("#emailOK_editar").html("Email Incorrecto");
+            $("#validar_email_editar").val("incorrecto");
         }
     });
 
