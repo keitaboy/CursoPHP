@@ -34,7 +34,7 @@ function listar_cita() {
                     }
                 }
             },
-            { "defaultContent": "<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>" }
+            { "defaultContent": "<button style='font-size:13px;' type='button' class='editar btn btn-primary' title='ed&iacute;tar'><i class='fa fa-edit'></i></button>&nbps;<button style='font-size:13px;' type='button' class='imprimir btn btn-danger' title='imprimir''><i class='fa fa-print'></i></button>" }
         ],
         "language": idioma_espanol,
         select: true
@@ -66,6 +66,14 @@ $('#tabla_cita').on('click', '.editar', function () {
     $("#txt_insumo_nuevo_editar").val(data.Name);
     $("#txt_stock_editar").val(data.Cant);
     $("#cbm_estatus_editar").val(data.Status).trigger("change");
+})
+
+$('#tabla_cita').on('click', '.imprimir', function () {
+    var data = tablecita.row($(this).parents('tr')).data();//deteccion de fila al hacer click y captura de datos
+    if (tableinsumo.row(this).child.isShown()) {
+        var data = tablecita.row(this).data();
+    }
+    window.open("../Vista/libreporte/reportes/generar_ticket.php?id="+parseInt(data.IdAppointment)+"#zoom=100%","Ticket","scrollbars=NO");
 })
 
 function filterGlobal(){
@@ -144,6 +152,22 @@ function Registrar_Cita(){
     }).done(function(resp){
         if(resp>0){
                 $("#modal_registro").modal('hide');
+                Swal.fire({
+                    title: 'Datos de la cita guardados',
+                    text: "Datos correctamente registrados",
+                    icon: 'success',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonColor: 'Imprimir ticket'
+                }).then((result)=>{
+                    if (result.value) {
+                        window.open("../Vista/libreporte/reportes/generar_ticket.php?id="+parseInt(resp)+"#zoom=100%","Ticket","scrollbars=NO");
+                    }else{
+                        $('#modal_registro').modal('hide');
+                        listar_cita();
+                    }
+                })
                 return Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente","success");         
             }
         
