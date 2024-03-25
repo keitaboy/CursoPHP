@@ -265,9 +265,15 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MAIN NAVIGATION</li>
-          <li class="active treeview">
+          <li class="active treeview">         
           <a onclick="cargar_contenido('contenido_principal','Doctor/Vista_Doctor_Listar.php')">
               <i class="fa fa-user-md"></i> <span>Doctores</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right">
+                </i></span>
+            </a>
+            <a onclick="cargar_contenido('contenido_principal','Paciente/Vista_Paciente_Listar.php')">
+              <i class="fa fa-users"></i> <span>Paciente</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right">
                 </i></span>

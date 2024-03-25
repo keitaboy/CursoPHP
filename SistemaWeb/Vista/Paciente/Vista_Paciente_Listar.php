@@ -1,9 +1,9 @@
-<script type="text/javascript" src="../Js/Doctor.js?rev=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="../Js/Paciente.js?rev=<?php echo time(); ?>"></script>
 <div class="row"></div>
 <div class="col-md-12">
     <div class="box box-warning box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">Mantenimiento de Doctores</h3>
+            <h3 class="box-title">Mantenimiento de Pacientees</h3>
             <div class="box-tools pull-right">s
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-widget="remove"><i
                         class="fa fa-minus"></i>
@@ -26,23 +26,22 @@
                             class="glyphicon glyphicon-plus"></i>Nuevo Registro</button>
                 </div>
             </div>
-            <table id="tabla_Doctor" class="display responsive nowrap" style="width:100%">
+            <table id="tabla_Paciente" class="display responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Doctor</th>
-                        <th>Tipo de Documento</th>
-                        <th>Nro Documento</th>
-                        <th>Celular</th>
-                        <th>Fecha de ingreso</th>
-                        <th>Grado</th>
-                        <th>Especialidad</th>
-                        <th>Pais</th>
-                        <th>Departamento</th>
-                        <th>Ciudad</th>
-                        <th>Direccion</th>
-                        <th>Correo</th>
-                        <th>Usuario</th>
+                        <th>Paciente</th>
+                        <th>Tipo de mascota</th>
+                        <th>Raza</th>
+                        <th>Color</th>
+                        <th>Peso</th>
+                        <th>Altura</th>
+                        <th>Edad</th>
+                        <th>Decha de nacimiento</th>
+                        <th>Nro de historial clinico</th>
+                        <th>Dueño</th>
+                        <th>Sexo</th>
+                        <th>Esterilazado</th>
                         <th>Acci&oacute;n</th>
                     </tr>
                 </thead>
@@ -66,86 +65,49 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><b>Registro de Doctor</b></h4>
+                <h4 class="modal-title"><b>Registro de Dueño </b></h4>
             </div>
 
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="">Nombre</label>
-                        <input type="text" class="form-control" id="txt_doctor_nombre"
-                            placeholder="Ingrese nombre del doctor" maxlength="50"
+                        <input type="text" class="form-control" id="txt_Dueno_nombre"
+                            placeholder="Ingrese nombre del Dueño" maxlength="50"
                             onkeypress="return soloLetras(event)"><br>
                     </div>
                     <div class="col-lg-6">
                         <label for="">Apellido</label>
-                        <input type="text" class="form-control" id="txt_doctor_apellido"
-                            placeholder="Ingrese apellido(s) del doctor" maxlength="50"
+                        <input type="text" class="form-control" id="txt_Dueno_apellido"
+                            placeholder="Ingrese apellido(s) del Dueño" maxlength="50"
                             onkeypress="return soloLetras(event)"><br>
                     </div>
-                    <!-- Inicio combobox -->
                     <div class="col-lg-6">
                         <label for="">Tipo de documento</label>
                         <select class="js-example-basic-single" name="state" id="cbm_documento" style="width:100%;">
                         </select><br><br>
                     </div>
-                    <!-- Fin combobox -->
                     <div class="col-lg-6">
                         <label for="">Nro Documento</label>
-                        <input type="text" class="form-control" id="txt_doctor_nrodoc"
+                        <input type="text" class="form-control" id="txt_Dueno_nrodoc"
                             placeholder="Ingrese Nro documento" maxlength="10"
                             onkeypress="return soloNumeros(event)"><br>
                     </div>
                     <div class="col-lg-12">
                         <label for="">Celular</label>
-                        <input type="text" class="form-control" id="txt_doctor_celular" placeholder="Ingrese celular"
+                        <input type="text" class="form-control" id="txt_Dueno_celular" placeholder="Ingrese celular"
                             maxlength="9" onkeypress="return soloNumeros(event)"><br>
                     </div>
 
                     <div class="col-lg-12">
-                        <label for="">Grado</label>
-                        <input type="text" class="form-control" id="txt_doctor_grado"
-                            placeholder="Ingrese grado de educacion" maxlength="50"
-                            onkeypress="return soloLetras(event)"><br>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <label for="">Fecha de inicio</label>
-                        <input type="date" class="form-control" id="txt_doctor_fecha_nac" placeholder="Ingrese fecha">
-                    </div>
-
-                    <!-- Inicio combobox -->
-                    <div class="col-lg-6">
-                        <label for="">Tipo de especialidad</label>
-                        <select class="js-example-basic-single" name="state" id="cbm_especialidad" style="width:100%;">
-                        </select><br><br>
-                    </div>
-                    <!-- Fin combobox -->
-
-                    <div class="col-lg-4">
-                        <label for="">Pais</label>
-                        <input type="text" class="form-control" id="txt_doctor_pais" placeholder="Ingrese pais"
-                            maxlength="50" onkeypress="return soloLetras(event)"><br>
-                    </div>
-                    <div class="col-lg-4">
-                        <label for="">Departamento</label>
-                        <input type="text" class="form-control" id="txt_doctor_depa" placeholder="Ingrese departamento"
-                            maxlength="50" onkeypress="return soloLetras(event)"><br>
-                    </div>
-                    <div class="col-lg-4">
-                        <label for="">Distrito</label>
-                        <input type="text" class="form-control" id="txt_doctor_distrito" placeholder="Ingrese distrito"
-                            maxlength="50" onkeypress="return soloLetras(event)"><br>
-                    </div>
-                    <div class="col-lg-12">
                         <label for="">Direcci&oacute;n</label>
-                        <input type="text" class="form-control" id="txt_doctor_direccion"
+                        <input type="text" class="form-control" id="txt_Dueno_direccion"
                             placeholder="Ingrese direccion" maxlength="250">
                     </div>
 
                     <div class="col-lg-12">
                         <label for="">Correo</label>
-                        <input type="text" class="form-control" id="txt_doctor_correo" placeholder="Ingrese Correo">
+                        <input type="text" class="form-control" id="txt_Dueno_correo" placeholder="Ingrese Correo">
                         <label for="" id="emailOK" style="color:red;"></label>
                         <input type="text" id="validar_email" hidden>
                     </div>
@@ -153,35 +115,77 @@
                     <div class="col-lg-12"><label for=""></label></div>
 
                     <div class="col-lg-12" style="text-align:center">
-                        <b>Datos del usuario </b><br>
+                        <b>Datos del paciente </b><br>
                     </div>
 
                     <div class="col-lg-6">
-                        <label for="">Usuario</label>
-                        <input type="text" class="form-control" id="txt_doctor_usu" placeholder="Ingrese Usuario"
-                            maxlength="50">
+                        <label for="">Nombre</label>
+                        <input type="text" class="form-control" id="txt_Paciente_nombre"
+                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
                     </div>
                     <div class="col-lg-6">
-                        <label for="">Contrase&ntilde;a</label>
-                        <input type="password" class="form-control" id="txt_doctor_pass"
-                            placeholder="Ingrese Contraseña" maxlength="50">
+                        <label for="">Tipo de mascota</label>
+                        <select class="js-example-basic-single" name="state" id="cbm_tipo_mascota" style="width:100%;">
+                        </select><br><br>                     
                     </div>
+                    <div class="col-lg-6">
+                        <label for="">Raza</label>
+                        <input type="text" class="form-control" id="txt_Paciente_raza"
+                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Color</label>
+                        <input type="text" class="form-control" id="txt_Paciente_color"
+                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Peso</label>
+                        <input type="text" class="form-control" id="txt_Paciente_peso"
+                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Altura</label>
+                        <input type="text" class="form-control" id="txt_Paciente_altura"
+                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Edad</label>
+                        <input type="text" class="form-control" id="txt_Paciente_edad">                            
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" id="txt_Paciente_FechaNac"
+                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
+                    </div>
+                    <!-- <div class="col-lg-6">
+                        <label for="">N&uacute;mero de historia medica</label>
+                        <input type="text" class="form-control" id="txt_Paciente_HisMed"
+                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">DNI dueño</label>
+                        <input type="text" class="form-control" id="txt_Paciente_DNIDue"
+                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
+                    </div> -->
+                   
                     <div class="col-lg-6">
                         <label for="">Sexo</label>
                         <select class="js-example-basic-single" name="state" id="cbm_sexo" style="width:100%;">
-                            <option value="M">MASCULINO</option>
-                            <option value="F">FEMENINO</option>
+                            <option value="M">MACHO</option>
+                            <option value="H">HEMBRA</option>
                         </select><br><br>
                     </div>
 
                     <div class="col-lg-6">
-                        <label for="">Rol</label>
-                        <select class="js-example-basic-single" name="state" id="cbm_rol" style="width:100%;">
+                        <label for="">Esterilizado</label>
+                        <select class="js-example-basic-single" name="state" id="cbm_esterilizado" style="width:100%;">
+                        <option value="No">NO</option>
+                            <option value="Si">SI</option>
                         </select><br><br>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" onclick="Registrar_Doctor()"><i class="fa fa-check">
+                    <button class="btn btn-primary" onclick="Registrar_Paciente()"><i class="fa fa-check">
                             <b>&nbsp;Registrar</b></i></button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close">
                             <b>&nbsp;Cerrar</b></i></button>
@@ -197,22 +201,22 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><b>Editar datos del Doctor</b></h4>
+                <h4 class="modal-title"><b>Editar datos del Paciente</b></h4>
             </div>
 
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <input type="text" id="txt_idDoctor" hidden></input>
+                        <input type="text" id="txt_idPaciente" hidden></input>
                         <label for="">Nombre</label>
-                        <input type="text" class="form-control" id="txt_doctor_nombre_editar"
-                            placeholder="Ingrese nombre del doctor" maxlength="50"
+                        <input type="text" class="form-control" id="txt_Paciente_nombre_editar"
+                            placeholder="Ingrese nombre del Paciente" maxlength="50"
                             onkeypress="return soloLetras(event)"><br>
                     </div>
                     <div class="col-lg-6">
                         <label for="">Apellido</label>
-                        <input type="text" class="form-control" id="txt_doctor_apellido_editar"
-                            placeholder="Ingrese apellido(s) del doctor" maxlength="50"
+                        <input type="text" class="form-control" id="txt_Paciente_apellido_editar"
+                            placeholder="Ingrese apellido(s) del Paciente" maxlength="50"
                             onkeypress="return soloLetras(event)"><br>
                     </div>
                     <!-- Inicio combobox -->
@@ -225,27 +229,27 @@
                     <!-- Fin combobox -->
                     <div class="col-lg-6">
                         <label for="">Nro Documento</label>
-                        <input type="text" id="txt_doctor_nrodoc_editar_actual" hidden><br>
-                        <input type="text" class="form-control" id="txt_doctor_nrodoc_editar_nuevo"
+                        <input type="text" id="txt_Paciente_nrodoc_editar_actual" hidden><br>
+                        <input type="text" class="form-control" id="txt_Paciente_nrodoc_editar_nuevo"
                             placeholder="Ingrese Nro documento" maxlength="10"
                             onkeypress="return soloNumeros(event)"><br>
                     </div>
                     <div class="col-lg-12">
                         <label for="">Celular</label>
-                        <input type="text" class="form-control" id="txt_doctor_celular_editar"
+                        <input type="text" class="form-control" id="txt_Paciente_celular_editar"
                             placeholder="Ingrese celular" maxlength="9" onkeypress="return soloNumeros(event)"><br>
                     </div>
 
                     <div class="col-lg-12">
                         <label for="">Grado</label>
-                        <input type="text" class="form-control" id="txt_doctor_grado_editar"
+                        <input type="text" class="form-control" id="txt_Paciente_grado_editar"
                             placeholder="Ingrese grado de educacion" maxlength="50"
                             onkeypress="return soloLetras(event)"><br>
                     </div>
 
                     <div class="col-lg-6">
                         <label for="">Fecha de inicio</label>
-                        <input type="date" class="form-control" id="txt_doctor_fecha_nac_editar"
+                        <input type="date" class="form-control" id="txt_Paciente_fecha_nac_editar"
                             placeholder="Ingrese fecha">
                     </div>
 
@@ -260,28 +264,28 @@
 
                     <div class="col-lg-4">
                         <label for="">Pais</label>
-                        <input type="text" class="form-control" id="txt_doctor_pais_editar" placeholder="Ingrese pais"
+                        <input type="text" class="form-control" id="txt_Paciente_pais_editar" placeholder="Ingrese pais"
                             maxlength="50" onkeypress="return soloLetras(event)"><br>
                     </div>
                     <div class="col-lg-4">
                         <label for="">Departamento</label>
-                        <input type="text" class="form-control" id="txt_doctor_depa_editar"
+                        <input type="text" class="form-control" id="txt_Paciente_depa_editar"
                             placeholder="Ingrese departamento" maxlength="50" onkeypress="return soloLetras(event)"><br>
                     </div>
                     <div class="col-lg-4">
                         <label for="">Distrito</label>
-                        <input type="text" class="form-control" id="txt_doctor_distrito_editar"
+                        <input type="text" class="form-control" id="txt_Paciente_distrito_editar"
                             placeholder="Ingrese distrito" maxlength="50" onkeypress="return soloLetras(event)"><br>
                     </div>
                     <div class="col-lg-12">
                         <label for="">Direcci&oacute;n</label>
-                        <input type="text" class="form-control" id="txt_doctor_direccion_editar"
+                        <input type="text" class="form-control" id="txt_Paciente_direccion_editar"
                             placeholder="Ingrese direccion" maxlength="250">
                     </div>
 
                     <div class="col-lg-12">
                         <label for="">Correo</label>
-                        <input type="text" class="form-control" id="txt_doctor_correo_editar"
+                        <input type="text" class="form-control" id="txt_Paciente_correo_editar"
                             placeholder="Ingrese Correo">
                         <label for="" id="emailOK_editar" style="color:red;"></label>
                         <input type="text" id="validar_email_editar" hidden>
@@ -296,7 +300,7 @@
                     <div class="col-lg-4">
                         <input type="text" id="txt_id_usuario" hidden>
                         <label for="">Usuario</label>
-                        <input type="text" class="form-control" id="txt_doctor_usu_editar" placeholder="Ingrese Usuario"
+                        <input type="text" class="form-control" id="txt_Paciente_usu_editar" placeholder="Ingrese Usuario"
                             maxlength="50" disabled>
                     </div>
                     <div class="col-lg-4">
@@ -307,7 +311,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" onclick="Modificar_Doctor()"><i class="fa fa-check">
+                    <button class="btn btn-primary" onclick="Modificar_Paciente()"><i class="fa fa-check">
                             <b>&nbsp;Modificar</b></i></button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close">
                             <b>&nbsp;Cerrar</b></i></button>
@@ -319,10 +323,9 @@
 
 <script>
     $(document).ready(function () {
-        listar_Doctor();
-        listar_combo_rol();
+        listar_Paciente();
+        listar_combo_tipo_paciente();
         listar_combo_documento();
-        listar_combo_especialidad();
         $('.js-example-basic-single').select2();
         $("#modal_registro").on('shown.bs.modal', function () {
             $("#txt_insumo").focus();
@@ -337,33 +340,5 @@
         expandIcon: 'fa-plus',
         removeIcon: 'fa-times'
     })
-
-    document.getElementById('txt_doctor_correo').addEventListener('input', function () {
-        campo = event.target;
-        emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-        if (emailRegex.test(campo.value)) {
-            $(this).css("border", "");
-            $("#emailOK").html("");
-            $("#validar_email").val("correcto");
-        } else {
-            $(this).css("border", "1px solid red");
-            $("#emailOK").html("Email Incorrecto");
-            $("#validar_email").val("incorrecto");
-        }
-    });
-
-    document.getElementById('txt_doctor_correo_editar').addEventListener('input', function () {
-        campo = event.target;
-        emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-        if (emailRegex.test(campo.value)) {
-            $(this).css("border", "");
-            $("#emailOK_editar").html("");
-            $("#validar_email_editar").val("correcto");
-        } else {
-            $(this).css("border", "1px solid red");
-            $("#emailOK_editar").html("Email Incorrecto");
-            $("#validar_email_editar").val("incorrecto");
-        }
-    });
 
 </script>

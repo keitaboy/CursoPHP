@@ -46,7 +46,7 @@ class Modelo_Doctor
      $DoctorNroDocActual,$DoctorNroDocNuevo,$DoctorCelular,$DoctorGrado,$DoctorFechaNac,$DoctorEspecialiadad,$DoctorPais,
      $DoctorDepa,$DoctorDistrito,$DoctorDireccion,$DoctorCorreo,$IdUsuario)
      {
-         $sql = "call SP_MODIFICAR_Doctor('$idDoctor','$DoctorNombre','$DoctorApellido','$DoctorDocumento',
+         $sql = "call SP_MODIFICAR_DOCTOR('$idDoctor','$DoctorNombre','$DoctorApellido','$DoctorDocumento',
          '$DoctorNroDocActual','$DoctorNroDocNuevo','$DoctorCelular','$DoctorGrado','$DoctorFechaNac','$DoctorEspecialiadad','$DoctorPais',
          '$DoctorDepa','$DoctorDistrito','$DoctorDireccion','$DoctorCorreo','$IdUsuario')";
          if ($consulta = $this->conexion->conexion->query($sql)) {

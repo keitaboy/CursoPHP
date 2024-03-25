@@ -126,9 +126,6 @@ function listar_combo_documento() {
       var data = tableDoctor.row($(this).parents('tr')).data();//deteccion de fila al hacer click y captura de datos
       if (tableDoctor.row(this).child.isShown()) {
           var data = tableDoctor.row(this).data();
-          console.log(data.IdTypeDoct);
-          console.log(data.IdTypeSpeciality);
-          console.log(data.IdRol);
       }
       $("#modal_editar").modal({ backdrop: 'static', keyboard: false })
       $("#modal_editar").modal('show');
@@ -273,11 +270,11 @@ function listar_combo_documento() {
          return Swal.fire("Advertencia", "El correo electronico no tiene un formato correcto","warning");
      }
 
-    if(DoctorNombre.length == 0 || DoctorApellido.length == 0 || DoctorDocumento.length == 0 || 
-        DoctorNroDoc.length == 0 || DoctorCelular.length == 0 || DoctorGrado.length == 0 || DoctorFechaNac.length == 0 ||
-        DoctorEspecialiadad.length == 0 || DoctorPais.length == 0 || DoctorDepa.length == 0 || DoctorDistrito.length == 0 ||
-        DoctorDireccion.length == 0 || DoctorCorreo.length == 0 || DoctorUsuario.length == 0 || DoctorPassword.length == 0 ||
-        DoctorSexo.length == 0 || DoctorRol.length == 0 || DoctorNroDocActual.length== 0 || DoctorNroDocNuevo.length == 0){
+    if(idDoctor.length == 0 || DoctorNombre.length == 0 || DoctorApellido.length == 0 || DoctorDocumento.length == 0 ||
+        DoctorNroDocActual.length== 0 || DoctorNroDocNuevo.length == 0 || DoctorCelular.length == 0 || 
+        DoctorGrado.length == 0 || DoctorFechaNac.length == 0 || DoctorEspecialiadad.length == 0 || DoctorPais.length == 0 || 
+        DoctorDepa.length == 0 || DoctorDistrito.length == 0 || DoctorDireccion.length == 0 || DoctorCorreo.length == 0 ||
+        IdUsuario.length == 0 ){
          Swal.fire("Mensaje de advertencia", "Llene todos campos vacios","warning");
      }
      $.ajax({
