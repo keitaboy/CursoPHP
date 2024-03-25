@@ -70,7 +70,7 @@ $('#tabla_cita').on('click', '.editar', function () {
 
 $('#tabla_cita').on('click', '.imprimir', function () {
     var data = tablecita.row($(this).parents('tr')).data();//deteccion de fila al hacer click y captura de datos
-    if (tableinsumo.row(this).child.isShown()) {
+    if (tablecita.row(this).child.isShown()) {
         var data = tablecita.row(this).data();
     }
     window.open("../Vista/libreporte/reportes/generar_ticket.php?id="+parseInt(data.IdAppointment)+"#zoom=100%","Ticket","scrollbars=NO");
