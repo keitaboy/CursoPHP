@@ -142,7 +142,6 @@ function Registrar_Cita(){
             idusuario:idusuario
         }
     }).done(function(resp){
-        return alert(resp);
         if(resp>0){
                 $("#modal_registro").modal('hide');
                 return Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente","success");         
