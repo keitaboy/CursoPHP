@@ -65,14 +65,13 @@ class Modelo_Cita
         }
     }
 
-    function Modificar_Insumo($id,$insumonuevo,$insumoactual,$stock,$estatus)
+    function Editar_Cita($idcita,$idpaciente,$iddoctor,$descripcion,$estatus)
     {
-        $sql = "call SP_MODIFICAR_INSUMO('$id','$insumonuevo','$insumoactual','$stock','$estatus')";
+        $sql = "call SP_MODIFICAR_CITA('$idcita','$idpaciente','$iddoctor','$descripcion','$estatus')";
         if ($consulta = $this->conexion->conexion->query($sql)) {
-            if ($row = mysqli_fetch_array($consulta)) {
-                return $id = trim($row[0]);
-            }
-            $this->conexion->cerrar();
+                return 1;
+        }else{
+                return 0;
         }
     }
 
