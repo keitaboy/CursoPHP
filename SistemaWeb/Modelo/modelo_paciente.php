@@ -24,12 +24,23 @@ class Modelo_Paciente
         }
     }
 
-    function Registrar_Paciente($DuenoNombre,$DuenoApellido,$DuenoDocumento,$DuenoNroDoc,$DuenoCelular,
-    $DuenoDireccion,$DuenoCorreo,$PacienteNombre,$PacienteTipoMasc,$PacienteRaza,$PacienteColor,$PacientePeso,
+    function Registrar_Dueno($DuenoNombre,$DuenoApellido,$DuenoDocumento,$DuenoNroDoc,$DuenoCelular,
+    $DuenoDireccion,$DuenoCorreo)
+    {
+        $sql = "call SP_REGISTRAR_DUENO('$DuenoNombre','$DuenoApellido','$DuenoDocumento','$DuenoNroDoc','$DuenoCelular',
+        '$DuenoDireccion','$DuenoCorreo')";
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            if ($row = mysqli_fetch_array($consulta)) {
+                return $id = trim($row[0]);
+            }
+            $this->conexion->cerrar();
+        }
+    }
+
+    function Registrar_Paciente($PacienteNombre,$PacienteTipoMasc,$PacienteRaza,$PacienteColor,$PacientePeso,
     $PacienteAltura,$PacienteEdad,$PacienteFechaNac,$PacienteSexo,$PacienteEsterilizar)
     {
-        $sql = "call SP_REGISTRAR_PACIENTE('$DuenoNombre','$DuenoApellido','$DuenoDocumento','$DuenoNroDoc','$DuenoCelular',
-        '$DuenoDireccion','$DuenoCorreo','$PacienteNombre','$PacienteTipoMasc','$PacienteRaza','$PacienteColor','$PacientePeso',
+        $sql = "call SP_REGISTRAR_PACIENTE('$PacienteNombre','$PacienteTipoMasc','$PacienteRaza','$PacienteColor','$PacientePeso',
         '$PacienteAltura','$PacienteEdad','$PacienteFechaNac','$PacienteSexo','$PacienteEsterilizar')";
         if ($consulta = $this->conexion->conexion->query($sql)) {
             if ($row = mysqli_fetch_array($consulta)) {

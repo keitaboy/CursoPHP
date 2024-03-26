@@ -101,8 +101,8 @@
 
                     <div class="col-lg-12">
                         <label for="">Direcci&oacute;n</label>
-                        <input type="text" class="form-control" id="txt_Dueno_direccion"
-                            placeholder="Ingrese direccion" maxlength="250">
+                        <input type="text" class="form-control" id="txt_Dueno_direccion" placeholder="Ingrese direccion"
+                            maxlength="250">
                     </div>
 
                     <div class="col-lg-12">
@@ -112,52 +112,71 @@
                         <input type="text" id="validar_email" hidden>
                     </div>
 
-                    <div class="col-lg-12"><label for=""></label></div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" onclick="Registrar_Dueno()"><i class="fa fa-check">
+                                <b>&nbsp;Registrar Due&nacute;o</b></i></button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close">
+                                <b>&nbsp;Cerrar</b></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                    <div class="col-lg-12" style="text-align:center">
-                        <b>Datos del paciente </b><br>
-                    </div>
+<div class="modal fade" id="modal_registrar_paciente" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Editar datos del Paciente</b></h4>
+            </div>
 
-                    <div class="col-lg-6">
-                        <label for="">Nombre</label>
-                        <input type="text" class="form-control" id="txt_Paciente_nombre"
-                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
-                    </div>
-                    <div class="col-lg-6">
-                        <label for="">Tipo de mascota</label>
-                        <select class="js-example-basic-single" name="state" id="cbm_tipo_mascota" style="width:100%;">
-                        </select><br><br>                     
-                    </div>
-                    <div class="col-lg-6">
-                        <label for="">Raza</label>
-                        <input type="text" class="form-control" id="txt_Paciente_raza"
-                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
-                    </div>
-                    <div class="col-lg-6">
-                        <label for="">Color</label>
-                        <input type="text" class="form-control" id="txt_Paciente_color"
-                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
-                    </div>
-                    <div class="col-lg-6">
-                        <label for="">Peso</label>
-                        <input type="text" class="form-control" id="txt_Paciente_peso"
-                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
-                    </div>
-                    <div class="col-lg-6">
-                        <label for="">Altura</label>
-                        <input type="text" class="form-control" id="txt_Paciente_altura"
-                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
-                    </div>
-                    <div class="col-lg-6">
-                        <label for="">Edad</label>
-                        <input type="text" class="form-control" id="txt_Paciente_edad">                            
-                    </div>
-                    <div class="col-lg-6">
-                        <label for="">Fecha de nacimiento</label>
-                        <input type="date" class="form-control" id="txt_Paciente_FechaNac"
-                            placeholder="Ingrese nombre del Paciente" maxlength="50">                            
-                    </div>
-                    <!-- <div class="col-lg-6">
+            <div class="modal-body">
+                <div class="col-lg-12" style="text-align:center">
+                    <b>Datos del paciente </b><br>
+                </div>
+
+                <div class="col-lg-6">
+                    <label for="">Nombre</label>
+                    <input type="text" class="form-control" id="txt_Paciente_nombre"
+                        placeholder="Ingrese nombre del Paciente" maxlength="50">
+                </div>
+                <div class="col-lg-6">
+                    <label for="">Tipo de mascota</label>
+                    <select class="js-example-basic-single" name="state" id="cbm_tipo_mascota" style="width:100%;">
+                    </select><br><br>
+                </div>
+                <div class="col-lg-6">
+                    <label for="">Raza</label>
+                    <input type="text" class="form-control" id="txt_Paciente_raza"
+                        placeholder="Ingrese nombre del Paciente" maxlength="50">
+                </div>
+                <div class="col-lg-6">
+                    <label for="">Color</label>
+                    <input type="text" class="form-control" id="txt_Paciente_color"
+                        placeholder="Ingrese nombre del Paciente" maxlength="50">
+                </div>
+                <div class="col-lg-6">
+                    <label for="">Peso</label>
+                    <input type="text" class="form-control" id="txt_Paciente_peso"
+                        placeholder="Ingrese nombre del Paciente" maxlength="50">
+                </div>
+                <div class="col-lg-6">
+                    <label for="">Altura</label>
+                    <input type="text" class="form-control" id="txt_Paciente_altura"
+                        placeholder="Ingrese nombre del Paciente" maxlength="50">
+                </div>
+                <div class="col-lg-6">
+                    <label for="">Edad</label>
+                    <input type="text" class="form-control" id="txt_Paciente_edad">
+                </div>
+                <div class="col-lg-6">
+                    <label for="">Fecha de nacimiento</label>
+                    <input type="date" class="form-control" id="txt_Paciente_FechaNac"
+                        placeholder="Ingrese nombre del Paciente" maxlength="50">
+                </div>
+                <!-- <div class="col-lg-6">
                         <label for="">N&uacute;mero de historia medica</label>
                         <input type="text" class="form-control" id="txt_Paciente_HisMed"
                             placeholder="Ingrese nombre del Paciente" maxlength="50">                            
@@ -167,29 +186,28 @@
                         <input type="text" class="form-control" id="txt_Paciente_DNIDue"
                             placeholder="Ingrese nombre del Paciente" maxlength="50">                            
                     </div> -->
-                   
-                    <div class="col-lg-6">
-                        <label for="">Sexo</label>
-                        <select class="js-example-basic-single" name="state" id="cbm_sexo" style="width:100%;">
-                            <option value="M">MACHO</option>
-                            <option value="H">HEMBRA</option>
-                        </select><br><br>
-                    </div>
 
-                    <div class="col-lg-6">
-                        <label for="">Esterilizado</label>
-                        <select class="js-example-basic-single" name="state" id="cbm_esterilizado" style="width:100%;">
+                <div class="col-lg-6">
+                    <label for="">Sexo</label>
+                    <select class="js-example-basic-single" name="state" id="cbm_sexo" style="width:100%;">
+                        <option value="M">MACHO</option>
+                        <option value="H">HEMBRA</option>
+                    </select><br><br>
+                </div>
+
+                <div class="col-lg-6">
+                    <label for="">Esterilizado</label>
+                    <select class="js-example-basic-single" name="state" id="cbm_esterilizado" style="width:100%;">
                         <option value="No">NO</option>
-                            <option value="Si">SI</option>
-                        </select><br><br>
-                    </div>
+                        <option value="Si">SI</option>
+                    </select><br><br>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" onclick="Registrar_Paciente()"><i class="fa fa-check">
-                            <b>&nbsp;Registrar</b></i></button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close">
-                            <b>&nbsp;Cerrar</b></i></button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="Registrar_Paciente()"><i class="fa fa-check">
+                        <b>&nbsp;Registrar</b></i></button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close">
+                        <b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
     </div>
@@ -300,8 +318,8 @@
                     <div class="col-lg-4">
                         <input type="text" id="txt_id_usuario" hidden>
                         <label for="">Usuario</label>
-                        <input type="text" class="form-control" id="txt_Paciente_usu_editar" placeholder="Ingrese Usuario"
-                            maxlength="50" disabled>
+                        <input type="text" class="form-control" id="txt_Paciente_usu_editar"
+                            placeholder="Ingrese Usuario" maxlength="50" disabled>
                     </div>
                     <div class="col-lg-4">
                         <label for="">Rol</label>
@@ -328,7 +346,7 @@
         listar_combo_documento();
         $('.js-example-basic-single').select2();
         $("#modal_registro").on('shown.bs.modal', function () {
-            $("#txt_insumo").focus();
+            $("#txt_Dueno_nombre").focus();
         })
     });
 
@@ -340,5 +358,19 @@
         expandIcon: 'fa-plus',
         removeIcon: 'fa-times'
     })
+
+    document.getElementById('txt_Dueno_correo').addEventListener('input', function () {
+        campo = event.target;
+        emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+        if (emailRegex.test(campo.value)) {
+            $(this).css("border", "");
+            $("#emailOK").html("");
+            $("#validar_email").val("correcto");
+        } else {
+            $(this).css("border", "1px solid red");
+            $("#emailOK").html("Email Incorrecto");
+            $("#validar_email").val("incorrecto");
+        }
+    });
 
 </script>

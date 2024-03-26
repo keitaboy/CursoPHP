@@ -64,6 +64,11 @@ function AbrirModalRegistro() {
     $("#modal_registro").modal('show');
 }
 
+function AbrirModalRegistroPaciente() {    
+    $("#modal_registrar_paciente").modal({ backdrop: 'static', keyboard: false })
+    $("#modal_registrar_paciente").modal('show');
+}
+
 function listar_combo_documento() {
     $.ajax({
         "url": "../Controlador/Doctor/controlador_combo_documento_listar.php",
@@ -138,7 +143,7 @@ function listar_combo_tipo_paciente() {
      ).draw();
  }
 
- function Registrar_Paciente(){
+ function Registrar_Dueno(){
      var DuenoNombre = $("#txt_Dueno_nombre").val();
      var DuenoApellido = $("#txt_Dueno_apellido").val();
      var DuenoDocumento = $("#cbm_documento").val();
@@ -146,18 +151,6 @@ function listar_combo_tipo_paciente() {
      var DuenoCelular = $("#txt_Dueno_celular").val();
      var DuenoDireccion = $("#txt_Dueno_direccion").val();
      var DuenoCorreo = $("#txt_Dueno_correo").val();
-     var PacienteNombre = $("#txt_Paciente_nombre").val();
-     var PacienteTipoMasc = $("#cbm_tipo_mascota").val();
-     var PacienteRaza = $("#txt_Paciente_raza").val();
-     var PacienteColor = $("#txt_Paciente_color").val();
-     var PacientePeso = $("#txt_Paciente_peso").val();
-     var PacienteAltura = $("#txt_Paciente_altura").val();
-     var PacienteEdad = $("#txt_Paciente_edad").val();
-     var PacienteFechaNac= $("#txt_Paciente_FechaNac").val();
-    //  var PacienteHisMed = $("#txt_Paciente_HisMed").val();
-    //  var PacienteDNIDUE = $("#txt_Paciente_DNIDue").val();
-     var PacienteSexo = $("#cbm_sexo").val();
-     var PacienteEsterilizar = $("#cbm_esterilizado").val();
      var EmailOk = $("#emailOK").val();
 
      if(EmailOk == "Incorrecto"){
@@ -165,16 +158,11 @@ function listar_combo_tipo_paciente() {
      }
 
      if(DuenoNombre.length == 0 || DuenoApellido.length == 0 || DuenoDocumento.length == 0 || DuenoNroDoc.length == 0 ||
-         DuenoCelular.length == 0 || DuenoDireccion.length == 0 || DuenoCorreo.length == 0 || PacienteNombre.length == 0 ||
-         PacienteTipoMasc.length == 0 || PacienteRaza.length == 0 || PacienteColor.length == 0 || PacientePeso.length == 0 ||
-         PacienteAltura.length == 0 || PacienteEdad.length == 0 || PacienteFechaNac.length == 0 || PacienteSexo.length == 0 ||
-         PacienteEsterilizar.length == 0){
-        //  PacienteAltura.length == 0 || PacienteEdad.length == 0 || PacienteFechaNac.length == 0 || PacienteHisMed.length == 0 ||
-        //  PacienteDNIDUE.length == 0 || PacienteSexo.length == 0 || PacienteEsterilizar.length == 0){
+         DuenoCelular.length == 0 || DuenoDireccion.length == 0 || DuenoCorreo.length == 0 ){
          Swal.fire("Mensaje de advertencia", "Llene todos campos vacios","warning");
      }
      $.ajax({
-         "url":"../Controlador/Paciente/controlador_Paciente_registro.php",
+         "url":"../Controlador/Paciente/controlador_Dueno_registro.php",
          type:'POST',
          data:{
               DuenoNombre :DuenoNombre,
@@ -183,30 +171,19 @@ function listar_combo_tipo_paciente() {
               DuenoNroDoc :DuenoNroDoc,
               DuenoCelular :DuenoCelular,
               DuenoDireccion :DuenoDireccion,
-              DuenoCorreo :DuenoCorreo,
-              PacienteNombre :PacienteNombre,
-              PacienteTipoMasc :PacienteTipoMasc,
-              PacienteRaza :PacienteRaza,
-              PacienteColor :PacienteColor,
-              PacientePeso :PacientePeso,
-              PacienteAltura :PacienteAltura,
-              PacienteEdad :PacienteEdad,
-              PacienteFechaNac :PacienteFechaNac,
-            //   PacienteHisMed :PacienteHisMed,
-            //   PacienteDNIDUE :PacienteDNIDUE,
-              PacienteSexo :PacienteSexo,
-              PacienteEsterilizar:PacienteEsterilizar
+              DuenoCorreo :DuenoCorreo
          }
      }).done(function(resp){
          if(resp>0){
              if(resp==1){
                  $("#modal_registro").modal('hide');
                  listar_Paciente();
-                 LimpiarCampos();
-                 Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente","success");         
+                 LimpiarCamposDueno();                 
+                 Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente","success");    
+                 AbrirModalRegistroPaciente();     
              }
              else{
-                 LimpiarCampos();
+                LimpiarCamposDueno();
                  Swal.fire("Mensaje de advertencia", "La Paciente ya existe!","warning");
              }
          }
@@ -216,25 +193,92 @@ function listar_combo_tipo_paciente() {
      })
  }
 
- function LimpiarCampos(){
-     $("#txt_Paciente_nombre").val("");
-     $("#txt_Paciente_apellido").val("");
+ function Registrar_Paciente() {
+    var PacienteNombre = $("#txt_Paciente_nombre").val();
+    var PacienteTipoMasc = $("#cbm_tipo_mascota").val();
+    var PacienteRaza = $("#txt_Paciente_raza").val();
+    var PacienteColor = $("#txt_Paciente_color").val();
+    var PacientePeso = $("#txt_Paciente_peso").val();
+    var PacienteAltura = $("#txt_Paciente_altura").val();
+    var PacienteEdad = $("#txt_Paciente_edad").val();
+    var PacienteFechaNac = $("#txt_Paciente_FechaNac").val();
+    var PacienteSexo = $("#cbm_sexo").val();
+    var PacienteEsterilizar = $("#cbm_esterilizado").val();
+
+    if (PacienteNombre.length == 0 || PacienteTipoMasc.length == 0 || PacienteRaza.length == 0 || PacienteColor.length == 0 ||
+        PacientePeso.length == 0 || PacienteAltura.length == 0 || PacienteEdad.length == 0 || PacienteFechaNac.length == 0 ||
+        PacienteSexo.length == 0 || PacienteEsterilizar.length == 0) {
+        Swal.fire("Mensaje de advertencia", "Llene todos campos vacíos", "warning");
+    }
+    $.ajax({
+        "url": "../Controlador/Paciente/controlador_Paciente_registro.php",
+        type: 'POST',
+        data: {
+            PacienteNombre: PacienteNombre,
+            PacienteTipoMasc: PacienteTipoMasc,
+            PacienteRaza: PacienteRaza,
+            PacienteColor: PacienteColor,
+            PacientePeso: PacientePeso,
+            PacienteAltura: PacienteAltura,
+            PacienteEdad: PacienteEdad,
+            PacienteFechaNac: PacienteFechaNac,
+            PacienteSexo: PacienteSexo,
+            PacienteEsterilizar: PacienteEsterilizar
+        }
+    }).done(function (resp) {
+        if (resp > 0) {
+            if (resp == 1) {
+                // Mostrar ventana emergente de pregunta
+                Swal.fire({
+                    title: '¿Desea agregar otra mascota?',
+                    showDenyButton: true,
+                    confirmButtonText: `Sí`,
+                    denyButtonText: `No`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        LimpiarCamposPaciente();
+                        Swal.fire("Mensaje de confirmación", "Agregue los datos de la nueva mascota", "success");
+                    } else if (result.isDenied) {
+                        $("#modal_registrar_paciente").modal('hide');
+                        listar_Paciente();
+                        Swal.fire("Mensaje de confirmación", "Datos guardados correctamente", "success");
+                    }
+                });
+            } else {
+                LimpiarCamposPaciente();
+                Swal.fire("Mensaje de advertencia", "La paciente ya existe!", "warning");
+            }
+        } else {
+            Swal.fire("Mensaje de error", "No se pudo completar el registro", "error");
+        }
+    });
+}
+
+
+ function LimpiarCamposDueno(){
+     $("#txt_Dueno_nombre").val("");
+     $("#txt_Dueno_apellido").val("");
      $("#cbm_documento").val("");
-     $("#txt_Paciente_nrodoc").val("");
-     $("#txt_Paciente_celular").val("");
-     $("#txt_Paciente_grado").val("");
-     $("#txt_Paciente_fecha_nac").val("");
-     $("#cbm_especialidad").val("");
-     $("#txt_Paciente_pais").val("");
-     $("#txt_Paciente_depa").val("");
-     $("#txt_Paciente_distrito").val("");
-     $("#txt_Paciente_direccion").val("");
-     $("#txt_Paciente_correo").val("");
-     $("#txt_Paciente_usu").val("");
-     $("#txt_Paciente_pass").val("");
-     $("#cbm_sexo").val("");
-     $("#cbm_rol").val("");
+     $("#txt_Dueno_nrodoc").val("");
+     $("#txt_Dueno_celular").val("");
+     $("#txt_Dueno_direccion").val("");
+     $("#txt_Dueno_correo").val("");
  }
+
+ function LimpiarCamposPaciente(){
+    $("#txt_Paciente_nombre").val("");
+    $("#cbm_tipo_mascota").val("");
+    $("#cbm_documento").val("");
+    $("#txt_Paciente_raza").val("");
+    $("#txt_Paciente_color").val("");
+    $("#txt_Paciente_peso").val("");
+    $("#txt_Paciente_altura").val("");
+    $("#txt_Paciente_edad").val("");
+    $("#txt_Paciente_FechaNac").val("");
+    $("#cbm_sexo").val("");
+    $("#cbm_esterilizado").val("");
+}
+
 
  function Modificar_Paciente(){
     var idPaciente = $("#txt_idPaciente").val();
