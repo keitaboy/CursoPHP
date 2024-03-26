@@ -61,11 +61,12 @@ $('#tabla_cita').on('click', '.editar', function () {
     }
     $("#modal_editar").modal({ backdrop: 'static', keyboard: false })
     $("#modal_editar").modal('show');
-    $("#txt_idinsumo").val(data.IdItem);
-    $("#txt_insumo_actual_editar").val(data.Name);
-    $("#txt_insumo_nuevo_editar").val(data.Name);
-    $("#txt_stock_editar").val(data.Cant);
-    $("#cbm_estatus_editar").val(data.Status).trigger("change");
+    listar_paciente_combo();
+    listar_doctor_combo();
+    $("#txt_cita_id").val(data.IdAppointment);
+    $("#cbm_paciente_editar").val(data.IdPacient).trigger("change");
+    $("#cbm_doctor_editar").val(data.IdDoc).trigger("change");
+    $("#txt_descripcion_editar").val(data.Description).trigger("change");
 })
 
 $('#tabla_cita').on('click', '.imprimir', function () {
@@ -173,6 +174,55 @@ function Registrar_Cita(){
         
         else{
             return Swal.fire("Mensaje de error", "No se pudo completar el registro","error");
+        }
+    })
+}
+
+function Editar_Cita(){
+    var idcita= $("#txt_cita_id").val();
+    var idpaciente = $("#cbm_paciente_editar").val();
+    var iddoctor = $("#cbm_doctor_editar").val();
+    var descripcion = $("#txt_descripcion_editar").val();
+    var estatus=$("#cbm_estatus").val();
+    
+    if(idcita.length == 0 || idpaciente.length == 0 || iddoctor.length == 0 || descripcion.length == 0){        
+        return Swal.fire("Mensaje de advertencia", "Llene los campos vacios","warning");
+    }
+    $.ajax({
+        "url":"../Controlador/cita/controlador_cita_editar.php",
+        type:'POST',
+        data:{
+            idcita:idcita,
+            idpa:idpaciente,
+            iddo:iddoctor,
+            descripcion:descripcion,
+            estatus:estatus
+        }
+    }).done(function(resp){
+        if(resp>0){
+                $("#modal_registro").modal('hide');
+                Swal.fire({
+                    title: 'Datos de la cita guardados',
+                    text: "Datos correctamente registrados",
+                    icon: 'success',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonColor: 'Imprimir ticket'
+                }).then((result)=>{
+                    tablecita.ajax.reload();
+                    if (result.value) {
+                        window.open("../Vista/libreporte/reportes/generar_ticket.php?id="+parseInt(idcita)+"#zoom=100%","Ticket","scrollbars=NO");
+                    }else{
+                        $('#modal_registro').modal('hide');
+                        listar_cita();
+                    }
+                })
+                return Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente","success");         
+            }
+        
+        else{
+            return Swal.fire("Mensaje de error", "No se pudo completar la edici&oacute;n","error");
         }
     })
 }
