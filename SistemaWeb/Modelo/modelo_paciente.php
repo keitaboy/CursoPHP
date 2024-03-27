@@ -24,6 +24,21 @@ class Modelo_Paciente
         }
     }
 
+    function listar_Dueno()
+    {
+        $sql = "call SP_LISTAR_DUENO()";
+        $arreglo = array();
+
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            while ($consulta_VU = mysqli_fetch_assoc($consulta)) {
+
+                $arreglo["data"][] = $consulta_VU;
+            }
+            $this->conexion->cerrar();
+            return $arreglo;
+        }
+    }
+
     function Registrar_Dueno($DuenoNombre,$DuenoApellido,$DuenoDocumento,$DuenoNroDoc,$DuenoCelular,
     $DuenoDireccion,$DuenoCorreo)
     {
