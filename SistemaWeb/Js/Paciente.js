@@ -45,14 +45,58 @@ function listar_Paciente() {
     })
     document.getElementById("tabla_Paciente_filter").style.display = "none";
 
-    $('input.global_filter').on('keyup click', function () {
-        filterGlobal();
+    $('input.global_filter_paciente').on('keyup click', function () {
+        filterGlobalPaciente();
     });
     $('input.column_filter').on('keyup click', function () {
         filterColumn($(this).parents('tr').attr('data-column'));
     });
     tablePaciente.on('draw.dt', function () {
         var PageInfo = $('#tabla_Paciente').DataTable().page.info();
+        tablePaciente.column(0, { page: 'current' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1 + PageInfo.start;
+        });
+    });
+}
+
+function listar_Dueno() {
+    tablePaciente = $("#tabla_Dueno").DataTable({
+        "ordering": false,
+        "paging": false,
+        "searching": { "regex": true },
+        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+        "pageLength": 10,
+        "destroy": true,
+        "async": false,
+        "processing": true,
+        "ajax": {
+            "url": "../Controlador/Paciente/controlador_Dueno_listar.php",
+            "type": 'POST'
+        },
+        "order": [[1, 'asc']],
+        "columns": [
+            { "defaultContent": "" },
+            { "data": "Dueno" },
+            { "data": "TypeDocName" },
+            { "data": "NroDoct" },
+            { "data": "CellPhone" },
+            { "data": "Adress" },            
+            { "data": "Email" },           
+            { "defaultContent": "<button style='font-size:13px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>" }
+        ],
+        "language": idioma_espanol,
+        "select": true
+    })
+    document.getElementById("tabla_Dueno_filter").style.display = "none";
+
+    $('input.global_filter_dueno').on('keyup click', function () {
+        filterGlobalDueno();
+    });
+    $('input.column_filter').on('keyup click', function () {
+        filterColumn($(this).parents('tr').attr('data-column'));
+    });
+    tablePaciente.on('draw.dt', function () {
+        var PageInfo = $('#tabla_Dueno').DataTable().page.info();
         tablePaciente.column(0, { page: 'current' }).nodes().each(function (cell, i) {
             cell.innerHTML = i + 1 + PageInfo.start;
         });
@@ -137,11 +181,16 @@ function listar_combo_tipo_paciente() {
 //       $("#cbm_rol_editar").val(data.IdRol).trigger("change");
 //   })
 
- function filterGlobal(){
+ function filterGlobalPaciente(){
      $('#tabla_Paciente').DataTable().search(
-         $('#global_filter').val(),
+         $('#global_filter_paciente').val(),
      ).draw();
  }
+ function filterGlobalDueno(){
+    $('#tabla_Dueno').DataTable().search(
+        $('#global_filter_dueno').val(),
+    ).draw();
+}
 
  function Registrar_Dueno(){
      var DuenoNombre = $("#txt_Dueno_nombre").val();
