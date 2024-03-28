@@ -32,5 +32,4 @@ class conexion{
     function cerrar() {
         $this->conexion->close();
     }
-
 }
