@@ -69,8 +69,13 @@ $('#tabla_insumo').on('click', '.editar', function () {
     $("#cbm_item_editar").val(data.IdTypeItem).trigger("change");
 })
 
+function AbrirModalRegistro() {
+    $("#modal_registro").modal({ backdrop: 'static', keyboard: false })
+    $("#modal_registro").modal('show');
+}
+
 function filterGlobal(){
-    $('#tabla_insumo').DataTable.search(
+    $('#tabla_insumo').DataTable().search(
         $('#global_filter').val(),
     ).draw();
 }
@@ -81,7 +86,7 @@ function Registrar_Insumo(){
     var estatus = $("#cbm_estatus").val();
     var item=$("#cbm_item").val();
     if(stock<0){
-        Swal.fire("Mensaje de advertencia", "El stock no puede ser vacio","warning");
+        return Swal.fire("Mensaje de advertencia", "El stock no puede ser vacio","warning");
     }
     if(insumo.length == 0 || stock.length == 0 || estatus.length == 0 || item.length == 0){
         Swal.fire("Mensaje de advertencia", "Llene los campos vacios","warning");
@@ -102,15 +107,15 @@ function Registrar_Insumo(){
                 $("#modal_registro").modal('hide');
                 listar_insumo();
                 LimpiarCampos();
-                Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente","success");         
+               return Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente","success");         
             }
             else{
                 LimpiarCampos();
-                Swal.fire("Mensaje de advertencia", "El insumo ya existe!","warning");
+               return Swal.fire("Mensaje de advertencia", "El insumo ya existe!","warning");
             }
         }
         else{
-            Swal.fire("Mensaje de error", "No se pudo completar el registro","error");
+            return Swal.fire("Mensaje de error", "No se pudo completar el registro","error");
         }
     })
 }
@@ -129,7 +134,7 @@ function Modificar_Insumo(){
     var estatus = $("#cbm_estatus_editar").val();
     var item = $("#cbm_item_editar").val();   
     if(stock<0){
-        Swal.fire("Mensaje de advertencia", "El stock no puede ser vacio","warning");
+         return Swal.fire("Mensaje de advertencia", "El stock no puede ser vacio","warning");
     }
     if(insumoactual.length == 0 || insumonuevo.length == 0 || stock.length == 0 || estatus.length == 0 || item.length == 0){
 
@@ -155,7 +160,7 @@ function Modificar_Insumo(){
                 Swal.fire("Mensaje de confirmacion", "Datos actualizados correctamente","success");         
             }
             else{
-                Swal.fire("Mensaje de advertencia", "El insumo ya existe!","warning");
+                return  Swal.fire("Mensaje de advertencia", "El insumo ya existe!","warning");
             }
         }
         else{

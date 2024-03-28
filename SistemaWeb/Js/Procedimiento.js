@@ -59,7 +59,7 @@ function RegistrarProcedimiento() {
     var estatus=$("#txt_observacion").val();
 
     if (procedimiento.legth==0) {
-       Swal.fire("Mensaje de Advertencia","El campo procedimiento debe tener datos","warning");
+        return Swal.fire("Mensaje de Advertencia","El campo procedimiento debe tener datos","warning");
     }
 
     $.ajax({
@@ -75,10 +75,10 @@ function RegistrarProcedimiento() {
                 $("#modal_registro").modal('hide');
                 listar_procedimiento();
                 LimpiarDatos();
-                Swal.fire("Mensaje de Confirmacion","Datos Registrados Correctamente","success");
+                return Swal.fire("Mensaje de Confirmacion","Datos Registrados Correctamente","success");
             }else{
                 LimpiarDatos();
-                Swal.fire("Mensaje de advertencia","El servicio ya existe","warning");
+                return Swal.fire("Mensaje de advertencia","El servicio ya existe","warning");
             }
         }
     })
@@ -108,10 +108,10 @@ function Modificar_Procedimiento() {
     var procedimientonuevo=$("#txt_procedimiento_nuevo_editar").val();
     var observacion=$("#txt_observacion_editar").val();
     if (id.legth==0) {
-        Swal.fire("Mensaje de Advertencia","El campo id esta vacio","warning");
+        return Swal.fire("Mensaje de Advertencia","El campo id esta vacio","warning");
     }
     if (procedimiento.legth==0) {
-        Swal.fire("Mensaje de Advertencia","Debe ingresar un servicio","warning");
+        return Swal.fire("Mensaje de Advertencia","Debe ingresar un servicio","warning");
     }
 
     $.ajax({
@@ -128,12 +128,12 @@ function Modificar_Procedimiento() {
             $("#modal_editar").modal('hidde');
             if (resp==1) {
                 listar_procedimiento();
-                Swal.fire("Mensaje de Confirmacion","Los datos fueron actualizados","success");
+                return  Swal.fire("Mensaje de Confirmacion","Los datos fueron actualizados","success");
             }else{
-                Swal.fire("Mensaje de Error","Los datos no fueron actualizados servicio ya existe","warning");
+                return  Swal.fire("Mensaje de Error","Los datos no fueron actualizados servicio ya existe","warning");
             }
         }else{
-            Swal.fire("Mensaje de Error","Los datos no fueron actualizados","warning");
+            return Swal.fire("Mensaje de Error","Los datos no fueron actualizados","warning");
         }
     })
 }

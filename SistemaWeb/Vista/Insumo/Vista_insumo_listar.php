@@ -1,5 +1,5 @@
 <script type="text/javascript" src="../Js/Insumo.js?rev=<?php echo time(); ?>"></script>
-<div class="row"></div>
+<form autocomplete="false" onsubmit="return false">
 <div class="col-md-12">
     <div class="box box-warning box-solid">
         <div class="box-header with-border">
@@ -51,6 +51,7 @@
         </div>
     </div>
 </div>
+</form>
 
 <!-- Completo modal -->
 <div class="modal fade" id="modal_registro" role="dialog">
