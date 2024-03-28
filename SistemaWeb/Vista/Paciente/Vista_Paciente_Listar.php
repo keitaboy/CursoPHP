@@ -17,7 +17,7 @@
             <div class="form-group">
                 <div class="col-lg-10">
                     <div class="input-group">
-                        <input type="text" class="global_filter form-control" id="global_filter"
+                        <input type="text" class="global_filter_dueno form-control" id="global_filter_dueno"
                             placeholder="Ingresar dato a buscar">
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
                     </div>
@@ -31,14 +31,14 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Dueño</th>
+                        <th>Due&ntilde;o</th>
                         <th>Tipo de documento</th>
                         <th>Nro de documento</th>
                         <th>Celular</th>
                         <th>Direcc&oacute;n</th>
                         <th>Correo</th>
                         <th>Acci&oacute;n</th>
-                        <th>Acci&oacute;n</th>
+                        <!-- <th>Acci&oacute;n mascota</th> -->
                     </tr>
                 </thead>
                 <!-- <tfoot>
@@ -59,7 +59,7 @@
 <div class="col-md-12">
     <div class="box box-warning box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">Mantenimiento de Pacientees</h3>
+            <h3 class="box-title">Mantenimiento de Pacientes</h3>
             <div class="box-tools pull-right">s
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-widget="remove"><i
                         class="fa fa-minus"></i>
@@ -70,16 +70,12 @@
         <!-- /.box-header -->
         <div class="box-body">
             <div class="form-group">
-                <!-- <div class="col-lg-10">
+                <div class="col-lg-10">
                     <div class="input-group">
-                        <input type="text" class="global_filter form-control" id="global_filter"
+                        <input type="text" class="global_filter_paciente form-control" id="global_filter_paciente"
                             placeholder="Ingresar dato a buscar">
                         <span class="input-group-addon"><i class="fa fa-search"></i></span>
                     </div>
-                </div> -->
-                <div class="col-lg-2">
-                    <button class="btn btn-danger" style="width:100%" onclick="AbrirModalRegistro()"><i
-                            class="glyphicon glyphicon-plus"></i>Nuevo Registro</button>
                 </div>
             </div>
             <table id="tabla_Paciente" class="display responsive nowrap" style="width:100%">
@@ -397,7 +393,9 @@
 
 <script>
     $(document).ready(function () {
+        
         listar_Paciente();
+        listar_Dueno();
         listar_combo_tipo_paciente();
         listar_combo_documento();
         $('.js-example-basic-single').select2();
