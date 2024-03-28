@@ -7,19 +7,19 @@ class conexion{
     private $basededatos;
     public $conexion;
 
-    public function __construct() {
-        $this->servidor = 'localhost';
-        $this->usuario = 'root';
-        $this->contrasena = '';
-        $this->basededatos = 'clinicmariaaux1';
-    }
-
     // public function __construct() {
-    //     $this->servidor = 'clinicmariaaux.cvkwoo8mw8nz.us-east-1.rds.amazonaws.com';
-    //     $this->usuario = 'bd001';
-    //     $this->contrasena = 'bdclinicamariaaux001';
+    //     $this->servidor = 'localhost';
+    //     $this->usuario = 'root';
+    //     $this->contrasena = '';
     //     $this->basededatos = 'clinicmariaaux1';
     // }
+
+     public function __construct() {
+         $this->servidor = 'clinicmariaaux.cvkwoo8mw8nz.us-east-1.rds.amazonaws.com';
+         $this->usuario = 'bd001';
+         $this->contrasena = 'bdclinicamariaaux001';
+         $this->basededatos = 'clinicmariaaux1';
+    }
 
     function conectar(){
         $this->conexion = new mysqli($this->servidor, $this->usuario, $this->contrasena, $this->basededatos);
