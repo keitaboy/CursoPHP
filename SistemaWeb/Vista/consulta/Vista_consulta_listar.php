@@ -67,30 +67,43 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><b>Registro de Citas</b></h4>
+                <h4 class="modal-title"><b>Registro de Consulta Medica</b></h4>
             </div>
 
             <div class="modal-body">
             <div class="row">
-                    <div class="col-lg-12">
-                            <label for="">Paciente</label>
-                            <select class="js-example-basic-single" name="state" id="cbm_paciente" style="width:100%;">    
-                            </select><br><br>
-                        </div>
                         <div class="col-lg-12">
-                            <label for="">Doctor</label>
-                            <select class="js-example-basic-single" name="state" id="cbm_doctor" style="width:100%;"> 
+                            <label for="">Cita</label>
+                            <select class="js-example-basic-single" name="state" id="cbm_paciente_consulta" style="width:100%;">    
                             </select><br>
                         </div>
-                        <div class="col-lg-12"><br>
+                        <div class="col-lg-4">
+                            <label for="">Insumo utilizado</label>
+                            <select class="js-example-basic-single" name="state" id="cbm_insumo_consulta" style="width:100%;"> 
+                            </select>
+                        </div>
+                        <div class="col-lg-4">
+                            <label for="">Cant. Insumo utilizado</label>
+                            <input type="text" class="form-control" id="txt_cantinsumo_consulta" placeholder="Ingrese Cantidad"><br>
+                        </div>
+                        <div class="col-lg-4">
+                            <label for="">Servicio anexado</label>
+                            <select class="js-example-basic-single" name="state" id="cbm_servicio_consulta" style="width:100%;"> 
+                            </select><br>
+                        </div>
+                        <div class="col-lg-6"><br>
                             <label for="">Descripci&oacute;n</label>
-                            <textarea name="" id="txt_descripcion"  rows="4" class="form-control" style="resize:none"></textarea>
+                            <textarea name="" id="txt_descripcion_consulta"  rows="4" class="form-control" style="resize:none"></textarea>
+                        </div>
+                        <div class="col-lg-6"><br>
+                            <label for="">Observaci&oacute;n</label>
+                            <textarea name="" id="txt_observacion_consulta"  rows="4" class="form-control" style="resize:none"></textarea>
                         </div>
                     </div>
                 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="Registrar_Cita()"><i class="fa fa-check">
+                <button class="btn btn-primary" onclick="Registrar_Consulta()"><i class="fa fa-check">
                         <b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close">
                         <b>&nbsp;Cerrar</b></i></button>
@@ -147,6 +160,7 @@
 
 <script>
     $(document).ready(function () {
+        $('.js-example-basic-single').select2();
         var n=new Date();
         var y=n.getFullYear();
         var m=n.getMonth()+1;
@@ -159,11 +173,13 @@
         }
         document.getElementById('txt_fechainicio').value=y+"-"+m+"-"+d;
         document.getElementById('txt_fechafin').value=y+"-"+m+"-"+d;
-        listar_consulta();
-        $('.js-example-basic-single').select2();
         $("#modal_registro").on('shown.bs.modal', function () {
             $("#txt_insumo").focus();
-        })
+        });
+        listar_consulta();
+        listar_paciente_combo_consulta();
+        listar_insumo_combo();
+        listar_servicio_combo();
     });
 
     $('.box').boxWidget({
