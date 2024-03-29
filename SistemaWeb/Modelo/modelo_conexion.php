@@ -28,7 +28,6 @@ class conexion{
 
         $this->conexion->set_charset("utf8");
     }
-
     function cerrar() {
         $this->conexion->close();
     }
