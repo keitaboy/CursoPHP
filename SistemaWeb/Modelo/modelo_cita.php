@@ -73,6 +73,7 @@ class Modelo_Cita
         }else{
                 return 0;
         }
+        $this->conexion->cerrar();
     }
 
 }
