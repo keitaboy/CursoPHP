@@ -26,7 +26,37 @@ class Modelo_Consulta
 
     function listar_paciente_combo()
     {
-        $sql = "call SP_LISTAR_PACIENTE_COMBO()";
+        $sql = "call SP_LISTAR_PACIENTE_CITA()";
+        $arreglo = array();
+
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            while ($consulta_VU = mysqli_fetch_array($consulta)) {
+
+                $arreglo[] = $consulta_VU;
+            }
+            return $arreglo;
+            $this->conexion->cerrar();
+        }
+    }
+
+    function listar_insumo_combo()
+    {
+        $sql = "call SP_LISTAR_INSUMO_COMBO()";
+        $arreglo = array();
+
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            while ($consulta_VU = mysqli_fetch_array($consulta)) {
+
+                $arreglo[] = $consulta_VU;
+            }
+            return $arreglo;
+            $this->conexion->cerrar();
+        }
+    }
+
+    function listar_servicio_combo()
+    {
+        $sql = "call SP_LISTAR_SERVICIO_COMBO()";
         $arreglo = array();
 
         if ($consulta = $this->conexion->conexion->query($sql)) {
@@ -54,15 +84,15 @@ class Modelo_Consulta
         }
     }
 
-    function Registrar_Cita($idpaciente,$iddoctor,$descripcion,$idusuario)
+    function Registrar_Consulta($idcita,$idinsumo,$cantinsumo,$idservicio,$descripcion,$observacion)
     {
-        $sql = "call SP_REGISTRAR_CITA('$idpaciente', '$iddoctor', '$descripcion','$idusuario')";
+        $sql = "call SP_REGISTRAR_CONSULTA('$idcita', '$idinsumo', '$cantinsumo','$idservicio','$descripcion','$observacion')";
         if ($consulta = $this->conexion->conexion->query($sql)) {
-            if ($row = mysqli_fetch_array($consulta)) {
-                return $id = trim($row[0]);
-            }
-            $this->conexion->cerrar();
+            return 1;
+        }else{
+            return 0;
         }
+        $this->conexion->cerrar();
     }
 
     function Editar_Cita($idcita,$idpaciente,$iddoctor,$descripcion,$estatus)
@@ -73,6 +103,7 @@ class Modelo_Consulta
         }else{
                 return 0;
         }
+        $this->conexion->cerrar();
     }
 
 }
